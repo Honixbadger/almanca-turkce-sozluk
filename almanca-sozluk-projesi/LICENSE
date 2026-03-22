@@ -1,0 +1,74 @@
+Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+
+Bu sözlük verisi ve proje kodu Creative Commons Attribution-ShareAlike 4.0
+International lisansı altında dağıtılmaktadır.
+
+Özet:
+  - Paylaşabilirsiniz: Her ortamda, her amaçla kopyalayabilir ve yayabilirsiniz.
+  - Uyarlayabilirsiniz: Remiks, dönüştürme ve bu materyali temel alarak yeni
+    materyal üretebilirsiniz.
+
+Koşullar:
+  - Atıf (BY): Uygun atıf yapmalı, lisansın bağlantısını vermeli ve değişiklik
+    yapıp yapmadığınızı belirtmelisiniz.
+  - AynıLisanslaPaylaş (SA): Katkıda bulunduğunuz veya bu materyale dayandığınız
+    çalışmaları aynı lisans altında dağıtmalısınız.
+
+Tam lisans metni:
+  https://creativecommons.org/licenses/by-sa/4.0/legalcode
+
+─────────────────────────────────────────────────────────────────────────────
+
+VERİ KAYNAKLARI LİSANSLARI
+
+Bu proje aşağıdaki açık kaynak verileri kullanmaktadır:
+
+1. Wiktionary (Vikisözlük) — CC BY-SA 3.0
+   https://creativecommons.org/licenses/by-sa/3.0/
+   Kaynak: https://kaikki.org/  (Wikimedia ham veri dökümleri)
+
+2. WikDict (de-tr) — CC BY-SA 4.0
+   https://creativecommons.org/licenses/by-sa/4.0/
+   Kaynak: https://www.wikdict.com/
+   WikDict, Wiktionary verilerinden türetilmiştir.
+
+3. Wikipedia Almanca — CC BY-SA 3.0
+   https://creativecommons.org/licenses/by-sa/3.0/
+   Kaynak: https://de.wikipedia.org/
+   Örnek cümleler ve ek terimler bu kaynaktan alınmıştır.
+
+4. Project Gutenberg — Kamu Malı (Public Domain)
+   https://www.gutenberg.org/
+   ABD'de telif hakkı süresi dolmuş Almanca edebi eserler.
+
+5. Goethe-Institut Kelime Listeleri — Eğitim amaçlı atıf
+   https://www.goethe.de/de/spr/ueb/ger.html
+   Kelime seviyeleri (A1/A2/B1) referans alınmıştır.
+
+─────────────────────────────────────────────────────────────────────────────
+
+YAZILIM LİSANSI (Kaynak Kod)
+
+Bu projenin kaynak kodu (scripts/ klasörü) MIT Lisansı altındadır:
+
+MIT License
+
+Copyright (c) 2026 Almanca-Türkçe Sözlük Projesi
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

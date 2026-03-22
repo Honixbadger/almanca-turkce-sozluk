@@ -1,0 +1,37 @@
+{
+  "record_enrichments": [
+    {
+      "almanca": "auf",
+      "tur": "edat",
+      "turkce": "[+ belirtme çekimi] için, adına, namına",
+      "replace_examples": true,
+      "not_ek": "Örnek cümleler manuel-model destekli olarak anlam bazında düzenlendi.",
+      "ornekler": [
+        {
+          "etiket_turkce": "için",
+          "almanca": "Wir trinken auf deinen Erfolg.",
+          "turkce": "Başarın için kadeh kaldırıyoruz.",
+          "vurgu_de": "auf",
+          "vurgu_tr": "için",
+          "kaynak": "manual-curated"
+        },
+        {
+          "etiket_turkce": "adına",
+          "almanca": "Heute trinken wir auf Ayşe.",
+          "turkce": "Bugün Ayşe adına kadeh kaldırıyoruz.",
+          "vurgu_de": "auf",
+          "vurgu_tr": "adına",
+          "kaynak": "manual-curated"
+        },
+        {
+          "etiket_turkce": "namına",
+          "almanca": "Zum Abschluss tranken alle auf den Gastgeber.",
+          "turkce": "Kapanışta herkes ev sahibi namına kadeh kaldırdı.",
+          "vurgu_de": "auf",
+          "vurgu_tr": "namına",
+          "kaynak": "manual-curated"
+        }
+      ]
+    }
+  ]
+}

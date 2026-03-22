@@ -1,0 +1,762 @@
+{
+  "source_name": "nutzfahrzeugtechnik-buch",
+  "default_note": "Kitap yer imi ve içerik başlıklarından çıkarılan ifade/kalıplar için Türkçe karşılık manuel olarak normalize edildi; tam metin yeniden dağıtılmadı.",
+  "records": [
+    {
+      "almanca": "Einführung in die Nutzfahrzeugtechnik",
+      "artikel": "",
+      "turkce": "ticari araç tekniğine giriş",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Bedeutung der Nutzfahrzeugtechnik",
+      "artikel": "",
+      "turkce": "ticari araç tekniğinin önemi",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Entwicklungsschwerpunkte und künftige Konzepte",
+      "artikel": "",
+      "turkce": "gelişim odakları ve gelecekteki konseptler",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Typenbezeichnung von Lastkraftwagenfahrgestellen",
+      "artikel": "",
+      "turkce": "kamyon şasilerinin tip adlandırması",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Lastkraftwagenangebot nach Gewichtsklassen",
+      "artikel": "",
+      "turkce": "ağırlık sınıflarına göre kamyon seçenekleri",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Rechtliche Grundlagen, Vorschriften, Normen",
+      "artikel": "",
+      "turkce": "hukuki temeller, yönetmelikler ve normlar",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Entwicklungsschritte des Nutzfahrzeugs",
+      "artikel": "",
+      "turkce": "ticari aracın gelişim aşamaları",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Einfluss von Rahmenbedingungen",
+      "artikel": "",
+      "turkce": "çerçeve koşullarının etkisi",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Elektronik gewinnt stetig an Bedeutung",
+      "artikel": "",
+      "turkce": "elektroniğin önemi giderek artıyor",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Antrieb und Fahrleistung",
+      "artikel": "",
+      "turkce": "tahrik ve sürüş performansı",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Konzeption von Nutzfahrzeugen",
+      "artikel": "",
+      "turkce": "ticari araçların konsept tasarımı",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Zulässige Abmessungen und Gewichte",
+      "artikel": "",
+      "turkce": "izin verilen ölçüler ve ağırlıklar",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Internationale Richtlinien",
+      "artikel": "",
+      "turkce": "uluslararası yönergeler",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Nationale Normen, Vorschriften und Richtlinien",
+      "artikel": "",
+      "turkce": "ulusal normlar, yönetmelikler ve yönergeler",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Rechtliche Grundlagen",
+      "artikel": "",
+      "turkce": "hukuki temeller",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Allgemeine Abmessungen",
+      "artikel": "",
+      "turkce": "genel ölçüler",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Ausblick",
+      "artikel": "",
+      "turkce": "gelecek görünümü",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Fahrzeugbenennungen",
+      "artikel": "",
+      "turkce": "araç adlandırmaları",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Motoranordnungen",
+      "artikel": "",
+      "turkce": "motor yerleşimleri",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Transportaufgabe",
+      "artikel": "",
+      "turkce": "taşıma görevi",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Kundennutzen",
+      "artikel": "",
+      "turkce": "müşteri faydası",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Fahrgrenzen",
+      "artikel": "",
+      "turkce": "sürüş sınırları",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Freie Zugkraft",
+      "artikel": "",
+      "turkce": "kullanılabilir çekiş kuvveti",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Kraftbedarf eines Nutzfahrzeugs",
+      "artikel": "",
+      "turkce": "bir ticari aracın güç ihtiyacı",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Luftwiderstand, Aerodynamik des Nutzfahrzeuges",
+      "artikel": "",
+      "turkce": "hava direnci ve ticari aracın aerodinamiği",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Kurvenläufigkeit von Fahrzeugen und Fahrzeugkombinationen",
+      "artikel": "",
+      "turkce": "araçların ve araç kombinasyonlarının viraj kabiliyeti",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Verfahren zur Untersuchung der Kurvenläufigkeit",
+      "artikel": "",
+      "turkce": "viraj kabiliyetini inceleme yöntemleri",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Achslasten, Aufbaulänge und Nutzlastverteilung",
+      "artikel": "",
+      "turkce": "aks yükleri, üst yapı uzunluğu ve faydalı yük dağılımı",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Aufbaulänge und Nutzlastverteilung",
+      "artikel": "",
+      "turkce": "üst yapı uzunluğu ve faydalı yük dağılımı",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Fahrzeug- und Aufbaukonzept",
+      "artikel": "",
+      "turkce": "araç ve üst yapı konsepti",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Wechselaufbauten und Container",
+      "artikel": "",
+      "turkce": "değiştirilebilir üst yapılar ve konteynerler",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Höchstzulässige Abmessungen",
+      "artikel": "",
+      "turkce": "izin verilen azami ölçüler",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Überlange Fahrzeuge und Kombinationen",
+      "artikel": "",
+      "turkce": "aşırı uzun araçlar ve kombinasyonlar",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Anhänge- und Stützlasten",
+      "artikel": "",
+      "turkce": "çeki ve dikey yükler",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Höchstzulässige Gesamtgewichte",
+      "artikel": "",
+      "turkce": "izin verilen azami toplam ağırlıklar",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Höchstzulässige Achslasten",
+      "artikel": "",
+      "turkce": "izin verilen azami aks yükleri",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Entwicklungs- und Prüftechnik",
+      "artikel": "",
+      "turkce": "geliştirme ve test tekniği",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Aktive und passive Sicherheit",
+      "artikel": "",
+      "turkce": "aktif ve pasif güvenlik",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Berechnung zugverbindender Einrichtungen",
+      "artikel": "",
+      "turkce": "çeki bağlantı düzeneklerinin hesabı",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Bremsvorgang und Bremswirkung",
+      "artikel": "",
+      "turkce": "frenleme süreci ve fren etkisi",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Räder und Reifen",
+      "artikel": "",
+      "turkce": "jantlar ve lastikler",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Anhängerfahrgestell",
+      "artikel": "",
+      "turkce": "römork şasisi",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Gesetzliche Rahmenbedingungen",
+      "artikel": "",
+      "turkce": "yasal çerçeve koşulları",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Datenblatt, Fahrgestellzeichnung, Aufbaurichtlinien",
+      "artikel": "",
+      "turkce": "veri sayfası, şasi çizimi ve üst yapı yönergeleri",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Fahrerhaus",
+      "artikel": "",
+      "turkce": "sürücü kabini",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Korrosionsschutz",
+      "artikel": "",
+      "turkce": "korozyon koruması",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Ladungssicherung",
+      "artikel": "",
+      "turkce": "yük sabitleme",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Aufbauten",
+      "artikel": "",
+      "turkce": "üst yapılar",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Aufbaurichtlinien und Aufbaugenehmigung",
+      "artikel": "",
+      "turkce": "üst yapı yönergeleri ve üst yapı onayı",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Kofferaufbauten",
+      "artikel": "",
+      "turkce": "kapalı kasa üst yapılar",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Bemessung der Tragwerke",
+      "artikel": "",
+      "turkce": "taşıyıcı yapıların boyutlandırılması",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Belastungsfälle",
+      "artikel": "",
+      "turkce": "yükleme durumları",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Elastische Biegeverformungen in Nutzfahrzeugtragwerken",
+      "artikel": "",
+      "turkce": "ticari araç taşıyıcılarında elastik eğilme deformasyonları",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Gestaltung der Tragwerke",
+      "artikel": "",
+      "turkce": "taşıyıcı yapıların tasarımı",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Tragsystem Fahrgestellrahmen",
+      "artikel": "",
+      "turkce": "şasi çerçevesinin taşıyıcı sistemi",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Gestaltung von Lkw-Fahrgestellrahmen",
+      "artikel": "",
+      "turkce": "kamyon şasi çerçevelerinin tasarımı",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Q- und M-Linien am Balkenmodell",
+      "artikel": "",
+      "turkce": "kiriş modelindeki Q ve M çizgileri",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Hilfsrahmengestaltung",
+      "artikel": "",
+      "turkce": "yardımcı şase tasarımı",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Aufbauten ohne Hilfsrahmen",
+      "artikel": "",
+      "turkce": "yardımcı şasesiz üst yapılar",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Hilfsrahmen und Aufbaubefestigung",
+      "artikel": "",
+      "turkce": "yardımcı şase ve üst yapı bağlantısı",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Eisenwerkstoffe",
+      "artikel": "",
+      "turkce": "demir esaslı malzemeler",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Sandwichwerkstoffe",
+      "artikel": "",
+      "turkce": "sandviç yapı malzemeleri",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Alternative Antriebe im Nutzfahrzeugbereich",
+      "artikel": "",
+      "turkce": "ticari araç alanında alternatif tahrik sistemleri",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "CO2-Gesetzgebung und Rahmenbedingungen On-Road",
+      "artikel": "",
+      "turkce": "yol araçlarında CO2 mevzuatı ve çerçeve koşulları",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Kurbelwellendichtringe für Nutzfahrzeug- und Industriedieselmotoren",
+      "artikel": "",
+      "turkce": "ticari araç ve endüstriyel dizel motorlar için krank mili keçeleri",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Betriebsweise des Dieselmotors",
+      "artikel": "",
+      "turkce": "dizel motorun çalışma biçimi",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Zusammenfassung und Ausblick",
+      "artikel": "",
+      "turkce": "özet ve gelecek görünümü",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Kraft- und Schmierstoffe",
+      "artikel": "",
+      "turkce": "yakıtlar ve yağlayıcılar",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Anforderungen an den Kraftstoff",
+      "artikel": "",
+      "turkce": "yakıta yönelik gereksinimler",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Öl- und Kühlkreislauf",
+      "artikel": "",
+      "turkce": "yağ ve soğutma devresi",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Anordnung der Hilfsaggregate und deren Antrieb",
+      "artikel": "",
+      "turkce": "yardımcı agregaların yerleşimi ve tahriki",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Zukünftige Entwicklungen",
+      "artikel": "",
+      "turkce": "gelecekteki gelişmeler",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Abgasreinigung beim Nutzfahrzeug-Dieselmotor",
+      "artikel": "",
+      "turkce": "ticari araç dizel motorunda egzoz gazı arıtımı",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "NOx-, Partikel-, CO- und HC-Emissionen im Dieselmotor",
+      "artikel": "",
+      "turkce": "dizel motorda NOx, partikül, CO ve HC emisyonları",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Vorschriften zur Emissionsbegrenzung von Nutzfahrzeugmotoren",
+      "artikel": "",
+      "turkce": "ticari araç motorlarında emisyon sınırlandırma mevzuatı",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Einspritzung, Gemischbildung und Verbrennung",
+      "artikel": "",
+      "turkce": "enjeksiyon, karışım oluşumu ve yanma",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Einspritzsysteme für Nutzfahrzeugmotoren",
+      "artikel": "",
+      "turkce": "ticari araç motorları için enjeksiyon sistemleri",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Verbrennung im Dieselmotor",
+      "artikel": "",
+      "turkce": "dizel motorda yanma",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Thermodynamische Grundlagen des dieselmotorischen Arbeitsprozesses",
+      "artikel": "",
+      "turkce": "dizel motor çevriminin termodinamik temelleri",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Abgasnachbehandlungssysteme für Nutzfahrzeugmotoren",
+      "artikel": "",
+      "turkce": "ticari araç motorları için egzoz son işlem sistemleri",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Variationen der Abgasturbolader-Anpassung an den Motor",
+      "artikel": "",
+      "turkce": "egzoz turboşarjın motora uyarlanma varyasyonları",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Steuerung und Ventiltrieb",
+      "artikel": "",
+      "turkce": "kumanda ve supap mekanizması",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Zylinderkopf und Zylinderkopf-Dichtung",
+      "artikel": "",
+      "turkce": "silindir kapağı ve silindir kapak contası",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Anforderungsprofil für Kurbelwellendichtungen",
+      "artikel": "",
+      "turkce": "krank mili keçeleri için gereksinim profili",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Dynamik der Kurbelwellen in Dieselmotoren",
+      "artikel": "",
+      "turkce": "dizel motorlarda krank millerinin dinamiği",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Energierückgewinnungssysteme beim schweren Nutzfahrzeug",
+      "artikel": "",
+      "turkce": "ağır ticari araçta enerji geri kazanım sistemleri",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Einsparpotentiale durch Hybridisierung",
+      "artikel": "",
+      "turkce": "hibritleştirme ile tasarruf potansiyeli",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Grundsatzüberlegungen",
+      "artikel": "",
+      "turkce": "temel değerlendirmeler",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Auslegungskriterien",
+      "artikel": "",
+      "turkce": "tasarım kriterleri",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Ausgeführte Beispiele",
+      "artikel": "",
+      "turkce": "uygulanmış örnekler",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Bauform, Bauarten, Aufbau von Getrieben",
+      "artikel": "",
+      "turkce": "şanzımanların formu, türleri ve yapısı",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Konstruktive Getriebegrundkonzepte",
+      "artikel": "",
+      "turkce": "şanzımanların temel yapısal konseptleri",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Hydrodynamische Kupplungen und Wandler",
+      "artikel": "",
+      "turkce": "hidrodinamik kavramalar ve dönüştürücüler",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Aufbau des Antriebsstranges",
+      "artikel": "",
+      "turkce": "güç aktarım hattının yapısı",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Übergreifende Aspekte",
+      "artikel": "",
+      "turkce": "genel kapsayıcı yönler",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Elektromagnetische Verträglichkeit",
+      "artikel": "",
+      "turkce": "elektromanyetik uyumluluk",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Systeme",
+      "artikel": "",
+      "turkce": "sistemler",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Funktionen",
+      "artikel": "",
+      "turkce": "fonksiyonlar",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Basisfunktionen",
+      "artikel": "",
+      "turkce": "temel fonksiyonlar",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Schnittstellenfunktionen",
+      "artikel": "",
+      "turkce": "arayüz fonksiyonları",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Begriffsdefinition",
+      "artikel": "",
+      "turkce": "kavram tanımı",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Abgrenzung System Fahrzeug",
+      "artikel": "",
+      "turkce": "sistem ile araç arasındaki sınır tanımı",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Grundsätzliches",
+      "artikel": "",
+      "turkce": "temel ilkeler",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Standardfunktionen",
+      "artikel": "",
+      "turkce": "standart fonksiyonlar",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Bedien- und Anzeigesysteme",
+      "artikel": "",
+      "turkce": "kumanda ve gösterge sistemleri",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Brems- und Fahrwerksysteme",
+      "artikel": "",
+      "turkce": "fren ve yürüyen aksam sistemleri",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Informationsübertragung/Netzwerke",
+      "artikel": "",
+      "turkce": "bilgi aktarımı ve ağlar",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    },
+    {
+      "almanca": "Energiebereitstellung und -verteilung",
+      "artikel": "",
+      "turkce": "enerji sağlama ve dağıtımı",
+      "tur": "ifade",
+      "kaynak_url": "https://doi.org/10.1007/978-3-658-09537-6"
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "source_name": "kfztech",
+  "default_note": "kfztech Abkuerzungs-ABC sayfalarindaki kısaltmalar manuel olarak normalize edildi; Türkçe karşılık ve açıklama teknik bağlama göre eklendi.",
+  "records": [
+    {
+      "almanca": "ADAS",
+      "artikel": "",
+      "turkce": "gelişmiş sürücü destek sistemleri",
+      "aciklama_turkce": "Sürücüye algılama, uyarı ve müdahale desteği veren elektronik yardımcı sistemler bütünü.",
+      "tur": "kisaltma",
+      "not": "Açılım: Advanced Driver Assistance Systems.",
+      "kaynak_url": "https://www.kfztech.de/abc/Abkuerzungs-ABC-A-AC.htm"
+    },
+    {
+      "almanca": "DPF",
+      "artikel": "",
+      "turkce": "dizel partikül filtresi",
+      "aciklama_turkce": "Dizel egzozundaki kurum ve ince parçacıkları tutan filtre elemanı.",
+      "tur": "kisaltma",
+      "not": "Açılım: Diesel-Partikelfilter.",
+      "kaynak_url": "https://www.kfztech.de/abc/Abkuerzungs-ABC-DK-DZ.htm"
+    },
+    {
+      "almanca": "EDC",
+      "artikel": "",
+      "turkce": "elektronik amortisör kontrolü",
+      "aciklama_turkce": "Amortisör sertliğini sürüş koşullarına göre elektronik olarak ayarlayan sistem.",
+      "tur": "kisaltma",
+      "not": "Açılım: Electronic Damper Control.",
+      "kaynak_url": "https://www.kfztech.de/abc/Abkuerzungs-ABC-E-EL.htm"
+    },
+    {
+      "almanca": "EMB",
+      "artikel": "",
+      "turkce": "elektromekanik fren",
+      "aciklama_turkce": "Fren kuvvetini hidrolik yerine elektrikli aktüatörlerle oluşturan fren düzeni.",
+      "tur": "kisaltma",
+      "not": "Açılım: Electro Mechanical Brake.",
+      "kaynak_url": "https://www.kfztech.de/abc/Abkuerzungs-ABC-EM-EZ.htm"
+    },
+    {
+      "almanca": "EOBD",
+      "artikel": "",
+      "turkce": "Avrupa araç üstü arıza teşhisi",
+      "aciklama_turkce": "Motor ve emisyonla ilgili arızaları araç üzerinde izleyen standart teşhis sistemi.",
+      "tur": "kisaltma",
+      "not": "Açılım: European On-Board Diagnostics.",
+      "kaynak_url": "https://www.kfztech.de/abc/Abkuerzungs-ABC-E-EL.htm"
+    },
+    {
+      "almanca": "FC",
+      "artikel": "",
+      "turkce": "yakıt hücresi",
+      "aciklama_turkce": "Kimyasal enerjiyi doğrudan elektrik enerjisine dönüştüren güç üretim ünitesi.",
+      "tur": "kisaltma",
+      "not": "Açılım: Fuel Cell.",
+      "kaynak_url": "https://www.kfztech.de/abc/Abkuerzungs-ABC-F.htm"
+    },
+    {
+      "almanca": "FSI",
+      "artikel": "",
+      "turkce": "katmanlı yakıt enjeksiyonu",
+      "aciklama_turkce": "Yakıtı doğrudan yanma odasına tabakalı biçimde püskürten benzinli motor enjeksiyon sistemi.",
+      "tur": "kisaltma",
+      "not": "Açılım: Fuel Stratified Injection.",
+      "kaynak_url": "https://www.kfztech.de/abc/Abkuerzungs-ABC-F.htm"
+    },
+    {
+      "almanca": "HDI",
+      "artikel": "",
+      "turkce": "yüksek basınçlı direkt enjeksiyon",
+      "aciklama_turkce": "Yakıtın yüksek basınçla doğrudan silindire püskürtüldüğü enjeksiyon düzeni.",
+      "tur": "kisaltma",
+      "not": "Açılım: High-pressure Direct Injection.",
+      "kaynak_url": "https://www.kfztech.de/abc/Abkuerzungs-ABC-H.htm"
+    },
+    {
+      "almanca": "IBS",
+      "artikel": "",
+      "turkce": "akıllı akü sensörü",
+      "aciklama_turkce": "Akünün gerilim, akım ve sıcaklık durumunu ölçerek enerji yönetimine veri sağlayan sensör.",
+      "tur": "kisaltma",
+      "not": "Açılım: Intelligent Battery Sensor.",
+      "kaynak_url": "https://www.kfztech.de/abc/Abkuerzungs-ABC-I.htm"
+    },
+    {
+      "almanca": "LPG",
+      "artikel": "",
+      "turkce": "sıvılaştırılmış petrol gazı",
+      "aciklama_turkce": "Otomotivde alternatif yakıt olarak kullanılan propan-bütan temelli gaz karışımı.",
+      "tur": "kisaltma",
+      "not": "Açılım: Liquefied Petroleum Gas.",
+      "kaynak_url": "https://www.kfztech.de/abc/Abkuerzungs-ABC-L.htm"
+    },
+    {
+      "almanca": "MAF",
+      "artikel": "",
+      "turkce": "kütle hava akış sensörü",
+      "aciklama_turkce": "Motora giren havanın kütlesini ölçerek karışım ve enjeksiyon kontrolüne veri veren sensör.",
+      "tur": "kisaltma",
+      "not": "Açılım: Mass Air Flow.",
+      "kaynak_url": "https://www.kfztech.de/abc/Abkuerzungs-ABC-M.htm"
+    },
+    {
+      "almanca": "PSI",
+      "artikel": "",
+      "turkce": "inç kare başına pound",
+      "aciklama_turkce": "Özellikle lastik ve sistem basınçlarında kullanılan basınç birimi.",
+      "tur": "kisaltma",
+      "not": "Açılım: Pounds per Square Inch.",
+      "kaynak_url": "https://www.kfztech.de/abc/Abkuerzungs-ABC-PK-Q.htm"
+    },
+    {
+      "almanca": "RDC",
+      "artikel": "",
+      "turkce": "lastik basınç kontrolü",
+      "aciklama_turkce": "Lastik basıncını izleyip sürücüyü uyaran kontrol sistemi.",
+      "tur": "kisaltma",
+      "not": "Açılım: Reifen Druck Control.",
+      "kaynak_url": "https://www.kfztech.de/abc/Abkuerzungs-ABC-R.htm"
+    },
+    {
+      "almanca": "VNT",
+      "artikel": "",
+      "turkce": "değişken nozullu türbin",
+      "aciklama_turkce": "Egzoz gazı akışını ayarlanabilir kanatçıklarla yöneten turbo türbini.",
+      "tur": "kisaltma",
+      "not": "Açılım: Variable Nozzle Turbine.",
+      "kaynak_url": "https://www.kfztech.de/abc/Abkuerzungs-ABC-V.htm"
+    },
+    {
+      "almanca": "VVT-i",
+      "artikel": "",
+      "turkce": "akıllı değişken supap zamanlaması",
+      "aciklama_turkce": "Supap açılma zamanını motor yüküne ve devrine göre ayarlayan kumanda sistemi.",
+      "tur": "kisaltma",
+      "not": "Açılım: Variable Valve Timing-intelligent.",
+      "kaynak_url": "https://www.kfztech.de/abc/Abkuerzungs-ABC-V.htm"
+    }
+  ]
+}

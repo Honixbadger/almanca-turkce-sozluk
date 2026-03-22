@@ -1,0 +1,66 @@
+{
+  "title": "Program Tutoriali",
+  "intro": "Istediginiz bolumden baslayin. Sol listeden bir baslik secin, isterseniz sirayla ilerleyin.",
+  "sections": [
+    {
+      "id": "hizli_baslangic",
+      "title": "Hizli Baslangic",
+      "summary": "Programi ilk kez acan kullanici icin genel akis.",
+      "body": "Bu uygulamanin temel akisi cok kisa:\n\n1. Arama kutusuna Almanca ya da Turkce bir kelime yazin.\n2. Eslesme varsa sonuc otomatik secilir.\n3. Birden fazla anlam varsa sonuc listesi veya mumkun anlamlar alanindan dogru kaydi secin.\n4. Ayrintida kisa bilgi, Turkce tanim, ornekler ve kaynaklar gorulur.\n\nBaslamak icin en hizli yol ana ekranda Ctrl+F ile arama kutusuna gitmek ve bir kelime yazmaktir."
+    },
+    {
+      "id": "arama",
+      "title": "Arama ve Oneriler",
+      "summary": "Dropdown onerileri, eslesme mantigi ve temizleme kisayollari.",
+      "body": "Arama kutusu yazdikca oneri acabilir.\n\n- Yon tuslariyla oneriler arasinda gezebilirsiniz.\n- Enter ile secili oneriyi acabilirsiniz.\n- Esc aramayi temizler.\n- Ctrl+Backspace ve Ctrl+Delete de arama metnini tamamen temizler.\n\nAramada hem Almanca hem Turkce taraf taranir. Cinsiyet varyanti olan isimlerde tek kayit ailesi mantigi kullanilir."
+    },
+    {
+      "id": "anlamlar",
+      "title": "Coklu Anlam ve Detay Alani",
+      "summary": "Bir kelimenin birden fazla anlami oldugunda nasil ilerlenir.",
+      "body": "Bazi kelimeler birden fazla tanimla gelir.\n\n- Sonuc ozetinde kac eslesme bulundugu yazilir.\n- Mumkun anlamlar bolumunde kisa anlam listesi gorunur.\n- Bir maddeye tiklayinca tanim metni ilgili bolume gider.\n\nOzellikle teknik kelimelerde once uygun anlami secmek, sonra kaynak ve ornek cumlelere bakmak en dogru yoldur."
+    },
+    {
+      "id": "kelime_ekleme",
+      "title": "Yeni Kelime Ekleme",
+      "summary": "Elle tek tek kayit acma akisi.",
+      "body": "Tek bir kelimeyi hizlica eklemek icin Uygulama > Yeni Kelime yolunu kullanin.\n\nZorunlu alanlar:\n- Almanca\n- Turkce\n- Tur\n\nIsim ekliyorsaniz artikel de secin. Istege bagli olarak kisa aciklama, not ve kaynak baglantisi ekleyebilirsiniz.\n\nKaydet dediginizde kayit hemen kullanici veri setine yazilir ve aramada gorunur."
+    },
+    {
+      "id": "url_aktar",
+      "title": "URL'den Kelime Aktarma",
+      "summary": "Bir sayfadaki yeni kelimeleri topluca cikarma.",
+      "body": "Uygulama > URL'den Kelime Aktar ile bir sayfayi analiz edebilirsiniz.\n\nGenel akis:\n1. URL yapistirin.\n2. Analizi baslatin.\n3. Yeni Kelimeler sekmesindeki adaylari kontrol edin.\n4. Sadece Turkcesi bulunan veya bulunmayan adaylari filtreleyin.\n5. Sectiklerinizi onayla ekleyin.\n\nBu akista kelimenin gectigi cumle bulunursa ornek cumle de kayda eklenir. Turkce cumle cevirisi bulunabilirse o da doldurulur."
+    },
+    {
+      "id": "metin_esleme",
+      "title": "Almanca Metin ve Turkce Ceviri Esleme",
+      "summary": "Iki paralel metinden kelime adayi cikarimi.",
+      "body": "Uygulama > Metin Eslestirip Kelime Cikar secenegi iki metni karsilastirir.\n\n- Almanca metni girin.\n- Ayni metnin Turkce cevirisini girin.\n- Sistem olasi kelime eslesmelerini ve ornek cumleleri toplar.\n- Mevcut sozlukte olan kayitlar ayiklanmaya calisilir.\n- Son karar yine sizdedir; ekleme onayla yapilir.\n\nBu ozellik veri setini buyuturken en hizli yollardan biridir."
+    },
+    {
+      "id": "ceviri",
+      "title": "Ceviri Yardimcilari",
+      "summary": "Yerel ceviri karti ve Google Ceviri entegrasyonu.",
+      "body": "Arama alaninin altinda yerel ceviri karti bulunur.\n\n- Kisa Almanca cumlelerde tarayici acmadan yerel ceviri gorebilirsiniz.\n- Google Ceviri dugmesi arama metnini dogrudan Almanca -> Turkce seklinde acar.\n- URL ve kelime ekleme akislarinda ornek cumle Turkcesi de otomatik uretilmeye calisilir.\n\nYerel ceviri hiz icin yararlidir; supheli kayitlarda insan kontrolu yine onemlidir."
+    },
+    {
+      "id": "gorseller_ve_tema",
+      "title": "Tema ve Fotograf Alanlari",
+      "summary": "Temalar, renkler ve guvenli fotograf alanlari.",
+      "body": "Ayarlar ekraninda tema, yazi boyutu ve fotograf alanlari kontrol edilir.\n\n- Fotograf alanlari sadece sozlugu kapatmayan guvenli slotlarda kullanilir.\n- Ust baslik, arama karti, sonuc bos durumu ve tanim karti kosesi ayri ayri yonetilebilir.\n- Ozel fotograf secerseniz dosya uygulama icinde bu guvenli alana yerlestirilir.\n\nKural sabittir: fotograf uyarlanir, sozluk kaybolmaz."
+    },
+    {
+      "id": "veri_seti_editoru",
+      "title": "Veri Seti Editoru",
+      "summary": "Gelistiriciye ozel toplu duzeltme araci.",
+      "body": "Araclar > Veri Seti Editoru (Gelistirici) ile mevcut kayitlari duzenleyebilirsiniz.\n\nBu pencerede:\n- mevcut kelimeyi arayabilir,\n- Turkce ceviriyi duzeltebilir,\n- kisa aciklama ve not ekleyebilir,\n- ornek Almanca ve Turkce cumleleri duzenleyebilirsiniz.\n\nBu arac veri setini iyilestirmek icin tasarlanmistir; yaptigi degisiklikler dogrudan veri dosyasina yazilir."
+    },
+    {
+      "id": "ipuclari",
+      "title": "Sorun Cozme ve Ipuclari",
+      "summary": "Takilma, eksik sonuc ve kararsiz kayitlar icin hizli kontrol listesi.",
+      "body": "Beklenmedik bir durumda su sirayla kontrol edin:\n\n1. Arama cok genisse daha uzun bir parca yazin.\n2. Birden fazla eslesme varsa sonuc listesini acin.\n3. Ceviri supheliyse Veri Seti Editoru ile kaydi duzeltin.\n4. Yeni veri eklerken once onay ekranini kontrol edin.\n5. Ayarlarda sade gorunum acik oldugunda bazi paneller gizlenebilir; bu bir hata olmayabilir.\n\nYardim menusundeki tutorial ve rehberler uygulama icinde tekrar tekrar acilabilir."
+    }
+  ]
+}

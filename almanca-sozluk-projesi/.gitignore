@@ -1,0 +1,81 @@
+# =============================================================================
+# Almanca-Türkçe Sözlük Projesi — .gitignore
+# =============================================================================
+
+# ─── Python ──────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# ─── Kişisel Ayarlar & API Anahtarları (GİZLİ) ───────────────────────────────
+# UYARI: Bu dosyada API anahtarları bulunabilir — asla commit etmeyin!
+data/manual/desktop_settings.json
+# Şablon dosyasını kullanın: data/manual/desktop_settings.template.json
+
+# ─── Büyük İkili Dosyalar (Git LFS veya harici indirme) ──────────────────────
+# WikDict SQLite veritabanı (~10 MB) — https://download.wikdict.com/
+data/raw/downloads/*.sqlite3
+# Wiktionary ham veri dökümleri (~100+ MB)
+data/raw/downloads/*.gz
+data/raw/downloads/*.jsonl
+data/raw/downloads/*.jsonl.gz
+
+# ─── Telif Hakkı İçerebilecek Ham Veriler ────────────────────────────────────
+# Web'den çekilen ham HTML dosyaları (üçüncü taraf sitelerin içerikleri)
+data/raw/html/
+# Ara işleme dosyaları (ham verilerden üretilmiş)
+data/interim/
+
+# ─── Üretilmiş İndeks Dosyaları (build artifacts) ───────────────────────────
+output/definition_index_tr.json
+output/definition_index_de.json
+
+# ─── Log Dosyaları ───────────────────────────────────────────────────────────
+logs/
+*.log
+
+# ─── Çıktı Görselleri (Wikimedia Commons — CC BY-SA) ─────────────────────────
+# Görseller uygulama çalışırken otomatik indirilir (word_image_cache.py)
+output/word_images/
+
+# ─── Geçici / İşletim Sistemi Dosyaları ──────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+*.lnk
+*.tmp
+*.bak
+*.swp
+*~
+
+# ─── IDE / Editör ─────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ─── Ortam Değişkenleri ───────────────────────────────────────────────────────
+.env
+.env.*
+*.env
+
+# ─── Jupyter ──────────────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+
+# ─── Test Çıktıları ───────────────────────────────────────────────────────────
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ─── Notlar ───────────────────────────────────────────────────────────────────
+# dictionary.json GitHub'a yüklenir — CC BY-SA lisansı altında.
+# Veri kaynakları: Wiktionary (CC BY-SA), Wikipedia (CC BY-SA),
+#                  WikDict (CC BY-SA), Project Gutenberg (Public Domain)
+# Bkz. ATTRIBUTION.md

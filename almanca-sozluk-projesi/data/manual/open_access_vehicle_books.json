@@ -1,0 +1,218 @@
+{
+  "source_name": "open-access-vehicle-books",
+  "default_note": "Açık erişimli Springer kitaplarının kamuya açık bölüm başlıkları ve kavramları üzerinden manuel olarak normalize edildi.",
+  "records": [
+    {
+      "almanca": "Autonomes Fahren",
+      "artikel": "",
+      "turkce": "otonom sürüş",
+      "tur": "ifade",
+      "kaynak_url": "https://link.springer.com/book/10.1007/978-3-658-16268-9"
+    },
+    {
+      "almanca": "Rechtliche Aspekte des autonomen Fahrens",
+      "artikel": "",
+      "turkce": "otonom sürüşün hukuki yönleri",
+      "tur": "ifade",
+      "kaynak_url": "https://link.springer.com/book/10.1007/978-3-658-16268-9"
+    },
+    {
+      "almanca": "Ökonomische Aspekte des autonomen Fahrens",
+      "artikel": "",
+      "turkce": "otonom sürüşün ekonomik yönleri",
+      "tur": "ifade",
+      "kaynak_url": "https://link.springer.com/book/10.1007/978-3-658-16268-9"
+    },
+    {
+      "almanca": "Räumliche Aspekte des autonomen Fahrens",
+      "artikel": "",
+      "turkce": "otonom sürüşün mekânsal yönleri",
+      "tur": "ifade",
+      "kaynak_url": "https://link.springer.com/book/10.1007/978-3-658-16268-9"
+    },
+    {
+      "almanca": "Anwendungsfelder des autonomen Fahrens",
+      "artikel": "",
+      "turkce": "otonom sürüşün uygulama alanları",
+      "tur": "ifade",
+      "kaynak_url": "https://link.springer.com/book/10.1007/978-3-658-16268-9"
+    },
+    {
+      "almanca": "Autonome Personenbeförderung",
+      "artikel": "",
+      "turkce": "otonom yolcu taşımacılığı",
+      "tur": "ifade",
+      "kaynak_url": "https://link.springer.com/book/10.1007/978-3-658-16268-9"
+    },
+    {
+      "almanca": "Autonome Güterbeförderung",
+      "artikel": "",
+      "turkce": "otonom yük taşımacılığı",
+      "tur": "ifade",
+      "kaynak_url": "https://link.springer.com/book/10.1007/978-3-658-16268-9"
+    },
+    {
+      "almanca": "Neue Mobilitätskonzepte",
+      "artikel": "",
+      "turkce": "yeni mobilite konseptleri",
+      "tur": "ifade",
+      "kaynak_url": "https://link.springer.com/book/10.1007/978-3-658-16268-9"
+    },
+    {
+      "almanca": "Verkehrsmanagement",
+      "artikel": "",
+      "turkce": "trafik yönetimi",
+      "tur": "isim",
+      "kaynak_url": "https://link.springer.com/book/10.1007/978-3-658-16268-9"
+    },
+    {
+      "almanca": "Verkehrssteuerung",
+      "artikel": "",
+      "turkce": "trafik yönlendirmesi",
+      "tur": "isim",
+      "kaynak_url": "https://link.springer.com/book/10.1007/978-3-658-16268-9"
+    },
+    {
+      "almanca": "Konnektivitätsveränderung",
+      "artikel": "",
+      "turkce": "bağlanırlık değişimi",
+      "tur": "isim",
+      "kaynak_url": "https://link.springer.com/book/10.1007/978-3-658-16268-9"
+    },
+    {
+      "almanca": "Mobilitätswahrnehmung",
+      "artikel": "",
+      "turkce": "mobilite algısı",
+      "tur": "isim",
+      "kaynak_url": "https://link.springer.com/book/10.1007/978-3-658-16268-9"
+    },
+    {
+      "almanca": "Autonome Shuttlebusse im ÖPNV",
+      "artikel": "",
+      "turkce": "toplu taşımada otonom shuttle otobüsler",
+      "tur": "ifade",
+      "kaynak_url": "https://link.springer.com/book/10.1007/978-3-658-45154-7"
+    },
+    {
+      "almanca": "ÖPNV",
+      "artikel": "",
+      "turkce": "toplu taşıma",
+      "tur": "kisaltma",
+      "kaynak_url": "https://link.springer.com/book/10.1007/978-3-658-45154-7",
+      "not": "Açılım: Öffentlicher Personennahverkehr.",
+      "aciklama_turkce": "Kent içi ve yakın çevrede düzenli toplu yolcu taşımacılığı sistemi."
+    },
+    {
+      "almanca": "Öffentlicher Personennahverkehr",
+      "artikel": "",
+      "turkce": "kamusal yakın mesafe yolcu taşımacılığı",
+      "tur": "ifade",
+      "kaynak_url": "https://link.springer.com/book/10.1007/978-3-658-45154-7"
+    },
+    {
+      "almanca": "Autonomer Shuttlebus",
+      "artikel": "",
+      "turkce": "otonom shuttle otobüs",
+      "tur": "isim",
+      "kaynak_url": "https://link.springer.com/book/10.1007/978-3-658-45154-7"
+    },
+    {
+      "almanca": "Mobilitätsdienstleistung",
+      "artikel": "",
+      "turkce": "mobilite hizmeti",
+      "tur": "isim",
+      "kaynak_url": "https://link.springer.com/book/10.1007/978-3-658-45154-7"
+    },
+    {
+      "almanca": "Betriebsgebiet",
+      "artikel": "",
+      "turkce": "işletme bölgesi",
+      "tur": "isim",
+      "kaynak_url": "https://link.springer.com/book/10.1007/978-3-658-45154-7"
+    },
+    {
+      "almanca": "Linienbetrieb",
+      "artikel": "",
+      "turkce": "hat işletimi",
+      "tur": "isim",
+      "kaynak_url": "https://link.springer.com/book/10.1007/978-3-658-45154-7"
+    },
+    {
+      "almanca": "Bedarfsverkehr",
+      "artikel": "",
+      "turkce": "talep odaklı ulaşım",
+      "tur": "isim",
+      "kaynak_url": "https://link.springer.com/book/10.1007/978-3-658-45154-7"
+    },
+    {
+      "almanca": "Flottensteuerung",
+      "artikel": "",
+      "turkce": "filo yönetimi",
+      "tur": "isim",
+      "kaynak_url": "https://link.springer.com/book/10.1007/978-3-658-45154-7"
+    },
+    {
+      "almanca": "Betriebskonzept",
+      "artikel": "",
+      "turkce": "işletme konsepti",
+      "tur": "isim",
+      "kaynak_url": "https://link.springer.com/book/10.1007/978-3-658-45154-7"
+    },
+    {
+      "almanca": "Sicherheitskonzept",
+      "artikel": "",
+      "turkce": "güvenlik konsepti",
+      "tur": "isim",
+      "kaynak_url": "https://link.springer.com/book/10.1007/978-3-658-45154-7"
+    },
+    {
+      "almanca": "Nutzerakzeptanz",
+      "artikel": "",
+      "turkce": "kullanıcı kabulü",
+      "tur": "isim",
+      "kaynak_url": "https://link.springer.com/book/10.1007/978-3-658-45154-7"
+    },
+    {
+      "almanca": "Betriebsüberwachung",
+      "artikel": "",
+      "turkce": "işletme izleme",
+      "tur": "isim",
+      "kaynak_url": "https://link.springer.com/book/10.1007/978-3-658-45154-7"
+    },
+    {
+      "almanca": "Fernüberwachung",
+      "artikel": "",
+      "turkce": "uzaktan izleme",
+      "tur": "isim",
+      "kaynak_url": "https://link.springer.com/book/10.1007/978-3-658-45154-7"
+    },
+    {
+      "almanca": "Hinderniserkennung",
+      "artikel": "",
+      "turkce": "engel algılama",
+      "tur": "isim",
+      "kaynak_url": "https://link.springer.com/book/10.1007/978-3-658-45154-7"
+    },
+    {
+      "almanca": "Umfelderfassung",
+      "artikel": "",
+      "turkce": "çevre algılama",
+      "tur": "isim",
+      "kaynak_url": "https://link.springer.com/book/10.1007/978-3-658-45154-7"
+    },
+    {
+      "almanca": "Betriebserprobung",
+      "artikel": "",
+      "turkce": "işletme denemesi",
+      "tur": "isim",
+      "kaynak_url": "https://link.springer.com/book/10.1007/978-3-658-45154-7"
+    },
+    {
+      "almanca": "Einführungsstrategie",
+      "artikel": "",
+      "turkce": "devreye alma stratejisi",
+      "tur": "isim",
+      "kaynak_url": "https://link.springer.com/book/10.1007/978-3-658-45154-7"
+    }
+  ]
+}

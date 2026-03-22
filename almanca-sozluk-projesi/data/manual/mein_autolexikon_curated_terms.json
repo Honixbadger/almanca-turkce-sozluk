@@ -1,0 +1,503 @@
+{
+  "source_name": "mein-autolexikon",
+  "default_note": "mein-autolexikon terim sayfalarindaki baslik ve slug alanlari uzerinden secilen teknik kayitlar manuel olarak normalize edildi; tam tanim metni yeniden dagitilmadi.",
+  "records": [
+    {
+      "almanca": "Abgasanlage",
+      "artikel": "",
+      "turkce": "egzoz sistemi",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/abgasanlage/abgasanlage"
+    },
+    {
+      "almanca": "Abgaskrümmer",
+      "artikel": "",
+      "turkce": "egzoz manifoldu",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/abgasanlage/abgaskruemmer"
+    },
+    {
+      "almanca": "Abgasnorm Euro 6",
+      "artikel": "",
+      "turkce": "Euro 6 emisyon normu",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/abgasanlage/abgasnorm-euro-6"
+    },
+    {
+      "almanca": "Abgastemperatursensor",
+      "artikel": "",
+      "turkce": "egzoz sıcaklık sensörü",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/abgasanlage/abgastemperatursensor"
+    },
+    {
+      "almanca": "Befestigungstechnik",
+      "artikel": "",
+      "turkce": "bağlantı tekniği",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/abgasanlage/befestigungstechnik"
+    },
+    {
+      "almanca": "Breitbandsonde",
+      "artikel": "",
+      "turkce": "geniş bant lambda sensörü",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/abgasanlage/breitbandsonde"
+    },
+    {
+      "almanca": "Diesel-Partikelfilter",
+      "artikel": "",
+      "turkce": "dizel partikül filtresi",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/abgasanlage/diesel-partikelfilter"
+    },
+    {
+      "almanca": "Endschalldämpfer",
+      "artikel": "",
+      "turkce": "arka susturucu",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/abgasanlage/endschalldaempfer"
+    },
+    {
+      "almanca": "Lambdasonde",
+      "artikel": "",
+      "turkce": "lambda sensörü",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/abgasanlage/lambdasonde"
+    },
+    {
+      "almanca": "Ottopartikelfilter",
+      "artikel": "",
+      "turkce": "benzin partikül filtresi",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/abgasanlage/ottopartikelfilter"
+    },
+    {
+      "almanca": "Schalldämpfer",
+      "artikel": "",
+      "turkce": "susturucu",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/abgasanlage/schalldaempfer"
+    },
+    {
+      "almanca": "SCR-Katalysator",
+      "artikel": "",
+      "turkce": "SCR katalizörü",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/abgasanlage/scr-katalysator"
+    },
+    {
+      "almanca": "Sprungsonde",
+      "artikel": "",
+      "turkce": "dar bant lambda sensörü",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/abgasanlage/sprungsonde"
+    },
+    {
+      "almanca": "Achsmanschette",
+      "artikel": "",
+      "turkce": "aks körüğü",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/achsmanschette"
+    },
+    {
+      "almanca": "Aggregatetrieb",
+      "artikel": "",
+      "turkce": "yardımcı ünite tahriki",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/aggregatetrieb"
+    },
+    {
+      "almanca": "Antriebswelle",
+      "artikel": "",
+      "turkce": "tahrik mili",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/antriebswelle"
+    },
+    {
+      "almanca": "Batteriekühlung in Elektro-Fahrzeugen",
+      "artikel": "",
+      "turkce": "elektrikli araçlarda batarya soğutması",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/batteriekuehlung-in-elektro-fahrzeugen"
+    },
+    {
+      "almanca": "Benzin-Direkteinspritzung",
+      "artikel": "",
+      "turkce": "benzin direkt enjeksiyonu",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/benzin-direkteinspritzung"
+    },
+    {
+      "almanca": "Brennstoffzelle",
+      "artikel": "",
+      "turkce": "yakıt hücresi",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/brennstoffzelle"
+    },
+    {
+      "almanca": "Differential",
+      "artikel": "",
+      "turkce": "diferansiyel",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/differential"
+    },
+    {
+      "almanca": "E-Fuels",
+      "artikel": "",
+      "turkce": "sentetik yakıtlar",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/e-fuels"
+    },
+    {
+      "almanca": "E-Achse",
+      "artikel": "",
+      "turkce": "elektrikli aks",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/eachse"
+    },
+    {
+      "almanca": "Elektroauto-Batterie/Akku",
+      "artikel": "",
+      "turkce": "elektrikli araç bataryası",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/elektroauto-batterie-akku"
+    },
+    {
+      "almanca": "Elektromotor BEV",
+      "artikel": "",
+      "turkce": "bataryalı elektrikli araç motoru",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/elektromotor-bev"
+    },
+    {
+      "almanca": "Generatorfreilauf",
+      "artikel": "",
+      "turkce": "alternatör serbest kavraması",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/generatorfreilauf"
+    },
+    {
+      "almanca": "Hybridantrieb",
+      "artikel": "",
+      "turkce": "hibrit tahrik",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/hybridantrieb"
+    },
+    {
+      "almanca": "Hydraulische Kupplungsbetätigung",
+      "artikel": "",
+      "turkce": "hidrolik debriyaj kumandası",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/hydraulische-kupplungsbetaetigung"
+    },
+    {
+      "almanca": "Keilriemen",
+      "artikel": "",
+      "turkce": "V kayışı",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/keilriemen"
+    },
+    {
+      "almanca": "Keilrippenriemen",
+      "artikel": "",
+      "turkce": "kanallı kayış",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/keilrippenriemen"
+    },
+    {
+      "almanca": "Kettentrieb",
+      "artikel": "",
+      "turkce": "zincir tahriki",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/kettentrieb"
+    },
+    {
+      "almanca": "Kolben",
+      "artikel": "",
+      "turkce": "piston",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/kolben"
+    },
+    {
+      "almanca": "Kraftstoffpumpe",
+      "artikel": "",
+      "turkce": "yakıt pompası",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/kraftstoffpumpe"
+    },
+    {
+      "almanca": "Kühlflüssigkeit",
+      "artikel": "",
+      "turkce": "soğutma sıvısı",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/kuehlfluessigkeit"
+    },
+    {
+      "almanca": "Kurbeltrieb",
+      "artikel": "",
+      "turkce": "krank mekanizması",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/kurbeltrieb"
+    },
+    {
+      "almanca": "Ladeluftkühler",
+      "artikel": "",
+      "turkce": "şarj havası soğutucusu",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/ladeluftkuehler"
+    },
+    {
+      "almanca": "Leistungselektronik",
+      "artikel": "",
+      "turkce": "güç elektroniği",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/leistungselektronik"
+    },
+    {
+      "almanca": "Luftmassenmesser",
+      "artikel": "",
+      "turkce": "hava kütle ölçer",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/luftmassenmesser"
+    },
+    {
+      "almanca": "Motorblock",
+      "artikel": "",
+      "turkce": "motor bloğu",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/motorblock"
+    },
+    {
+      "almanca": "Motorlager",
+      "artikel": "",
+      "turkce": "motor takozu",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/motorlager"
+    },
+    {
+      "almanca": "Motorsteuergerät",
+      "artikel": "",
+      "turkce": "motor kontrol ünitesi",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/motorsteuergeraet"
+    },
+    {
+      "almanca": "Motorsteuerung",
+      "artikel": "",
+      "turkce": "motor kontrol sistemi",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/motorsteuerung"
+    },
+    {
+      "almanca": "Nockenwelle",
+      "artikel": "",
+      "turkce": "eksantrik mili",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/nockenwelle"
+    },
+    {
+      "almanca": "Ölpumpe",
+      "artikel": "",
+      "turkce": "yağ pompası",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/oelpumpe"
+    },
+    {
+      "almanca": "Ölwanne",
+      "artikel": "",
+      "turkce": "yağ karteri",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/oelwanne"
+    },
+    {
+      "almanca": "Ottomotor",
+      "artikel": "",
+      "turkce": "benzinli motor",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/ottomotor"
+    },
+    {
+      "almanca": "Pleuelstange",
+      "artikel": "",
+      "turkce": "biyel kolu",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/pleuelstange"
+    },
+    {
+      "almanca": "Radnabenantrieb",
+      "artikel": "",
+      "turkce": "teker göbeği tahriki",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/radnabenantrieb"
+    },
+    {
+      "almanca": "Schwingungsdämpfer",
+      "artikel": "",
+      "turkce": "titreşim sönümleyici",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/schwingungsdaempfer"
+    },
+    {
+      "almanca": "Schwungscheibe",
+      "artikel": "",
+      "turkce": "volan",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/schwungscheibe"
+    },
+    {
+      "almanca": "Start-Stopp-Automatik",
+      "artikel": "",
+      "turkce": "start-stop otomatiği",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/start-stopp-automatik"
+    },
+    {
+      "almanca": "Steuertrieb",
+      "artikel": "",
+      "turkce": "zamanlama tahriki",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/steuertrieb"
+    },
+    {
+      "almanca": "Ventile",
+      "artikel": "",
+      "turkce": "supaplar",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/ventile"
+    },
+    {
+      "almanca": "Wasserpumpe",
+      "artikel": "",
+      "turkce": "su pompası",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/wasserpumpe"
+    },
+    {
+      "almanca": "Zahnriemen",
+      "artikel": "",
+      "turkce": "triger kayışı",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/zahnriemen"
+    },
+    {
+      "almanca": "Zweimassenschwungrad",
+      "artikel": "",
+      "turkce": "çift kütleli volan",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/zweimassenschwungrad"
+    },
+    {
+      "almanca": "Zylinderabschaltung",
+      "artikel": "",
+      "turkce": "silindir devre dışı bırakma",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/zylinderabschaltung"
+    },
+    {
+      "almanca": "Zylinderkopfdichtung",
+      "artikel": "",
+      "turkce": "silindir kapak contası",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/antrieb/zylinderkopfdichtung"
+    },
+    {
+      "almanca": "Heckleuchte",
+      "artikel": "",
+      "turkce": "arka lamba",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/beleuchtung/heckleuchte"
+    },
+    {
+      "almanca": "Kurvenlicht",
+      "artikel": "",
+      "turkce": "viraj aydınlatması",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/beleuchtung/kurvenlicht"
+    },
+    {
+      "almanca": "LED-Scheinwerfer",
+      "artikel": "",
+      "turkce": "LED far",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/beleuchtung/led-scheinwerfer"
+    },
+    {
+      "almanca": "Nebelscheinwerfer",
+      "artikel": "",
+      "turkce": "sis farı",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/beleuchtung/nebelscheinwerfer"
+    },
+    {
+      "almanca": "Nebelschlussleuchte",
+      "artikel": "",
+      "turkce": "arka sis lambası",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/beleuchtung/nebelschlussleuchte"
+    },
+    {
+      "almanca": "Scheinwerferlampe",
+      "artikel": "",
+      "turkce": "far lambası",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/beleuchtung/scheinwerferlampe"
+    },
+    {
+      "almanca": "Scheinwerferreinigungsanlage",
+      "artikel": "",
+      "turkce": "far yıkama sistemi",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/beleuchtung/scheinwerferreinigungsanlage"
+    },
+    {
+      "almanca": "Tagfahrleuchte",
+      "artikel": "",
+      "turkce": "gündüz sürüş lambası",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/beleuchtung/tagfahrleuchte"
+    },
+    {
+      "almanca": "Zusatzscheinwerfer",
+      "artikel": "",
+      "turkce": "ek far",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/beleuchtung/zusatzscheinwerfer"
+    },
+    {
+      "almanca": "ABS-Steuergerät",
+      "artikel": "",
+      "turkce": "ABS kontrol ünitesi",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/bremse/abs-steuergeraet"
+    },
+    {
+      "almanca": "Antiblockiersystem ABS",
+      "artikel": "",
+      "turkce": "ABS kilitlenme önleyici sistem",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/bremse/antiblockiersystem-abs"
+    },
+    {
+      "almanca": "Bremsbacken",
+      "artikel": "",
+      "turkce": "fren pabucu",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/bremse/bremsbacken"
+    },
+    {
+      "almanca": "Bremsbelag",
+      "artikel": "",
+      "turkce": "fren balatası",
+      "tur": "isim",
+      "kaynak_url": ""
+    },
+    {
+      "almanca": "Bremskraftverstärker",
+      "artikel": "",
+      "turkce": "fren servosu",
+      "tur": "isim",
+      "kaynak_url": "https://www.mein-autolexikon.de/lexikon/bremse/bremskraftverstaerker"
+    }
+  ]
+}

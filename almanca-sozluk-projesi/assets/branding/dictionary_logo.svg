@@ -1,0 +1,16 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="88" y="88" width="848" height="848" rx="220" fill="#F7FBF8"/>
+  <rect x="88" y="88" width="848" height="848" rx="220" stroke="#1E7A55" stroke-width="32"/>
+  <rect x="468" y="212" width="88" height="600" rx="44" fill="#1E7A55"/>
+  <path d="M260 268C260 238.177 284.177 214 314 214H462V760H330C291.34 760 260 728.66 260 690V268Z" fill="white"/>
+  <path d="M762 268C762 238.177 737.823 214 708 214H560V760H692C730.66 760 762 728.66 762 690V268Z" fill="#DFF1E7"/>
+  <path d="M462 214H330C291.34 214 260 245.34 260 284V690C260 728.66 291.34 760 330 760H462" stroke="#1E7A55" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M560 214H692C730.66 214 762 245.34 762 284V690C762 728.66 730.66 760 692 760H560" stroke="#1E7A55" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M462 250C424 232 383.665 223 341.005 223C296.818 223 270 236.5 246 258" stroke="#1E7A55" stroke-width="20" stroke-linecap="round"/>
+  <path d="M560 250C598 232 638.335 223 680.995 223C725.182 223 752 236.5 776 258" stroke="#1E7A55" stroke-width="20" stroke-linecap="round"/>
+  <text x="357" y="500" text-anchor="middle" fill="#1E7A55" font-size="146" font-weight="700" font-family="Segoe UI, Arial, sans-serif">DE</text>
+  <text x="666" y="500" text-anchor="middle" fill="#1E7A55" font-size="146" font-weight="700" font-family="Segoe UI, Arial, sans-serif">TR</text>
+  <text x="512" y="638" text-anchor="middle" fill="#4B6658" font-size="64" font-weight="600" font-family="Segoe UI, Arial, sans-serif">Sozluk</text>
+  <path d="M726 176C762 176 792 146 792 110C756 110 726 140 726 176Z" fill="#39A86F"/>
+  <path d="M788 174C748 174 716 204 716 242C756 242 788 212 788 174Z" fill="#7BC89A"/>
+</svg>

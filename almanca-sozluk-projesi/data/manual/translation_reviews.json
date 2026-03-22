@@ -1,0 +1,104 @@
+{
+  "translation_reviews": [
+    {
+      "almanca": "Batterie",
+      "tur": "isim",
+      "turkce": "akü",
+      "aciklama_turkce": "Araçta elektrik enerjisini depolayan ve marş ile yardımcı sistemleri besleyen akü.",
+      "ceviri_durumu": "manuel-dogrulandi",
+      "ceviri_inceleme_notu": "Otomotiv bağlamında genel 'pil' anlamı yerine araç aküsü karşılığı tercih edildi.",
+      "ceviri_kaynaklari": [
+        {
+          "ad": "mein-autolexikon",
+          "url": "https://www.mein-autolexikon.de/lexikon/elektrik/batterie",
+          "not": "Kaydın araç elektriği bağlamını doğrular."
+        },
+        {
+          "ad": "VARTA Automotive Türkiye",
+          "url": "https://www.varta-automotive.com/tr-tr/products/product",
+          "not": "Türkçe otomotiv terminolojisinde 'akü' kullanımını doğrular."
+        }
+      ]
+    },
+    {
+      "almanca": "Getriebe",
+      "tur": "isim",
+      "turkce": "şanzıman",
+      "aciklama_turkce": "Motor torkunu ve devir oranlarını tekerleklere aktaran şanzıman sistemi.",
+      "ceviri_durumu": "manuel-dogrulandi",
+      "ceviri_inceleme_notu": "Dewiktionary kaydındaki 'diferansiyel' karşılığı otomotiv bağlamında dar ve hatalı kaldığı için 'şanzıman' ile düzeltildi.",
+      "ceviri_kaynaklari": [
+        {
+          "ad": "mein-autolexikon",
+          "url": "https://www.mein-autolexikon.de/lexikon/antrieb/getriebe",
+          "not": "Terimin otomotiv aktarma organı bağlamını doğrular."
+        },
+        {
+          "ad": "ZF Aftermarket Türkiye",
+          "url": "https://aftermarket.zf.com/tr/aftermarket-portali/portfoeyuemuez/binek-ve-hafif-ticari-araclar/ueruenler/sanzimanlar/",
+          "not": "Türkçe teknik kullanımda 'şanzıman' terimini doğrular."
+        }
+      ]
+    },
+    {
+      "almanca": "Scheinwerfer",
+      "tur": "isim",
+      "turkce": "far",
+      "aciklama_turkce": "Aracın önünü aydınlatan ön far birimi.",
+      "ceviri_durumu": "manuel-dogrulandi",
+      "ceviri_inceleme_notu": "Araç aydınlatması bağlamında genel 'projektör' anlamı yerine 'far' karşılığı seçildi.",
+      "ceviri_kaynaklari": [
+        {
+          "ad": "mein-autolexikon",
+          "url": "https://www.mein-autolexikon.de/lexikon/beleuchtung/scheinwerfer",
+          "not": "Kaydın doğrudan araç farı bağlamını doğrular."
+        },
+        {
+          "ad": "HELLA Tech World Türkiye",
+          "url": "https://www.hella.com/techworld/tr/Teknoloji-Teknik-Bilgiler/Aydinlatma-Arac-Aydinlatmasi/Farlar-219/",
+          "not": "Türkçe otomotiv aydınlatma terminolojisinde 'far' kullanımını doğrular."
+        }
+      ]
+    },
+    {
+      "almanca": "Turbolader",
+      "tur": "isim",
+      "turkce": "turboşarj",
+      "aciklama_turkce": "Egzoz gazı enerjisiyle emme havasını sıkıştıran turboşarj ünitesi.",
+      "ceviri_durumu": "manuel-dogrulandi",
+      "ceviri_inceleme_notu": "Teknik kullanımda tek başına 'turbo' yerine daha açık olan 'turboşarj' karşılığı tercih edildi.",
+      "ceviri_kaynaklari": [
+        {
+          "ad": "mein-autolexikon",
+          "url": "https://www.mein-autolexikon.de/lexikon/antrieb/turbolader",
+          "not": "Terimin motor besleme sistemi bağlamını doğrular."
+        },
+        {
+          "ad": "HELLA Tech World Türkiye",
+          "url": "https://www.hella.com/techworld/tr/Teknoloji-Teknik-Bilgiler/Elektrik-Elektronik/Elektronik-sarj-basinci-kontrolu-Turbosarj-aktuatorunun-kontrol-edilmesi-61101/",
+          "not": "Türkçe teknik kullanımda 'turboşarj' terimini doğrular."
+        }
+      ]
+    },
+    {
+      "almanca": "Zündspule",
+      "tur": "isim",
+      "turkce": "ateşleme bobini",
+      "aciklama_turkce": "Akü gerilimini buji için gereken yüksek ateşleme gerilimine dönüştüren ateşleme bobini.",
+      "ceviri_durumu": "manuel-dogrulandi",
+      "ceviri_inceleme_notu": "Türkçe otomotiv servis dilinde temel karşılık 'ateşleme bobini' olduğu için bu ifade öne alındı.",
+      "ceviri_kaynaklari": [
+        {
+          "ad": "mein-autolexikon",
+          "url": "https://www.mein-autolexikon.de/lexikon/zuendung/zuendspule",
+          "not": "Kaydın ateşleme sistemi bağlamını doğrular."
+        },
+        {
+          "ad": "HELLA Tech World Türkiye",
+          "url": "https://www.hella.com/techworld/tr/Teknoloji-Teknik-Bilgiler/Elektrik-Elektronik/Atesleme-bobini-2886/",
+          "not": "Türkçe servis terminolojisinde 'ateşleme bobini' kullanımını doğrular."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,741 @@
+{
+  "source_name": "kfztech",
+  "default_note": "Türkçe karşılık kfztech teknik bağlamına göre manuel normalize edildi; sayfada doğrudan çeviri bulunmadığında açık kaynak sözlükler ve model destekli teknik kontrol ile daraltildi.",
+  "records": [
+    {
+      "almanca": "ESP",
+      "artikel": "",
+      "turkce": "elektronik stabilite programı",
+      "tur": "kisaltma",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/sicherheit/ESP.htm"
+    },
+    {
+      "almanca": "Elektronisches Stabilitatsprogramm",
+      "artikel": "das",
+      "turkce": "elektronik stabilite programı",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/sicherheit/ESP.htm"
+    },
+    {
+      "almanca": "Untersteuern",
+      "artikel": "das",
+      "turkce": "onden kayma",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/sicherheit/ESP.htm"
+    },
+    {
+      "almanca": "Ubersteuern",
+      "artikel": "das",
+      "turkce": "arkadan kayma",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/sicherheit/ESP.htm"
+    },
+    {
+      "almanca": "Schleuderschutzsystem",
+      "artikel": "das",
+      "turkce": "savrulma önleme sistemi",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/sicherheit/ESP.htm"
+    },
+    {
+      "almanca": "Fahrdynamikregelung",
+      "artikel": "die",
+      "turkce": "sürüş dinamigi kontrolü",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/sicherheit/ESP.htm"
+    },
+    {
+      "almanca": "Giermomentregelung",
+      "artikel": "die",
+      "turkce": "sapma momenti kontrolü",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/sicherheit/ESP.htm"
+    },
+    {
+      "almanca": "Giermoment",
+      "artikel": "das",
+      "turkce": "sapma momenti",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/sicherheit/ESP.htm"
+    },
+    {
+      "almanca": "Hochachse",
+      "artikel": "die",
+      "turkce": "düşey eksen",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/sicherheit/ESP.htm"
+    },
+    {
+      "almanca": "Querschlupf",
+      "artikel": "der",
+      "turkce": "yanal kayma",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/sicherheit/ESP.htm"
+    },
+    {
+      "almanca": "Vordrucksensor",
+      "artikel": "der",
+      "turkce": "on basınç sensörü",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/sicherheit/ESP.htm"
+    },
+    {
+      "almanca": "Lenkwinkelsensor",
+      "artikel": "der",
+      "turkce": "direksiyon açı sensörü",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/sicherheit/ESP.htm"
+    },
+    {
+      "almanca": "Drehratensensor",
+      "artikel": "der",
+      "turkce": "d?n?? hizi sensörü",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/sicherheit/ESP.htm"
+    },
+    {
+      "almanca": "Gierratensensor",
+      "artikel": "der",
+      "turkce": "sapma hizi sensörü",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/sicherheit/ESP.htm"
+    },
+    {
+      "almanca": "Querbeschleunigungssensor",
+      "artikel": "der",
+      "turkce": "yanal ivme sensörü",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/sicherheit/ESP.htm"
+    },
+    {
+      "almanca": "Motordrehmoment",
+      "artikel": "das",
+      "turkce": "motor torku",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/sicherheit/ESP.htm"
+    },
+    {
+      "almanca": "Gaspedalstellung",
+      "artikel": "die",
+      "turkce": "gaz pedali konumu",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/sicherheit/ESP.htm"
+    },
+    {
+      "almanca": "Getriebeubersetzung",
+      "artikel": "die",
+      "turkce": "şanzıman oran?",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/sicherheit/ESP.htm"
+    },
+    {
+      "almanca": "Sollkurs",
+      "artikel": "der",
+      "turkce": "hedef rota",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/sicherheit/ESP.htm"
+    },
+    {
+      "almanca": "Istkurs",
+      "artikel": "der",
+      "turkce": "gercek rota",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/sicherheit/ESP.htm"
+    },
+    {
+      "almanca": "Bremseingriff",
+      "artikel": "der",
+      "turkce": "fren mudahalesi",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/sicherheit/ESP.htm"
+    },
+    {
+      "almanca": "Querdynamik",
+      "artikel": "die",
+      "turkce": "yanal dinamik",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/sicherheit/ESP.htm"
+    },
+    {
+      "almanca": "Schleudergefahr",
+      "artikel": "die",
+      "turkce": "savrulma riski",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/sicherheit/ESP.htm"
+    },
+    {
+      "almanca": "Hydroaggregat",
+      "artikel": "das",
+      "turkce": "hidrolik kontrol unitesi",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/sicherheit/ESP.htm"
+    },
+    {
+      "almanca": "ABS",
+      "artikel": "",
+      "turkce": "kilitlenme onleyici sistem",
+      "tur": "kisaltma",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/fahrwerk/bremsen/abs.htm"
+    },
+    {
+      "almanca": "ASR",
+      "artikel": "",
+      "turkce": "çekiş patinaj kontrolü",
+      "tur": "kisaltma",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/sicherheit/ESP.htm"
+    },
+    {
+      "almanca": "GMR",
+      "artikel": "",
+      "turkce": "sapma momenti kontrolü",
+      "tur": "kisaltma",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/sicherheit/ESP.htm"
+    },
+    {
+      "almanca": "Antriebsschlupfregelung",
+      "artikel": "die",
+      "turkce": "çekiş patinaj kontrolü",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/sicherheit/ESP.htm"
+    },
+    {
+      "almanca": "Querschlupfregelung",
+      "artikel": "die",
+      "turkce": "yanal kayma kontrolü",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/sicherheit/ESP.htm"
+    },
+    {
+      "almanca": "Drucksensor",
+      "artikel": "der",
+      "turkce": "basınç sensörü",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/sicherheit/ESP.htm"
+    },
+    {
+      "almanca": "Systemrechner",
+      "artikel": "der",
+      "turkce": "kontrol bilgisayari",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/sicherheit/ESP.htm"
+    },
+    {
+      "almanca": "Automatikgetriebe",
+      "artikel": "das",
+      "turkce": "otomatik şanzıman",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/sicherheit/ESP.htm"
+    },
+    {
+      "almanca": "Radsensor",
+      "artikel": "der",
+      "turkce": "teker sensörü",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/sicherheit/ESP.htm"
+    },
+    {
+      "almanca": "Drehgeschwindigkeitssensor",
+      "artikel": "der",
+      "turkce": "d?nme hizi sensörü",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/sicherheit/ESP.htm"
+    },
+    {
+      "almanca": "Lenkeinschlagwinkel",
+      "artikel": "der",
+      "turkce": "direksiyon dönüş açısı",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/sicherheit/ESP.htm"
+    },
+    {
+      "almanca": "Datenbus",
+      "artikel": "der",
+      "turkce": "veri yolu",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/can/can_grundlagen_1.htm"
+    },
+    {
+      "almanca": "Antiblockiersystem",
+      "artikel": "das",
+      "turkce": "kilitlenme onleyici sistem",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/fahrwerk/bremsen/abs.htm"
+    },
+    {
+      "almanca": "Vollbremsung",
+      "artikel": "die",
+      "turkce": "tam fren",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/fahrwerk/bremsen/abs.htm"
+    },
+    {
+      "almanca": "Bremsweg",
+      "artikel": "der",
+      "turkce": "fren mesafesi",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/fahrwerk/bremsen/abs.htm"
+    },
+    {
+      "almanca": "Lenkbarkeit",
+      "artikel": "die",
+      "turkce": "yonlendirilebilirlik",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/fahrwerk/bremsen/abs.htm"
+    },
+    {
+      "almanca": "Bremsplatten",
+      "artikel": "",
+      "turkce": "lastik duzlesmesi",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/fahrwerk/bremsen/abs.htm"
+    },
+    {
+      "almanca": "Hydraulikaggregat",
+      "artikel": "das",
+      "turkce": "hidrolik agrega",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/fahrwerk/bremsen/abs.htm"
+    },
+    {
+      "almanca": "Magnetventil",
+      "artikel": "das",
+      "turkce": "solenoid valf",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/fahrwerk/bremsen/abs.htm"
+    },
+    {
+      "almanca": "Bremskraftverteilung",
+      "artikel": "die",
+      "turkce": "fren kuvvet dağılımı",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/fahrwerk/bremsen/abs.htm"
+    },
+    {
+      "almanca": "Bremsdruckminderer",
+      "artikel": "der",
+      "turkce": "fren basınç dusurucusu",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/fahrwerk/bremsen/abs.htm"
+    },
+    {
+      "almanca": "Bremsregelsystem",
+      "artikel": "das",
+      "turkce": "fren kontrol sistemi",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/fahrwerk/bremsen/abs.htm"
+    },
+    {
+      "almanca": "Radlast",
+      "artikel": "die",
+      "turkce": "teker yükü",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/fahrwerk/bremsen/abs.htm"
+    },
+    {
+      "almanca": "Reibwert",
+      "artikel": "der",
+      "turkce": "sürtünme katsayısı",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/fahrwerk/bremsen/abs.htm"
+    },
+    {
+      "almanca": "Hydraulikeinheit",
+      "artikel": "die",
+      "turkce": "hidrolik unite",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/fahrwerk/bremsen/abs.htm"
+    },
+    {
+      "almanca": "Bremsdruck",
+      "artikel": "der",
+      "turkce": "fren basınçi",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/fahrwerk/bremsen/abs.htm"
+    },
+    {
+      "almanca": "Druckaufbau",
+      "artikel": "der",
+      "turkce": "basınç oluşturma",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/fahrwerk/bremsen/abs.htm"
+    },
+    {
+      "almanca": "Regelkreis",
+      "artikel": "der",
+      "turkce": "kontrol cevrimi",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/fahrwerk/bremsen/abs.htm"
+    },
+    {
+      "almanca": "Bremskraft",
+      "artikel": "die",
+      "turkce": "fren kuvveti",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/fahrwerk/bremsen/abs.htm"
+    },
+    {
+      "almanca": "Raddrehzahlsensor",
+      "artikel": "der",
+      "turkce": "tekerlek hiz sensörü",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/sensoren/drehzahlsensor.htm"
+    },
+    {
+      "almanca": "Auswerteelektronik",
+      "artikel": "die",
+      "turkce": "değerlendirme elektroniği",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/sensoren/drehzahlsensor.htm"
+    },
+    {
+      "almanca": "AMR-Sensor",
+      "artikel": "der",
+      "turkce": "AMR sensörü",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/sensoren/drehzahlsensor.htm"
+    },
+    {
+      "almanca": "Hallsensor",
+      "artikel": "der",
+      "turkce": "Hall sensörü",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/sensoren/drehzahlsensor.htm"
+    },
+    {
+      "almanca": "Hall-Effekt",
+      "artikel": "der",
+      "turkce": "Hall etkisi",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/sensoren/drehzahlsensor.htm"
+    },
+    {
+      "almanca": "Geberring",
+      "artikel": "der",
+      "turkce": "tetikleme halkası",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/sensoren/drehzahlsensor.htm"
+    },
+    {
+      "almanca": "Polring",
+      "artikel": "der",
+      "turkce": "kutup halkası",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/sensoren/drehzahlsensor.htm"
+    },
+    {
+      "almanca": "Inkrementenrad",
+      "artikel": "das",
+      "turkce": "artimli cark",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/sensoren/drehzahlsensor.htm"
+    },
+    {
+      "almanca": "Rechtecksignal",
+      "artikel": "das",
+      "turkce": "kare dalga sinyali",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/sensoren/drehzahlsensor.htm"
+    },
+    {
+      "almanca": "Stromsignal",
+      "artikel": "das",
+      "turkce": "akim sinyali",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/sensoren/drehzahlsensor.htm"
+    },
+    {
+      "almanca": "Pulsweitenmodulationsverfahren",
+      "artikel": "das",
+      "turkce": "darbe genislik modulasy?n? yöntemi",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/sensoren/drehzahlsensor.htm"
+    },
+    {
+      "almanca": "Arbeitsmagnet",
+      "artikel": "der",
+      "turkce": "çalışma mıknatısı",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/sensoren/drehzahlsensor.htm"
+    },
+    {
+      "almanca": "Messelement",
+      "artikel": "das",
+      "turkce": "ölçüm elemanı",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/sensoren/drehzahlsensor.htm"
+    },
+    {
+      "almanca": "Geschwindigkeitsmessung",
+      "artikel": "die",
+      "turkce": "hız ölçümü",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/sensoren/drehzahlsensor.htm"
+    },
+    {
+      "almanca": "Wegstreckenmessung",
+      "artikel": "die",
+      "turkce": "mesafe ölçümü",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/sensoren/drehzahlsensor.htm"
+    },
+    {
+      "almanca": "Signalverarbeitung",
+      "artikel": "die",
+      "turkce": "sinyal isleme",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/sensoren/drehzahlsensor.htm"
+    },
+    {
+      "almanca": "Fehlerspeicher",
+      "artikel": "der",
+      "turkce": "ariza hafizasi",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/sensoren/drehzahlsensor.htm"
+    },
+    {
+      "almanca": "Luftspaltreserve",
+      "artikel": "die",
+      "turkce": "hava araligi payi",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/sensoren/drehzahlsensor.htm"
+    },
+    {
+      "almanca": "Drehrichtungserkennung",
+      "artikel": "die",
+      "turkce": "dönüş yönü algılama",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/sensoren/drehzahlsensor.htm"
+    },
+    {
+      "almanca": "Signalversatz",
+      "artikel": "der",
+      "turkce": "sinyal kaymasi",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/sensoren/drehzahlsensor.htm"
+    },
+    {
+      "almanca": "Induktivgeber",
+      "artikel": "der",
+      "turkce": "enduktif algilayici",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/sensoren/drehzahlsensor.htm"
+    },
+    {
+      "almanca": "Informationssignal",
+      "artikel": "das",
+      "turkce": "bilgi sinyali",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/sensoren/drehzahlsensor.htm"
+    },
+    {
+      "almanca": "Rechteckimpuls",
+      "artikel": "der",
+      "turkce": "kare darbe",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/sensoren/drehzahlsensor.htm"
+    },
+    {
+      "almanca": "Drehzahlsignal",
+      "artikel": "das",
+      "turkce": "devir sinyali",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/sensoren/drehzahlsensor.htm"
+    },
+    {
+      "almanca": "Stillstandssignal",
+      "artikel": "das",
+      "turkce": "durma sinyali",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/sensoren/drehzahlsensor.htm"
+    },
+    {
+      "almanca": "Detektierung",
+      "artikel": "die",
+      "turkce": "algilama",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/sensoren/drehzahlsensor.htm"
+    },
+    {
+      "almanca": "Messprinzip",
+      "artikel": "das",
+      "turkce": "ölçüm prensibi",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/sensoren/drehzahlsensor.htm"
+    },
+    {
+      "almanca": "Datenprotokoll",
+      "artikel": "das",
+      "turkce": "veri protokolu",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/sensoren/drehzahlsensor.htm"
+    },
+    {
+      "almanca": "Signalamplitude",
+      "artikel": "die",
+      "turkce": "sinyal genliği",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/sensoren/drehzahlsensor.htm"
+    },
+    {
+      "almanca": "Magnetoresistiver Effekt",
+      "artikel": "der",
+      "turkce": "manyetorezistif etki",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/sensoren/drehzahlsensor.htm"
+    },
+    {
+      "almanca": "CAN-Bus",
+      "artikel": "der",
+      "turkce": "CAN veri yolu",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/can/can_grundlagen_1.htm"
+    },
+    {
+      "almanca": "Zentralelektronik",
+      "artikel": "die",
+      "turkce": "merkezi elektronik",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/can/can_grundlagen_1.htm"
+    },
+    {
+      "almanca": "Zentralverriegelung",
+      "artikel": "die",
+      "turkce": "merkezi kilit sistemi",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/can/can_grundlagen_1.htm"
+    },
+    {
+      "almanca": "Getriebesteuerung",
+      "artikel": "die",
+      "turkce": "şanzıman kontrolü",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/can/can_grundlagen_1.htm"
+    },
+    {
+      "almanca": "Verkabelung",
+      "artikel": "die",
+      "turkce": "kablolama",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/can/can_grundlagen_1.htm"
+    },
+    {
+      "almanca": "Kabelbaum",
+      "artikel": "der",
+      "turkce": "kablo demeti",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/can/can_grundlagen_1.htm"
+    },
+    {
+      "almanca": "Leitungsnetz",
+      "artikel": "das",
+      "turkce": "hat agi",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/can/can_grundlagen_1.htm"
+    },
+    {
+      "almanca": "Bus-System",
+      "artikel": "das",
+      "turkce": "veri yolu sistemi",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/can/can_grundlagen_1.htm"
+    },
+    {
+      "almanca": "Busleitung",
+      "artikel": "die",
+      "turkce": "veri yolu hatti",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/can/can_grundlagen_1.htm"
+    },
+    {
+      "almanca": "Stichleitung",
+      "artikel": "die",
+      "turkce": "dal hat",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/can/can_grundlagen_1.htm"
+    },
+    {
+      "almanca": "Signalreflexion",
+      "artikel": "die",
+      "turkce": "sinyal yansimasi",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/can/can_grundlagen_1.htm"
+    },
+    {
+      "almanca": "Gateway",
+      "artikel": "das",
+      "turkce": "ag gecidi modulu",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/can/can_grundlagen_1.htm"
+    },
+    {
+      "almanca": "Twisted Pair",
+      "artikel": "das",
+      "turkce": "bükümlü çift kablo",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/can/can_grundlagen_1.htm"
+    },
+    {
+      "almanca": "Multimedia-Komponenten",
+      "artikel": "",
+      "turkce": "multimedya bileşenleri",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/can/can_grundlagen_1.htm"
+    },
+    {
+      "almanca": "Fensterheber",
+      "artikel": "der",
+      "turkce": "cam kaldırma mekanizması",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/can/can_grundlagen_1.htm"
+    },
+    {
+      "almanca": "Fehlersuchstrategie",
+      "artikel": "die",
+      "turkce": "ariza arama stratejisi",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/can/can_grundlagen_1.htm"
+    },
+    {
+      "almanca": "Datenbusse",
+      "artikel": "",
+      "turkce": "veri yollari",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/can/can_grundlagen_1.htm"
+    },
+    {
+      "almanca": "Vernetzung",
+      "artikel": "die",
+      "turkce": "ag bağlantısi",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/can/can_grundlagen_1.htm"
+    },
+    {
+      "almanca": "Kfz-Elektrik",
+      "artikel": "die",
+      "turkce": "araç elektrigi",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/can/can_grundlagen_1.htm"
+    },
+    {
+      "almanca": "EVA-Prinzip",
+      "artikel": "das",
+      "turkce": "girdi isleme cikti prensibi",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/can/can_grundlagen_1.htm"
+    },
+    {
+      "almanca": "Bussystem",
+      "artikel": "das",
+      "turkce": "veri yolu sistemi",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/can/can_grundlagen_1.htm"
+    },
+    {
+      "almanca": "Auswerteinformation",
+      "artikel": "die",
+      "turkce": "değerlendirme bilgisi",
+      "tur": "isim",
+      "kaynak_url": "https://www.kfztech.de/kfztechnik/elo/sensoren/drehzahlsensor.htm"
+    }
+  ]
+}
