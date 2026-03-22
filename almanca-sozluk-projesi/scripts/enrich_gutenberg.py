@@ -965,7 +965,7 @@ def process_book(
 # ---------------------------------------------------------------------------
 def main() -> None:
     start_time = time.time()
-    MAX_RUNTIME_SECONDS = 7200  # 2 saat
+    MAX_RUNTIME_SECONDS = 7200  # 120 dakika (2 saat)
 
     print("=" * 70)
     print("enrich_gutenberg.py — Project Gutenberg Zenginleştirme")
