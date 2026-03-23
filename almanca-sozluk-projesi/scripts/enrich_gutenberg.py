@@ -61,6 +61,7 @@ DICT_PATHS = [
     PROJECT_ROOT / "output" / "dictionary.json",
 ]
 WIKDICT_PATH = PROJECT_ROOT / "data" / "raw" / "downloads" / "de-tr.sqlite3"
+PROCESSED_BOOKS_PATH = PROJECT_ROOT / "data" / "manual" / "gutenberg_processed_books.json"
 
 # ---------------------------------------------------------------------------
 # Gutendex API — Almanca kitap keşfi
@@ -241,6 +242,103 @@ CURATED_BOOKS = [
     (22419, "Stopfkuchen", "Raabe"),
     (22408, "Soll und Haben", "Freytag"),
     (22409, "Die Ahnen", "Freytag"),
+
+    # ===== THEODOR FONTANE =====
+    (46870, "Effi Briest", "Fontane, Theodor"),
+    (47061, "Der Stechlin", "Fontane, Theodor"),
+    (47090, "Frau Jenny Treibel", "Fontane, Theodor"),
+    (47079, "Irrungen, Wirrungen", "Fontane, Theodor"),
+    (47070, "Schach von Wuthenow", "Fontane, Theodor"),
+
+    # ===== THOMAS MANN =====
+    (901,   "Buddenbrooks", "Mann, Thomas"),
+    (19065, "Der Tod in Venedig", "Mann, Thomas"),
+    (36781, "Tonio Kröger", "Mann, Thomas"),
+
+    # ===== STEFAN ZWEIG =====
+    (39958, "Brief einer Unbekannten", "Zweig, Stefan"),
+    (36929, "Schachnovelle", "Zweig, Stefan"),
+    (29387, "Sternstunden der Menschheit", "Zweig, Stefan"),
+
+    # ===== GERHART HAUPTMANN =====
+    (13219, "Die Weber", "Hauptmann, Gerhart"),
+    (34650, "Der Biberpelz", "Hauptmann, Gerhart"),
+    (36428, "Bahnwärter Thiel", "Hauptmann, Gerhart"),
+
+    # ===== THEODOR STORM =====
+    (14997, "Der Schimmelreiter", "Storm, Theodor"),
+    (32063, "Immensee", "Storm, Theodor"),
+    (34033, "Aquis submersus", "Storm, Theodor"),
+
+    # ===== ADALBERT STIFTER =====
+    (21638, "Der Nachsommer", "Stifter, Adalbert"),
+    (22165, "Bunte Steine", "Stifter, Adalbert"),
+    (40444, "Der Hochwald", "Stifter, Adalbert"),
+
+    # ===== GOTTFRIED KELLER =====
+    (1668,  "Der grüne Heinrich", "Keller, Gottfried"),
+    (4895,  "Die Leute von Seldwyla", "Keller, Gottfried"),
+    (35527, "Das Sinngedicht", "Keller, Gottfried"),
+
+    # ===== WILHELM RAABE =====
+    (37827, "Horacker", "Raabe, Wilhelm"),
+    (40509, "Das Odfeld", "Raabe, Wilhelm"),
+
+    # ===== JOSEPH VON EICHENDORFF =====
+    (3252,  "Ahnung und Gegenwart", "Eichendorff, Joseph von"),
+    (31175, "Gedichte", "Eichendorff, Joseph von"),
+
+    # ===== HEINRICH HEINE =====
+    (7208,  "Buch der Lieder", "Heine, Heinrich"),
+    (7171,  "Deutschland: Ein Wintermärchen", "Heine, Heinrich"),
+    (32851, "Reisebilder", "Heine, Heinrich"),
+    (33630, "Zur Geschichte der Religion und Philosophie in Deutschland", "Heine, Heinrich"),
+
+    # ===== RAINER MARIA RILKE =====
+    (11958, "Das Stundenbuch", "Rilke, Rainer Maria"),
+    (2235,  "Die Aufzeichnungen des Malte Laurids Brigge", "Rilke, Rainer Maria"),
+    (34699, "Duineser Elegien", "Rilke, Rainer Maria"),
+
+    # ===== HUGO VON HOFMANNSTHAL =====
+    (38282, "Der Rosenkavalier", "Hofmannsthal, Hugo von"),
+    (35019, "Jedermann", "Hofmannsthal, Hugo von"),
+
+    # ===== FRANK WEDEKIND =====
+    (14781, "Frühlings Erwachen", "Wedekind, Frank"),
+    (14726, "Erdgeist", "Wedekind, Frank"),
+
+    # ===== GEORG BÜCHNER =====
+    (2091,  "Woyzeck", "Büchner, Georg"),
+    (2090,  "Dantons Tod", "Büchner, Georg"),
+    (22465, "Lenz", "Büchner, Georg"),
+
+    # ===== CHRISTIAN MORGENSTERN =====
+    (14984, "Galgenlieder", "Morgenstern, Christian"),
+    (21940, "Palmström", "Morgenstern, Christian"),
+
+    # ===== WILHELM BUSCH =====
+    (17161, "Max und Moritz", "Busch, Wilhelm"),
+    (22139, "Fipps, der Affe", "Busch, Wilhelm"),
+
+    # ===== ZEITUNGEN & ANSİKLOPEDİ =====
+    (10223, "Meyers Konversationslexikon Bd.15", "Various"),
+    (16585, "Meyers Konversationslexikon Bd.1", "Various"),
+    (16609, "Meyers Konversationslexikon Bd.2", "Various"),
+    (16847, "Meyers Konversationslexikon Bd.3", "Various"),
+    (17081, "Meyers Konversationslexikon Bd.4", "Various"),
+    (17149, "Meyers Konversationslexikon Bd.5", "Various"),
+
+    # ===== LİSAN & DİL BİLİMİ =====
+    (15269, "Deutsche Grammatik", "Grimm, Jacob"),
+    (19690, "Deutsches Wörterbuch Bd.1", "Grimm, Jacob"),
+
+    # ===== SEYAHAT & KEŞIF =====
+    (14584, "Meine Afrikareise", "Schweitzer, Albert"),
+    (35330, "Durch das Land der Hausa", "Passarge, Siegfried"),
+    (40389, "Im Lande des Mahdi", "May, Karl"),
+    (40714, "Von Bagdad nach Stambul", "May, Karl"),
+    (40841, "In den Schluchten des Balkan", "May, Karl"),
+    (41234, "Durch die Wüste", "May, Karl"),
 ]
 
 # Gutenberg URL kalıpları
@@ -632,6 +730,26 @@ def build_record_index(records: list) -> dict:
     return idx
 
 
+def load_processed_books() -> set:
+    """Daha önce işlenmiş kitap ID'lerini diskten yükle."""
+    if not PROCESSED_BOOKS_PATH.exists():
+        return set()
+    try:
+        data = json.loads(PROCESSED_BOOKS_PATH.read_text(encoding="utf-8"))
+        return set(data.get("processed_ids", []))
+    except Exception:
+        return set()
+
+
+def save_processed_books(processed_ids: set) -> None:
+    """İşlenmiş kitap ID'lerini diske kaydet."""
+    PROCESSED_BOOKS_PATH.parent.mkdir(parents=True, exist_ok=True)
+    PROCESSED_BOOKS_PATH.write_text(
+        json.dumps({"processed_ids": sorted(processed_ids)}, ensure_ascii=False, indent=2),
+        encoding="utf-8"
+    )
+
+
 # ---------------------------------------------------------------------------
 # Kitap metni indir
 # ---------------------------------------------------------------------------
@@ -998,7 +1116,7 @@ def process_book(
 # ---------------------------------------------------------------------------
 def main() -> None:
     start_time = time.time()
-    MAX_RUNTIME_SECONDS = 1800  # 30 dakika
+    MAX_RUNTIME_SECONDS = 900  # 15 dakika
 
     print("=" * 70)
     print("enrich_gutenberg.py — Project Gutenberg Zenginleştirme")
@@ -1024,7 +1142,8 @@ def main() -> None:
     updated_indices: set = set()
     total_new = 0
     total_updated = 0
-    processed_ids: set = set()
+    processed_ids: set = load_processed_books()
+    print(f"Daha önce işlenmiş kitap sayısı: {len(processed_ids)} (atlanacak)")
 
     # -----------------------------------------------------------------------
     # FAZA 1: Seçilmiş klasik eserler
@@ -1057,6 +1176,7 @@ def main() -> None:
             elapsed = time.time() - start_time
             print(f"\n  [ARA KAYIT] {len(all_new)} yeni + {total_updated} güncelleme | Süre: {elapsed/60:.1f}dk")
             save_dictionary(records + all_new)
+            save_processed_books(processed_ids)
 
         time.sleep(1.0)  # Gutenberg'e nazik ol
 
@@ -1096,6 +1216,7 @@ def main() -> None:
                 elapsed = time.time() - start_time
                 print(f"\n  [ARA KAYIT] {len(all_new)} yeni + {total_updated} güncelleme | Süre: {elapsed/60:.1f}dk")
                 save_dictionary(records + all_new)
+                save_processed_books(processed_ids)
 
             time.sleep(1.0)
 
@@ -1131,6 +1252,7 @@ def main() -> None:
 
             if phase3_count % 10 == 0:
                 save_dictionary(records + all_new)
+                save_processed_books(processed_ids)
 
             time.sleep(1.0)
 
@@ -1150,6 +1272,7 @@ def main() -> None:
 
     records.extend(all_new)
     save_dictionary(records)
+    save_processed_books(processed_ids)
 
     print(f"\nToplam {len(all_new)} yeni kelime eklendi.")
     print(f"Toplam {total_updated} mevcut kayıt zenginleştirildi.")
