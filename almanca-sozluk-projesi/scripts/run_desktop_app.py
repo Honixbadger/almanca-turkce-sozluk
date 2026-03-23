@@ -11118,7 +11118,55 @@ class DesktopDictionaryApp(tk.Tk):
         self.destroy()
 
 
+def _show_splash() -> None:
+    """Ekran ortasında 2.2 sn logo göster, sonra kapat."""
+    splash = tk.Tk()
+    splash.overrideredirect(True)          # başlık çubuğu yok
+    splash.configure(bg="#1a1a2e")
+    splash.attributes("-topmost", True)
+
+    # Logo
+    logo_path = Path(__file__).parent.parent / "assets" / "branding" / "dictionary_logo.png"
+    img_label: tk.Label | None = None
+    if PIL_AVAILABLE and logo_path.exists():
+        try:
+            pil_img = Image.open(logo_path).convert("RGBA")
+            pil_img.thumbnail((220, 220), Image.LANCZOS)
+            tk_img = ImageTk.PhotoImage(pil_img)
+            img_label = tk.Label(splash, image=tk_img, bg="#1a1a2e", bd=0)
+            img_label.image = tk_img          # referans tut
+            img_label.pack(pady=(30, 10))
+        except Exception:
+            img_label = None
+
+    tk.Label(
+        splash,
+        text="Almanca–Türkçe Sözlük",
+        font=("Segoe UI", 18, "bold"),
+        fg="#e0e0ff",
+        bg="#1a1a2e",
+    ).pack()
+    tk.Label(
+        splash,
+        text="Yükleniyor…",
+        font=("Segoe UI", 10),
+        fg="#888aaa",
+        bg="#1a1a2e",
+    ).pack(pady=(4, 30))
+
+    # Ekran ortala
+    splash.update_idletasks()
+    w, h = splash.winfo_reqwidth(), splash.winfo_reqheight()
+    sw = splash.winfo_screenwidth()
+    sh = splash.winfo_screenheight()
+    splash.geometry(f"{w}x{h}+{(sw - w) // 2}+{(sh - h) // 2}")
+
+    splash.after(2200, splash.destroy)
+    splash.mainloop()
+
+
 def main() -> None:
+    _show_splash()
     app = DesktopDictionaryApp()
     app.mainloop()
 
