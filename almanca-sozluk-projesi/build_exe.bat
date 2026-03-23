@@ -9,19 +9,16 @@ echo   Almanca-Turkce Sozluk - EXE Olusturuluyor
 echo  ==========================================
 echo.
 
-:: PyInstaller kurulu mu?
-py -3 -m pyinstaller --version > nul 2>&1
-if errorlevel 1 (
-    echo [!] PyInstaller bulunamadi, kuruluyor...
-    py -3 -m pip install pyinstaller
-)
+:: PyInstaller kur (zaten kuruluysa hata vermez)
+echo [0/3] PyInstaller kontrol ediliyor...
+py -3 -m pip install pyinstaller --quiet
 
 echo [1/3] Eski build temizleniyor...
 if exist "build" rmdir /s /q "build"
 if exist "dist\AlmancaSozluk" rmdir /s /q "dist\AlmancaSozluk"
 
 echo [2/3] EXE olusturuluyor...
-py -3 -m pyinstaller ^
+py -3 -c "from PyInstaller.__main__ import run; run()" ^
     --name "AlmancaSozluk" ^
     --icon "assets\branding\dictionary_logo.ico" ^
     --windowed ^
