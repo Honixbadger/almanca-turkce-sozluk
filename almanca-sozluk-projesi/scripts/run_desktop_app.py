@@ -7773,6 +7773,7 @@ class DesktopDictionaryApp(tk.Tk):
         _ex_scroll = ttk.Scrollbar(ex_wrap, orient="vertical", command=self.examples_text.yview)
         _ex_scroll.grid(row=0, column=1, sticky="ns")
         self.examples_text.configure(yscrollcommand=_ex_scroll.set)
+        self.examples_text.tag_configure("src_badge", foreground="#4a90d9", font=("Segoe UI", 9))
 
     def _build_conjugations_tab(self) -> None:
         self.conjugations_tab.columnconfigure(0, weight=1)
@@ -10787,36 +10788,126 @@ class DesktopDictionaryApp(tk.Tk):
             compact_info_text = "Bu kayıt için kısa açıklama bulunmuyor."
         return compact_info_text, definitions, definition_text
 
+    def _bind_text_tag_tooltip(self, widget: tk.Text, tag: str, tip_text: str) -> None:
+        """Text widget'taki bir tag'e hover tooltip bağlar."""
+        state: dict = {"tip": None, "after_id": None}
+
+        def _show() -> None:
+            if state["tip"]:
+                return
+            try:
+                x = widget.winfo_pointerx() + 14
+                y = widget.winfo_pointery() + 14
+                w = tk.Toplevel(widget)
+                w.wm_overrideredirect(True)
+                w.attributes("-topmost", True)
+                tk.Label(
+                    w,
+                    text=tip_text,
+                    justify="left",
+                    wraplength=300,
+                    background="#fffde7",
+                    foreground="#333333",
+                    relief="solid",
+                    borderwidth=1,
+                    padx=7,
+                    pady=5,
+                    font=("Segoe UI", 9),
+                ).pack()
+                w.geometry(f"+{x}+{y}")
+                state["tip"] = w
+            except Exception:
+                pass
+
+        def on_enter(_event=None) -> None:
+            if state["after_id"]:
+                try:
+                    widget.after_cancel(state["after_id"])
+                except Exception:
+                    pass
+            state["after_id"] = widget.after(400, _show)
+
+        def on_leave(_event=None) -> None:
+            if state["after_id"]:
+                try:
+                    widget.after_cancel(state["after_id"])
+                except Exception:
+                    pass
+                state["after_id"] = None
+            if state["tip"]:
+                try:
+                    state["tip"].destroy()
+                except Exception:
+                    pass
+                state["tip"] = None
+
+        widget.tag_bind(tag, "<Enter>", on_enter)
+        widget.tag_bind(tag, "<Leave>", on_leave)
+
     def populate_examples(self, record: dict) -> None:
         if not self.settings.get("show_examples", True):
             self.set_text_widget(self.examples_text, "Örnekler Ayarlar bölümünden kapatıldı.")
             return
 
+        widget = self.examples_text
+        widget.configure(state="normal")
+        widget.delete("1.0", "end")
+
+        # Önceki dinamik kaynak tag'lerini temizle
+        for tag in widget.tag_names():
+            if tag.startswith("_src_"):
+                widget.tag_delete(tag)
+
         examples = record.get("ornekler") or []
-        blocks = []
-        for example in examples:
+        has_content = False
+
+        for idx, example in enumerate(examples):
             if not isinstance(example, dict):
                 continue
-            lines = []
-            if example.get("etiket_turkce"):
-                lines.append(f"Etiket: {example['etiket_turkce']}")
-            if example.get("almanca"):
-                lines.append(f"DE: {example['almanca']}")
-            if example.get("turkce"):
-                lines.append(f"TR: {example['turkce']}")
-            if example.get("kaynak"):
-                lines.append(f"Kaynak: {example['kaynak']}")
-            if example.get("not"):
-                lines.append(f"Not: {example['not']}")
-            if lines:
-                blocks.append("\n".join(lines))
+            de = format_display_text(example.get("almanca") or "")
+            tr = format_display_text(example.get("turkce") or "")
+            kaynak = (example.get("kaynak") or "").strip()
+            etiket = (example.get("etiket_turkce") or "").strip()
+            nott = (example.get("not") or "").strip()
 
-        if not blocks:
-            if record.get("ornek_almanca") or record.get("ornek_turkce"):
-                blocks.append(f"DE: {record.get('ornek_almanca', '-')}\nTR: {record.get('ornek_turkce', '-')}")
+            if not de:
+                continue
+
+            if has_content:
+                widget.insert("end", "\n\n")
+
+            if etiket:
+                widget.insert("end", f"[{etiket}]\n")
+
+            # Almanca cümle + kaynak badge
+            widget.insert("end", f"DE: {de}")
+            if kaynak:
+                tag_name = f"_src_{idx}"
+                widget.tag_configure(tag_name, foreground="#4a90d9", font=("Segoe UI", 9))
+                widget.insert("end", "  ⓘ", (tag_name, "src_badge"))
+                self._bind_text_tag_tooltip(widget, tag_name, kaynak)
+
+            widget.insert("end", "\n")
+
+            if tr:
+                widget.insert("end", f"TR: {tr}\n")
+            if nott:
+                widget.insert("end", f"Not: {nott}\n")
+
+            has_content = True
+
+        if not has_content:
+            de = format_display_text(record.get("ornek_almanca") or "")
+            tr = format_display_text(record.get("ornek_turkce") or "")
+            if de:
+                widget.insert("end", f"DE: {de}\n")
+                if tr:
+                    widget.insert("end", f"TR: {tr}\n")
             else:
-                blocks.append("Bu kayıt için örnek bulunmuyor.")
-        self.set_text_widget(self.examples_text, "\n\n".join(blocks))
+                widget.insert("end", "Bu kayıt için örnek bulunmuyor.")
+
+        widget.yview_moveto(0.0)
+        self._block_text_edit_keys(widget)
 
     def open_settings(self) -> None:
         if self.settings_dialog and self.settings_dialog.winfo_exists():
