@@ -525,8 +525,15 @@ def split_sentences(text: str) -> list:
 
 
 def find_example_sentence(sentences: list, bare_word: str) -> str:
+    results = find_example_sentences(sentences, bare_word, max_count=1)
+    return results[0] if results else ""
+
+
+def find_example_sentences(sentences: list, bare_word: str, max_count: int = 3) -> list:
+    """Kelime için kaliteli örnek cümleleri döndürür (max_count adete kadar)."""
     bare_cf = bare_word.casefold()
     good = []
+    seen_norm: set = set()
     for sent in sentences:
         sent = sent.strip()
         if bare_cf not in sent.casefold():
@@ -538,16 +545,17 @@ def find_example_sentence(sentences: list, bare_word: str) -> str:
         digit_ratio = sum(1 for c in sent if c.isdigit()) / max(len(sent), 1)
         if digit_ratio > 0.15:
             continue
-        # Edebi cümlelerde tırnak işaretleri kabul edilebilir
+        if len(TOKEN_RE.findall(sent)) < 4:
+            continue
+        # Tekrar eden çok benzer cümleleri engelle (ilk 40 karakter)
+        norm_key = re.sub(r"\s+", " ", sent[:40].casefold())
+        if norm_key in seen_norm:
+            continue
+        seen_norm.add(norm_key)
         good.append(sent)
 
-    if not good:
-        return ""
     good.sort(key=len)
-    for sent in good:
-        if len(TOKEN_RE.findall(sent)) >= 4:
-            return sent
-    return good[0] if good else ""
+    return good[:max_count]
 
 
 # ---------------------------------------------------------------------------
@@ -786,10 +794,25 @@ def find_updates(
         almanca = record.get("almanca", "") or ""
         bare_word = strip_article(almanca)
 
-        example = ""
+        # Mevcut cümle sayısını bul
+        existing_ornekler = record.get("ornekler") or []
         existing_example = record.get("ornek_almanca", "") or ""
-        if not existing_example:
-            example = find_example_sentence(sentences, bare_word)
+        existing_count = len([o for o in existing_ornekler if o.get("almanca", "").strip()])
+        if existing_count == 0 and existing_example:
+            existing_count = 1
+
+        # 3'ten az cümlesi varsa yeni cümle ara
+        new_examples: list = []
+        if existing_count < 3:
+            needed = 3 - existing_count
+            # Mevcut cümleleri topla (tekrar ekleme)
+            existing_texts: set = {o.get("almanca", "").strip() for o in existing_ornekler}
+            if existing_example:
+                existing_texts.add(existing_example.strip())
+            candidates = find_example_sentences(sentences, bare_word, max_count=needed + 2)
+            for c in candidates:
+                if c.strip() not in existing_texts and len(new_examples) < needed:
+                    new_examples.append(c)
 
         new_meanings: list = []
         wikdict_result = lookup_translation(almanca, cursor)
@@ -799,8 +822,8 @@ def find_updates(
                 wikdict_result["translation"],
             )
 
-        if example or new_meanings:
-            results.append((idx, example, new_meanings))
+        if new_examples or new_meanings:
+            results.append((idx, new_examples, new_meanings))
 
     return results
 
@@ -924,17 +947,24 @@ def process_book(
     )
 
     url_updated = 0
-    for rec_idx, example, new_meanings in updates:
+    for rec_idx, new_examples, new_meanings in updates:
         rec = records[rec_idx]
         changed = False
 
-        if example and not (rec.get("ornek_almanca") or ""):
-            rec["ornek_almanca"] = example
+        if new_examples:
             if "ornekler" not in rec or not isinstance(rec["ornekler"], list):
                 rec["ornekler"] = []
-            rec["ornekler"].append({"almanca": example, "turkce": ""})
-            changed = True
-            print(f"    ~ {rec.get('almanca','?')}: örnek cümle (edebiyat)")
+            for ex in new_examples:
+                if not ex:
+                    continue
+                # ornek_almanca → ilk cümle
+                if not (rec.get("ornek_almanca") or ""):
+                    rec["ornek_almanca"] = ex
+                rec["ornekler"].append({"almanca": ex, "turkce": ""})
+                changed = True
+            if changed:
+                total = len([o for o in rec["ornekler"] if o.get("almanca", "").strip()])
+                print(f"    ~ {rec.get('almanca','?')}: {len(new_examples)} cümle eklendi (toplam {total})")
 
         if new_meanings:
             existing_tr = rec.get("turkce", "") or ""
@@ -953,7 +983,10 @@ def process_book(
                 changed = True
 
         if changed:
-            updated_indices.add(rec_idx)
+            # Sadece 3 cümlesi dolmuşsa updated_indices'e ekle (bir daha işleme)
+            total_ex = len([o for o in rec.get("ornekler", []) if o.get("almanca", "").strip()])
+            if total_ex >= 3:
+                updated_indices.add(rec_idx)
             url_updated += 1
 
     print(f"    => {url_new} yeni kelime, {url_updated} kayıt güncellendi")
@@ -965,7 +998,7 @@ def process_book(
 # ---------------------------------------------------------------------------
 def main() -> None:
     start_time = time.time()
-    MAX_RUNTIME_SECONDS = 7200  # 120 dakika (2 saat)
+    MAX_RUNTIME_SECONDS = 1800  # 30 dakika
 
     print("=" * 70)
     print("enrich_gutenberg.py — Project Gutenberg Zenginleştirme")
