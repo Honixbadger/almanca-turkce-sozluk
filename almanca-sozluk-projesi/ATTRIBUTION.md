@@ -31,7 +31,15 @@ Bu proje, aşağıdaki açık kaynak veri ve araçlardan yararlanmaktadır.
 - **Kullanım:** Almanca edebi metinlerden kelime ve örnek cümle çıkarımı
 - **Başlıca Yazarlar:** Goethe, Schiller, Kafka, Fontane, Storm, Hesse, Kleist, Nietzsche ve diğerleri
 
-## 5. Goethe-Institut Kelime Listeleri
+## 5. Tatoeba
+
+- **Kaynak:** [tatoeba.org](https://tatoeba.org/)
+- **İndirme:** [downloads.tatoeba.org/exports](https://downloads.tatoeba.org/exports/)
+- **Lisans:** [CC BY 2.0 France](https://creativecommons.org/licenses/by/2.0/fr/)
+- **Kullanım:** İnsan tarafından yazılmış ve doğrulanmış Almanca-Türkçe cümle çiftleri; `ornekler[].turkce` alanını doldurmak için kullanılmıştır
+- **Katkıda Bulunanlar:** Tatoeba community contributors
+
+## 6. Goethe-Institut Kelime Listeleri
 
 - **Kaynak:** [goethe.de](https://www.goethe.de/de/spr/ueb/ger.html)
 - **Kullanım:** A1/A2/B1 seviye bilgisi (kelime listelerinde referans olarak)
@@ -64,6 +72,7 @@ Bu proje, aşağıdaki açık kaynak veri ve araçlardan yararlanmaktadır.
 | WikDict | CC BY-SA 4.0 | ✅ Atıfla evet |
 | Wikipedia DE | CC BY-SA 3.0 | ✅ Atıfla evet |
 | Project Gutenberg | Public Domain | ✅ Serbest |
+| Tatoeba | CC BY 2.0 France | ✅ Atıfla evet |
 | Goethe-Institut | Eğitim materyali | ⚠️ Referans/atıf amaçlı |
 
 Bu proje veritabanı **CC BY-SA 4.0** ile lisanslanmıştır (üst kümeli atıf şartı).
