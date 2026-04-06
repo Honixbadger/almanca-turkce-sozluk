@@ -1,6 +1,27 @@
 {
   "translation_reviews": [
     {
+      "almanca": "Überdeckung",
+      "tur": "isim",
+      "turkce": "örtme, kaplama; beton kaplama payı; sigorta fazlası",
+      "ceviri_durumu": "manuel-dogrulandi",
+      "ceviri_inceleme_notu": "WikDict 'cover charge → giriş ücreti' olarak yanlış çevirmiş. Gerçek anlam: das Überdecken (örtme/kaplama), beton mühendisliğinde donatı örtüsü, sigortacılıkta fazla karşılama."
+    },
+    {
+      "almanca": "überblicken",
+      "tur": "fiil",
+      "turkce": "bir bakışta görmek; kavramak, değerlendirmek",
+      "ceviri_durumu": "manuel-dogrulandi",
+      "ceviri_inceleme_notu": "Sözlükte 'überblickt' (çekimli form) vardı, mastar 'überblicken' olarak düzeltildi."
+    },
+    {
+      "almanca": "Ukrainerin",
+      "tur": "isim",
+      "turkce": "Ukraynalı kadın",
+      "ceviri_durumu": "manuel-dogrulandi",
+      "ceviri_inceleme_notu": "Goethe-Institut kayıtlı kelime; 'die Ukrainerin' Ukrayna vatandaşı kadın anlamında kullanılır."
+    },
+    {
       "almanca": "Batterie",
       "tur": "isim",
       "turkce": "akü",
