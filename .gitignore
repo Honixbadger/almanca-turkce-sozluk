@@ -11,40 +11,40 @@ __pycache__/
 .claude/
 almanca-sozluk-projesi/.claude/
 
-# ─── Kök dizindeki geçici scriptler ──────────────────────────────────────────
-# (Bunlar almanca-sozluk-projesi/scripts/ altına taşınmamış deneysel scriptler)
-add_basic_words.py
-cleanup_aciklama.py
-cleanup_examples.py
-cleanup_kelime_ailesi.py
-cleanup_relations.py
-cleanup_round2.py
-cleanup_round3.py
-cleanup_round4.py
-diagnose.py
-fetch_wiktionary_examples.py
-fill_gaps.py
-google_translate_ornekler.py
-groq_enrichment.py
-groq_resume.py
-wikt_noun_enrichment.py
-wikt_synonyme.py
+# ─── Kök dizindeki geçici scriptler (/ ile kök dizine sabitleme) ──────────────
+# Not: Bu dosyalar almanca-sozluk-projesi/scripts/ altına taşındı
+/add_basic_words.py
+/cleanup_aciklama.py
+/cleanup_examples.py
+/cleanup_kelime_ailesi.py
+/cleanup_relations.py
+/cleanup_round2.py
+/cleanup_round3.py
+/cleanup_round4.py
+/diagnose.py
+/fetch_wiktionary_examples.py
+/fill_gaps.py
+/google_translate_ornekler.py
+/groq_enrichment.py
+/groq_resume.py
+/wikt_noun_enrichment.py
+/wikt_synonyme.py
 
-# ─── Geçici veri / önbellek dosyaları ────────────────────────────────────────
-all_de_verbs.json
-german_prefix_verbs.json
-german_prefix_verbs_ab_an_ent.json
-ornekler_batch_*.json
-orneksiz_batch_*.json
-wikt_noun_cache.json
-wikt_ornekler_cache.json
-wikt_synonyme_cache.json
+# ─── Kök dizindeki geçici veri / önbellek dosyaları ──────────────────────────
+/all_de_verbs.json
+/german_prefix_verbs.json
+/german_prefix_verbs_ab_an_ent.json
+/ornekler_batch_*.json
+/orneksiz_batch_*.json
+/wikt_noun_cache.json
+/wikt_ornekler_cache.json
+/wikt_synonyme_cache.json
 
 # ─── Log dosyaları ───────────────────────────────────────────────────────────
 *.log
 *_stdout.log
-running_pids.txt
-groq_pid.txt
+/running_pids.txt
+/groq_pid.txt
 
 # ─── İşletim sistemi ─────────────────────────────────────────────────────────
 .DS_Store
