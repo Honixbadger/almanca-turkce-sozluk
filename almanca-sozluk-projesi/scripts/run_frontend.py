@@ -655,6 +655,12 @@ class DictionaryRequestHandler(SimpleHTTPRequestHandler):
         if parsed.path == "/api/add-entry":
             self.handle_add_entry()
             return
+        if parsed.path == "/api/ai-import/scan":
+            self.handle_ai_import_scan()
+            return
+        if parsed.path == "/api/ai-import/save":
+            self.handle_ai_import_save()
+            return
         self.send_json(404, {"status": "error", "note": "Bilinmeyen API yolu."})
 
     def handle_define(self, query_string: str) -> None:
@@ -720,6 +726,133 @@ class DictionaryRequestHandler(SimpleHTTPRequestHandler):
         saved = save_user_entry(payload)
         self.send_json(200, {"status": "ok", "entry": saved})
 
+    def handle_ai_import_scan(self) -> None:
+        """Fetch a URL and use Gemini AI to extract German vocabulary."""
+        payload = self.read_json_body()
+        url = (payload.get("url") or "").strip()
+        api_key = (payload.get("api_key") or "").strip()
+
+        if not url:
+            self.send_json(400, {"status": "error", "note": "URL gerekli."})
+            return
+        if not api_key:
+            self.send_json(400, {"status": "error", "note": "Gemini API key gerekli."})
+            return
+
+        # Fetch the URL content
+        try:
+            req = Request(url, headers={"User-Agent": "Mozilla/5.0 (compatible; AlmancaSozluk/1.0)"})
+            with urlopen(req, timeout=15) as resp:
+                raw_bytes = resp.read(300_000)  # max 300KB
+            # Try to detect encoding from headers
+            content_type = resp.headers.get("Content-Type", "")
+            charset = "utf-8"
+            if "charset=" in content_type:
+                charset = content_type.split("charset=")[-1].split(";")[0].strip()
+            try:
+                page_text = raw_bytes.decode(charset, errors="replace")
+            except Exception:
+                page_text = raw_bytes.decode("utf-8", errors="replace")
+        except (HTTPError, URLError, Exception) as exc:
+            self.send_json(502, {"status": "error", "note": f"URL alınamadı: {exc}"})
+            return
+
+        # Strip HTML tags
+        clean_text = re.sub(r"<[^>]+>", " ", page_text)
+        clean_text = re.sub(r"\s+", " ", clean_text).strip()
+        clean_text = html.unescape(clean_text)
+        # Limit to ~6000 chars for Gemini
+        clean_text = clean_text[:6000]
+
+        # Call Gemini API
+        gemini_url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key={api_key}"
+        prompt = (
+            "Aşağıdaki Almanca metin içindeki önemli Almanca kelimeleri listele. "
+            "Yalnızca eğitim değeri olan kelimeler: isimler, fiiller, sıfatlar, zarflar. "
+            "Her kelime için şu JSON formatını kullan:\n"
+            '[{"almanca":"Wort","turkce":"kelime","tur":"isim","artikel":"der/die/das veya bos"}]\n'
+            "Sadece JSON dizisi döndür, başka açıklama ekleme. En fazla 40 kelime.\n\n"
+            f"METİN:\n{clean_text}"
+        )
+        gemini_body = json.dumps({
+            "contents": [{"parts": [{"text": prompt}]}],
+            "generationConfig": {"temperature": 0.2, "maxOutputTokens": 2048}
+        }).encode("utf-8")
+
+        try:
+            greq = Request(
+                gemini_url,
+                data=gemini_body,
+                headers={"Content-Type": "application/json"},
+                method="POST"
+            )
+            with urlopen(greq, timeout=30) as gresp:
+                gemini_raw = gresp.read()
+            gemini_data = json.loads(gemini_raw.decode("utf-8"))
+            text_out = gemini_data["candidates"][0]["content"]["parts"][0]["text"]
+        except (HTTPError, URLError) as exc:
+            self.send_json(502, {"status": "error", "note": f"Gemini API hatası: {exc}"})
+            return
+        except (KeyError, IndexError, json.JSONDecodeError) as exc:
+            self.send_json(502, {"status": "error", "note": f"Gemini yanıtı ayrıştırılamadı: {exc}"})
+            return
+
+        # Parse JSON from Gemini output (it may include markdown fences)
+        json_match = re.search(r"\[.*\]", text_out, re.DOTALL)
+        if not json_match:
+            self.send_json(200, {"status": "ok", "candidates": [], "note": "Gemini çıktısında kelime bulunamadı."})
+            return
+        try:
+            candidates = json.loads(json_match.group())
+        except json.JSONDecodeError:
+            self.send_json(200, {"status": "ok", "candidates": [], "note": "Gemini JSON ayrıştırma hatası."})
+            return
+
+        # Normalize candidates
+        normalized = []
+        for c in candidates:
+            if not isinstance(c, dict):
+                continue
+            almanca = str(c.get("almanca") or "").strip()
+            if not almanca:
+                continue
+            normalized.append({
+                "almanca": almanca,
+                "turkce": str(c.get("turkce") or "").strip(),
+                "tur": canonicalize_pos_label(str(c.get("tur") or "isim")),
+                "artikel": str(c.get("artikel") or "").strip().lower() if str(c.get("artikel") or "").strip().lower() in {"der", "die", "das"} else "",
+            })
+
+        self.send_json(200, {
+            "status": "ok",
+            "candidates": normalized,
+            "note": f"{len(normalized)} kelime bulundu.",
+        })
+
+    def handle_ai_import_save(self) -> None:
+        """Save multiple AI-imported entries."""
+        payload = self.read_json_body()
+        entries = payload.get("entries", [])
+        if not isinstance(entries, list):
+            self.send_json(400, {"status": "error", "note": "entries listesi gerekli."})
+            return
+
+        saved_count = 0
+        for entry in entries:
+            if not isinstance(entry, dict):
+                continue
+            try:
+                save_user_entry(entry)
+                saved_count += 1
+            except Exception:
+                pass
+
+        self.send_json(200, {
+            "status": "ok",
+            "note": f"{saved_count} kelime kaydedildi.",
+            "saved_count": saved_count,
+        })
+
     def send_json(self, status_code: int, payload: dict) -> None:
         body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
         self.send_response(status_code)
@@ -745,7 +878,7 @@ def main() -> None:
     port = find_open_port(DEFAULT_PORT)
     handler = partial(DictionaryRequestHandler, directory=str(PROJECT_ROOT))
     server = ThreadingHTTPServer((HOST, port), handler)
-    url = f"http://{HOST}:{port}/frontend/"
+    url = f"http://{HOST}:{port}/frontend/index.html"
 
     threading.Timer(1.0, lambda: webbrowser.open(url)).start()
     print(f"Arayuz hazir: {url}")

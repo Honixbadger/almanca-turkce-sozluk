@@ -1,0 +1,1046 @@
+<!doctype html>
+<html lang="tr" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Almanca–Türkçe Sözlük</title>
+<style>
+/* ─── TEMA DEĞİŞKENLERİ ─────────────────────────────────── */
+:root {
+  /* Açık tema */
+  --bg:            #f4f1eb;
+  --bg2:           #ece7dd;
+  --panel:         #ffffff;
+  --panel2:        #faf8f4;
+  --border:        #ddd6c8;
+  --border-soft:   rgba(180,165,140,0.35);
+  --ink:           #18130c;
+  --ink2:          #3d3529;
+  --muted:         #7a6e62;
+  --brand:         #1b5e3b;
+  --brand-mid:     #237a4d;
+  --brand-light:   #e6f2eb;
+  --brand-chip:    rgba(27,94,59,0.12);
+  --warm:          #9b4e1a;
+  --warm-light:    #fdf0e7;
+  --warm-chip:     rgba(155,78,26,0.13);
+  --red:           #b91c1c;
+  --red-light:     rgba(185,28,28,0.1);
+  --accent:        #c8a000;
+  --accent-light:  rgba(200,160,0,0.12);
+  --list-hover:    #f0ebe2;
+  --list-active:   #e4f0e9;
+  --list-active-b: #1b5e3b;
+  --tag-pos-bg:    #1b5e3b;
+  --tag-pos-fg:    #ffffff;
+  --alpha-bg:      #f0ebe2;
+  --alpha-hover:   #1b5e3b;
+  --alpha-fg:      #7a6e62;
+  --shadow:        0 2px 16px rgba(20,15,5,0.08);
+  --shadow-card:   0 1px 6px rgba(20,15,5,0.06);
+  --radius:        12px;
+  --radius-sm:     8px;
+  --radius-xs:     5px;
+  --topbar-bg:     #1b5e3b;
+  --topbar-fg:     #ffffff;
+  --topbar-muted:  rgba(255,255,255,0.6);
+  --topbar-input:  rgba(255,255,255,0.14);
+  --topbar-pill:   rgba(255,255,255,0.18);
+  --topbar-pill-fg:rgba(255,255,255,0.9);
+  --theme-icon:    "☀️";
+  --konj-head:     #e8f2ed;
+}
+
+[data-theme="dark"] {
+  --bg:            #111318;
+  --bg2:           #191c24;
+  --panel:         #1e2130;
+  --panel2:        #242838;
+  --border:        rgba(255,255,255,0.09);
+  --border-soft:   rgba(255,255,255,0.06);
+  --ink:           #e4e8f0;
+  --ink2:          #b8c0d0;
+  --muted:         #7a8496;
+  --brand:         #5eb88a;
+  --brand-mid:     #4daa7c;
+  --brand-light:   rgba(94,184,138,0.12);
+  --brand-chip:    rgba(94,184,138,0.15);
+  --warm:          #e8944a;
+  --warm-light:    rgba(232,148,74,0.12);
+  --warm-chip:     rgba(232,148,74,0.15);
+  --red:           #f87171;
+  --red-light:     rgba(248,113,113,0.12);
+  --accent:        #f5c842;
+  --accent-light:  rgba(245,200,66,0.12);
+  --list-hover:    rgba(255,255,255,0.04);
+  --list-active:   rgba(94,184,138,0.12);
+  --list-active-b: #5eb88a;
+  --tag-pos-bg:    rgba(94,184,138,0.18);
+  --tag-pos-fg:    #5eb88a;
+  --alpha-bg:      rgba(255,255,255,0.05);
+  --alpha-hover:   #5eb88a;
+  --alpha-fg:      #7a8496;
+  --shadow:        0 2px 16px rgba(0,0,0,0.35);
+  --shadow-card:   0 1px 6px rgba(0,0,0,0.25);
+  --radius:        12px;
+  --radius-sm:     8px;
+  --radius-xs:     5px;
+  --topbar-bg:     #161a24;
+  --topbar-fg:     #e4e8f0;
+  --topbar-muted:  rgba(228,232,240,0.5);
+  --topbar-input:  rgba(255,255,255,0.07);
+  --topbar-pill:   rgba(255,255,255,0.08);
+  --topbar-pill-fg:rgba(228,232,240,0.85);
+  --konj-head:     rgba(255,255,255,0.06);
+}
+
+/* ─── RESET ─────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { height: 100%; }
+body {
+  font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: background 0.25s, color 0.25s;
+}
+
+/* ─── TOPBAR ─────────────────────────────────────────────── */
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 18px;
+  background: var(--topbar-bg);
+  border-bottom: 1px solid rgba(0,0,0,0.15);
+  z-index: 30;
+  flex-shrink: 0;
+  transition: background 0.25s;
+}
+.logo {
+  font-size: 0.97rem;
+  font-weight: 800;
+  color: var(--topbar-fg);
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+  user-select: none;
+}
+.logo-sep { color: var(--accent); margin: 0 2px; }
+.search-wrap { flex: 1; max-width: 540px; position: relative; }
+.search-wrap input {
+  width: 100%;
+  padding: 9px 38px 9px 16px;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 999px;
+  background: var(--topbar-input);
+  color: var(--topbar-fg);
+  font-size: 0.92rem;
+  outline: none;
+  font-family: inherit;
+  transition: background 0.15s, border-color 0.15s;
+}
+.search-wrap input::placeholder { color: var(--topbar-muted); }
+.search-wrap input:focus { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.35); }
+.search-clear {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--topbar-muted);
+  cursor: pointer;
+  font-size: 1rem;
+  display: none;
+  line-height: 1;
+  padding: 2px;
+}
+.search-clear.visible { display: block; }
+.pos-pills { display: flex; gap: 6px; flex-shrink: 0; }
+.pos-pill {
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 999px;
+  padding: 5px 12px;
+  background: var(--topbar-pill);
+  color: var(--topbar-pill-fg);
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+  font-family: inherit;
+}
+.pos-pill:hover { background: rgba(255,255,255,0.26); }
+.pos-pill.active { background: var(--accent); color: #1a1200; border-color: var(--accent); font-weight: 700; }
+.topbar-right { display: flex; align-items: center; gap: 10px; margin-left: auto; }
+.stat-chip {
+  background: rgba(255,255,255,0.1);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  color: var(--topbar-muted);
+  white-space: nowrap;
+}
+.stat-chip strong { color: var(--topbar-fg); }
+.theme-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: var(--topbar-pill);
+  color: var(--topbar-fg);
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+  flex-shrink: 0;
+}
+.theme-btn:hover { background: rgba(255,255,255,0.25); }
+
+/* ─── SPLIT LAYOUT ───────────────────────────────────────── */
+.split {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* ─── LEFT PANEL ─────────────────────────────────────────── */
+.left-panel {
+  width: 300px;
+  min-width: 240px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--border);
+  background: var(--panel);
+  transition: background 0.25s, border-color 0.25s;
+}
+
+/* Alphabet quick-jump */
+.alpha-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  padding: 8px 10px 6px;
+  border-bottom: 1px solid var(--border-soft);
+  background: var(--panel2);
+}
+.alpha-btn {
+  width: 22px;
+  height: 22px;
+  border-radius: var(--radius-xs);
+  border: none;
+  background: var(--alpha-bg);
+  color: var(--alpha-fg);
+  font-size: 0.65rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.13s;
+  font-family: inherit;
+}
+.alpha-btn:hover, .alpha-btn.active { background: var(--alpha-hover); color: #fff; }
+
+.list-header {
+  padding: 9px 14px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border-soft);
+  background: var(--panel2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.list-header-count { color: var(--brand); font-size: 0.85rem; font-weight: 800; letter-spacing: 0; }
+
+.list-scroll {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+}
+.list-scroll::-webkit-scrollbar { width: 4px; }
+.list-scroll::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+.list-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  gap: 1px 8px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border-soft);
+  cursor: pointer;
+  transition: background 0.12s;
+}
+.list-item:hover { background: var(--list-hover); }
+.list-item.active {
+  background: var(--list-active);
+  border-left: 3px solid var(--list-active-b);
+  padding-left: 11px;
+}
+.li-word { font-size: 1rem; font-weight: 700; color: var(--ink); font-family: Georgia, serif; grid-column: 1; }
+.li-meta { display: flex; align-items: center; gap: 5px; grid-column: 1; grid-row: 2; }
+.li-pos {
+  font-size: 0.63rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 1px 5px;
+  border-radius: 3px;
+  background: var(--tag-pos-bg);
+  color: var(--tag-pos-fg);
+}
+.li-artikel { font-size: 0.72rem; font-weight: 600; }
+.li-artikel-der { color: #1565c0; }
+.li-artikel-die { color: #b91c1c; }
+.li-artikel-das { color: #1b5e3b; }
+[data-theme="dark"] .li-artikel-der { color: #7eb8f7; }
+[data-theme="dark"] .li-artikel-die { color: #f87171; }
+[data-theme="dark"] .li-artikel-das { color: #5eb88a; }
+.li-tr { font-size: 0.82rem; color: var(--muted); grid-column: 2; grid-row: 1 / 3; align-self: center; text-align: right; max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Günün kelimesi */
+.wotd {
+  border-top: 1px solid var(--border);
+  padding: 12px 14px;
+  background: var(--panel2);
+  flex-shrink: 0;
+}
+.wotd-label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.wotd-word { font-size: 1.05rem; font-weight: 700; font-family: Georgia, serif; color: var(--ink); }
+.wotd-tr { font-size: 0.82rem; color: var(--muted); margin-top: 2px; }
+.wotd-ex { font-size: 0.78rem; color: var(--muted); font-style: italic; margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--border-soft); line-height: 1.45; }
+
+/* ─── RIGHT PANEL ────────────────────────────────────────── */
+.right-panel {
+  flex: 1;
+  overflow-y: auto;
+  background: var(--bg);
+  min-height: 0;
+  transition: background 0.25s;
+}
+.right-panel::-webkit-scrollbar { width: 5px; }
+.right-panel::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+.detail-wrap { max-width: 900px; margin: 0 auto; padding: 28px 32px 60px; }
+
+/* HEAD */
+.d-head { margin-bottom: 22px; padding-bottom: 18px; border-bottom: 2px solid var(--border); }
+.d-badges { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 12px; align-items: center; }
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+.badge-pos { background: var(--brand); color: #fff; border-radius: 6px; }
+[data-theme="dark"] .badge-pos { background: var(--brand-chip); color: var(--brand); }
+.badge-artikel-der { background: rgba(21,101,192,0.12); color: #1565c0; border: 1px solid rgba(21,101,192,0.2); }
+.badge-artikel-die { background: var(--red-light); color: var(--red); border: 1px solid rgba(185,28,28,0.2); }
+.badge-artikel-das { background: var(--brand-chip); color: var(--brand); border: 1px solid rgba(27,94,59,0.2); }
+[data-theme="dark"] .badge-artikel-der { background: rgba(126,184,247,0.12); color: #7eb8f7; border-color: rgba(126,184,247,0.2); }
+.badge-cat { background: var(--warm-chip); color: var(--warm); }
+.badge-src { background: var(--accent-light); color: var(--accent); cursor: default; }
+.d-lemma {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  word-break: break-word;
+}
+.d-morph-line {
+  margin-top: 8px;
+  font-size: 0.82rem;
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.d-morph-item strong { color: var(--ink2); }
+
+/* TWO COLUMN BODY */
+.d-body { display: grid; grid-template-columns: 1fr 280px; gap: 20px; align-items: start; }
+
+/* TRANSLATION */
+.d-translation {
+  margin-bottom: 18px;
+  padding: 14px 18px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--brand);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  box-shadow: var(--shadow-card);
+}
+.d-tr-word { font-size: 1.5rem; font-weight: 700; color: var(--brand); font-family: Georgia, serif; }
+.d-tr-desc { font-size: 0.88rem; color: var(--muted); margin-top: 6px; line-height: 1.55; font-style: italic; }
+
+/* SENSES */
+.d-senses { margin-bottom: 18px; }
+.sense-item { display: flex; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border-soft); align-items: baseline; }
+.sense-item:last-child { border-bottom: none; }
+.sense-num { font-size: 0.72rem; color: var(--muted); font-weight: 700; min-width: 18px; }
+.sense-body { flex: 1; font-size: 0.9rem; line-height: 1.5; }
+.sense-label { display: inline-block; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 1px 6px; border-radius: 3px; background: var(--brand-chip); color: var(--brand); margin-right: 5px; }
+
+/* EXAMPLES */
+.d-examples { margin-bottom: 18px; }
+.ex-item { padding: 12px 14px; background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius-sm); box-shadow: var(--shadow-card); margin-bottom: 8px; }
+.ex-item:last-child { margin-bottom: 0; }
+.ex-de { font-style: italic; font-size: 0.94rem; color: var(--ink); line-height: 1.55; }
+.ex-de mark { background: var(--brand-chip); color: var(--brand); border-radius: 3px; padding: 0 3px; font-style: normal; font-weight: 600; }
+.ex-tr { font-size: 0.84rem; color: var(--muted); margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--border); }
+.ex-tr::before { content: "→ "; color: var(--brand); font-weight: 700; }
+
+/* KONJUGATION / DEKLINATION */
+.d-table-wrap { margin-bottom: 18px; overflow: hidden; border-radius: var(--radius-sm); border: 1px solid var(--border); }
+.d-table { width: 100%; border-collapse: collapse; font-size: 0.84rem; }
+.d-table thead th { background: var(--konj-head); color: var(--muted); text-align: left; padding: 7px 10px; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid var(--border); }
+.d-table tbody td { padding: 7px 10px; border-bottom: 1px solid var(--border-soft); color: var(--ink); font-family: Georgia, serif; }
+.d-table tbody tr:last-child td { border-bottom: none; }
+.d-table tbody tr:hover td { background: var(--list-hover); }
+.d-table td:first-child { color: var(--muted); font-family: inherit; font-size: 0.8rem; font-style: normal; width: 110px; }
+
+/* ─── RIGHT SIDEBAR COLUMN ───────────────────────────────── */
+.d-sidebar { display: flex; flex-direction: column; gap: 14px; }
+
+.side-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+.side-card-head {
+  padding: 8px 13px;
+  font-size: 0.67rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border-soft);
+  background: var(--panel2);
+}
+.side-card-body { padding: 10px 13px; }
+
+/* Dilbilgisi özet */
+.gram-rows { display: grid; gap: 5px; }
+.gram-row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-size: 0.84rem; }
+.gram-lbl { color: var(--muted); font-size: 0.76rem; white-space: nowrap; }
+.gram-val { font-family: Georgia, serif; font-weight: 600; color: var(--ink); text-align: right; }
+
+/* Eş anlamlılar / Zıt */
+.chip-cloud { display: flex; flex-wrap: wrap; gap: 6px; }
+.word-chip {
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--panel2);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  color: var(--ink);
+  transition: all 0.13s;
+  font-family: inherit;
+}
+.word-chip:hover { background: var(--brand); color: #fff; border-color: var(--brand); }
+.word-chip.ant { }
+.word-chip.ant:hover { background: var(--red); border-color: var(--red); }
+
+/* Kelime ailesi */
+.family-item { display: flex; align-items: baseline; gap: 6px; padding: 4px 0; border-bottom: 1px solid var(--border-soft); font-size: 0.84rem; }
+.family-item:last-child { border-bottom: none; }
+.family-word { font-family: Georgia, serif; font-weight: 600; color: var(--ink); cursor: pointer; }
+.family-word:hover { color: var(--brand); }
+.family-tr { color: var(--muted); font-size: 0.76rem; }
+
+/* ─── SECTION TITLES ─────────────────────────────────────── */
+.sec-title {
+  font-size: 0.67rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sec-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+/* ─── EMPTY STATE ────────────────────────────────────────── */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 300px;
+  color: var(--muted);
+  gap: 12px;
+  padding: 40px;
+  text-align: center;
+}
+.empty-icon { font-size: 2.5rem; opacity: 0.4; }
+.empty-text { font-size: 0.95rem; }
+.empty-sub { font-size: 0.82rem; }
+
+/* ─── TRANSITIONS ────────────────────────────────────────── */
+.left-panel, .side-card, .ex-item, .d-translation, .wotd { transition: background 0.25s, border-color 0.25s; }
+
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .left-panel { width: 250px; }
+  .d-body { grid-template-columns: 1fr; }
+  .d-sidebar { order: -1; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); flex-direction: unset; }
+  .detail-wrap { padding: 20px 18px 50px; }
+}
+@media (max-width: 640px) {
+  .left-panel { display: none; }
+  .pos-pills { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="logo">Almanca<span class="logo-sep">—</span>Türkçe</div>
+  <div class="search-wrap">
+    <input id="q" type="search" placeholder="Kelime, çeviri veya açıklama ara…" oninput="onSearch(this.value)" autocomplete="off">
+    <button class="search-clear" id="clear-btn" onclick="clearSearch()" title="Temizle">✕</button>
+  </div>
+  <div class="pos-pills">
+    <button class="pos-pill active" onclick="setPOS('',this)">Tümü</button>
+    <button class="pos-pill" onclick="setPOS('isim',this)">İsim</button>
+    <button class="pos-pill" onclick="setPOS('fiil',this)">Fiil</button>
+    <button class="pos-pill" onclick="setPOS('sıfat',this)">Sıfat</button>
+    <button class="pos-pill" onclick="setPOS('zarf',this)">Zarf</button>
+  </div>
+  <div class="topbar-right">
+    <div class="stat-chip"><strong id="vis-count">10</strong> / <span id="tot-count">10</span></div>
+    <button class="theme-btn" id="theme-btn" onclick="toggleTheme()" title="Tema değiştir">☀️</button>
+  </div>
+</div>
+
+<!-- SPLIT -->
+<div class="split">
+
+  <!-- LEFT -->
+  <div class="left-panel">
+    <div class="alpha-bar" id="alpha-bar"></div>
+    <div class="list-header">
+      <span>Sonuçlar</span>
+      <span class="list-header-count" id="list-count">10</span>
+    </div>
+    <div class="list-scroll" id="list-items"></div>
+
+    <!-- Günün Kelimesi -->
+    <div class="wotd" id="wotd-box"></div>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="right-panel">
+    <div class="detail-wrap" id="detail-wrap">
+      <div class="empty-state">
+        <div class="empty-icon">📖</div>
+        <div class="empty-text">Listeden bir kelime seçin</div>
+        <div class="empty-sub">ya da yukarıdaki arama kutusunu kullanın</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ───────────────────── VERİ ───────────────────────────── */
+const ENTRIES = [
+  {
+    almanca:"Fahrrad", artikel:"das", turkce:"bisiklet", tur:"isim",
+    cogul:"Fahrräder", genitiv:"Fahrrads",
+    kategoriler:["ulaşım"], kaynak:"DWDS",
+    anlam:"İki tekerlekli, pedallarla hareket ettirilen kişisel ulaşım aracı.",
+    anlamlar:[{tr:"bisiklet",tanim:"İki tekerlekli kişisel taşıt."},{tr:"tur bisikleti",tanim:"Spor veya yolculuk amaçlı kullanılan bisiklet türü."}],
+    esanlamlilar:["Rad","Velo","Drahtesel"],
+    zit_anlamlilar:["Auto","Motorrad"],
+    kelime_ailesi:["Radfahren","Fahrradweg","Fahrradständer","fahrradfahren"],
+    ornekler:[
+      {almanca:"Ich fahre jeden Tag mit dem Fahrrad zur Schule.",turkce:"Her gün bisikletle okula gidiyorum."},
+      {almanca:"Das Fahrrad ist umgefallen.",turkce:"Bisiklet devrildi."},
+      {almanca:"Er hat sich ein neues Fahrrad gekauft.",turkce:"Kendine yeni bir bisiklet aldı."}
+    ]
+  },
+  {
+    almanca:"schön", turkce:"güzel", tur:"sıfat",
+    komparativ:"schöner", superlativ:"am schönsten",
+    kategoriler:["günlük hayat"], kaynak:"Wiktionary",
+    anlam:"Estetik açıdan hoş olan, göze hitap eden, beğeni uyandıran.",
+    anlamlar:[{tr:"güzel",tanim:"Görünüm olarak beğenilen."},{tr:"harika, hoş",tanim:"Bir durumun olumlu nitelendirilmesi."}],
+    esanlamlilar:["hübsch","wunderschön","herrlich","prächtig"],
+    zit_anlamlilar:["hässlich","unschön","schlecht"],
+    kelime_ailesi:["Schönheit","verschönern","schönmachen","wunderschön"],
+    ornekler:[
+      {almanca:"Das Wetter ist heute sehr schön.",turkce:"Hava bugün çok güzel."},
+      {almanca:"Sie hat ein schönes Kleid an.",turkce:"Üzerinde güzel bir elbise var."},
+      {almanca:"Der Blick vom Berg ist wunderschön.",turkce:"Dağdan manzara muhteşem."}
+    ]
+  },
+  {
+    almanca:"fahren", turkce:"sürmek, gitmek", tur:"fiil",
+    partizip2:"gefahren", stammvokal:"ä (fährt)",
+    hilfsverb:"sein",
+    kategoriler:["ulaşım","günlük hayat"], kaynak:"DWDS",
+    anlam:"Bir araç kullanarak ya da araçla taşınarak bir yerden bir yere gitmek.",
+    anlamlar:[{tr:"sürmek",tanim:"Araç yönetmek.",label:"otomotiv"},{tr:"gitmek",tanim:"Araçla seyahat etmek."},{tr:"işlemek",tanim:"Araç veya makine çalışmak.",label:"teknik"}],
+    esanlamlilar:["reisen","lenken","steuern"],
+    zit_anlamlilar:["bleiben","anhalten","stoppen"],
+    kelime_ailesi:["Fahrt","Fahrer","Fahrzeug","abfahren","einfahren","losfahren"],
+    konjugation:[
+      {kisi:"ich",prasens:"fahre",prateritum:"fuhr"},
+      {kisi:"du",prasens:"fährst",prateritum:"fuhrst"},
+      {kisi:"er/sie",prasens:"fährt",prateritum:"fuhr"},
+      {kisi:"wir",prasens:"fahren",prateritum:"fuhren"},
+      {kisi:"ihr",prasens:"fahrt",prateritum:"fuhrt"},
+      {kisi:"sie/Sie",prasens:"fahren",prateritum:"fuhren"},
+    ],
+    ornekler:[
+      {almanca:"Wir fahren morgen nach Berlin.",turkce:"Yarın Berlin'e gidiyoruz."},
+      {almanca:"Er fährt gern Auto.",turkce:"Araba sürmekten hoşlanır."},
+      {almanca:"Der Zug fährt um 9 Uhr ab.",turkce:"Tren saat 9'da kalkıyor."}
+    ]
+  },
+  {
+    almanca:"Freundschaft", artikel:"die", turkce:"dostluk, arkadaşlık", tur:"isim",
+    cogul:"Freundschaften", genitiv:"Freundschaft",
+    kategoriler:["sosyal hayat"], kaynak:"Wiktionary",
+    anlam:"Karşılıklı sevgi, güven ve saygıya dayalı kişiler arası derin bağ.",
+    anlamlar:[{tr:"dostluk",tanim:"Derin kişisel bağ."},{tr:"arkadaşlık",tanim:"Ortak paylaşıma dayalı ilişki."}],
+    esanlamlilar:["Kameradschaft","Verbundenheit","Zuneigung"],
+    zit_anlamlilar:["Feindschaft","Rivalität"],
+    kelime_ailesi:["Freund","Freundin","befreunden","freundschaftlich"],
+    ornekler:[
+      {almanca:"Unsere Freundschaft hält seit zwanzig Jahren.",turkce:"Dostluğumuz yirmi yıldır devam ediyor."},
+      {almanca:"Wahre Freundschaft ist selten.",turkce:"Gerçek dostluk nadirdir."}
+    ]
+  },
+  {
+    almanca:"Fenster", artikel:"das", turkce:"pencere", tur:"isim",
+    cogul:"Fenster", genitiv:"Fensters",
+    kategoriler:["mimarlık","günlük hayat"], kaynak:"DWDS",
+    anlam:"Bir yapının duvarında ışık ve hava geçişine yarayan, genellikle camla kapatılan açıklık.",
+    anlamlar:[{tr:"pencere",tanim:"Binadaki cam açıklık."},{tr:"ekran, pencere",tanim:"Bilgisayar arayüzünde açık panel.",label:"bilişim"}],
+    esanlamlilar:["Scheibe"],
+    zit_anlamlilar:["Wand","Tür"],
+    kelime_ailesi:["Fensterscheibe","Fensterbank","Fensterrahmen","Doppelfenster"],
+    ornekler:[
+      {almanca:"Bitte mach das Fenster zu!",turkce:"Lütfen pencereyi kapat!"},
+      {almanca:"Durch das Fenster sehe ich den Garten.",turkce:"Pencereden bahçeyi görüyorum."}
+    ]
+  },
+  {
+    almanca:"arbeiten", turkce:"çalışmak", tur:"fiil",
+    partizip2:"gearbeitet", hilfsverb:"haben",
+    kategoriler:["meslek","günlük hayat"], kaynak:"DWDS",
+    anlam:"Bir amaç doğrultusunda fiziksel ya da zihinsel çaba harcamak.",
+    anlamlar:[{tr:"çalışmak",tanim:"Meslek icra etmek."},{tr:"işlemek",tanim:"Bir cihazın çalışır durumda olması.",label:"teknik"}],
+    esanlamlilar:["tätig sein","werken","schaffen"],
+    zit_anlamlilar:["faulenzen","ruhen","ausruhen"],
+    kelime_ailesi:["Arbeit","Arbeiter","Arbeitgeber","erarbeiten","mitarbeiten"],
+    konjugation:[
+      {kisi:"ich",prasens:"arbeite",prateritum:"arbeitete"},
+      {kisi:"du",prasens:"arbeitest",prateritum:"arbeitetest"},
+      {kisi:"er/sie",prasens:"arbeitet",prateritum:"arbeitete"},
+      {kisi:"wir",prasens:"arbeiten",prateritum:"arbeiteten"},
+      {kisi:"ihr",prasens:"arbeitet",prateritum:"arbeitetet"},
+      {kisi:"sie/Sie",prasens:"arbeiten",prateritum:"arbeiteten"},
+    ],
+    ornekler:[
+      {almanca:"Sie arbeitet als Ärztin in einem Krankenhaus.",turkce:"Bir hastanede doktor olarak çalışıyor."},
+      {almanca:"Ich arbeite jeden Tag von neun bis fünf.",turkce:"Her gün dokuzdan beşe kadar çalışıyorum."},
+      {almanca:"Hast du heute viel gearbeitet?",turkce:"Bugün çok çalıştın mı?"}
+    ]
+  },
+  {
+    almanca:"Bahnhof", artikel:"der", turkce:"istasyon, tren garı", tur:"isim",
+    cogul:"Bahnhöfe", genitiv:"Bahnhofs",
+    kategoriler:["ulaşım"], kaynak:"DWDS",
+    anlam:"Trenlerin yolcu indirip bindirdiği bina ve çevresindeki alandır.",
+    anlamlar:[{tr:"istasyon",tanim:"Tren durağı."},{tr:"anlamamak",tanim:"Sadece 'nur Bahnhof verstehen' deyiminde kullanılır.",label:"deyim"}],
+    esanlamlilar:["Haltestelle","Bahnstation"],
+    zit_anlamlilar:[],
+    kelime_ailesi:["Gleis","Bahnsteig","Hauptbahnhof","S-Bahnhof","Bahnhofshalle"],
+    ornekler:[
+      {almanca:"Wir treffen uns am Bahnhof um drei Uhr.",turkce:"Saat üçte istasyonda buluşuyoruz."},
+      {almanca:"Der Bahnhof ist sehr groß.",turkce:"İstasyon çok büyük."}
+    ]
+  },
+  {
+    almanca:"schnell", turkce:"hızlı, çabuk", tur:"sıfat",
+    komparativ:"schneller", superlativ:"am schnellsten",
+    kategoriler:["günlük hayat"], kaynak:"Wiktionary",
+    anlam:"Az zaman alan, yüksek hızda gerçekleşen; süratle.",
+    anlamlar:[{tr:"hızlı",tanim:"Yüksek hızda olan."},{tr:"çabuk, kısa sürede",tanim:"Az zaman içinde gerçekleşen."}],
+    esanlamlilar:["rasch","flott","zügig","eilig"],
+    zit_anlamlilar:["langsam","träge","gemächlich"],
+    kelime_ailesi:["Schnelligkeit","Schnellzug","schnellstens","beschleunigen"],
+    ornekler:[
+      {almanca:"Das Auto fährt sehr schnell.",turkce:"Araba çok hızlı gidiyor."},
+      {almanca:"Kannst du bitte schneller kommen?",turkce:"Lütfen daha hızlı gelebilir misin?"}
+    ]
+  },
+  {
+    almanca:"Wasser", artikel:"das", turkce:"su", tur:"isim",
+    cogul:"Wässer", genitiv:"Wassers",
+    kategoriler:["doğa","günlük hayat"], kaynak:"DWDS",
+    anlam:"Renksiz, kokusuz, tatsız olan, H₂O formülüyle tanımlanan temel sıvı element.",
+    anlamlar:[{tr:"su",tanim:"Sıvı hâldeki H₂O."},{tr:"su alanı",tanimi:"Göl, nehir, deniz.",label:"coğrafya"}],
+    esanlamlilar:["Flüssigkeit","Nass","H₂O"],
+    zit_anlamlilar:["Feuer","Eis"],
+    kelime_ailesi:["Wasserfall","Wasserhahn","Trinkwasser","wässrig","wässern"],
+    ornekler:[
+      {almanca:"Kannst du mir ein Glas Wasser geben?",turkce:"Bana bir bardak su verir misin?"},
+      {almanca:"Das Wasser im Fluss ist klar.",turkce:"Nehirdeki su berrak."}
+    ]
+  },
+  {
+    almanca:"lesen", turkce:"okumak", tur:"fiil",
+    partizip2:"gelesen", stammvokal:"ie (liest)",
+    hilfsverb:"haben",
+    kategoriler:["eğitim","kültür"], kaynak:"DWDS",
+    anlam:"Yazılı ya da basılı metni gözle izleyerek anlamak; bir kitabı ya da metni okumak.",
+    anlamlar:[{tr:"okumak",tanim:"Yazıyı gözle algılayıp anlamak."},{tr:"toplamak",tanim:"Üzüm bağ gibi ürünleri toplamak.",label:"tarım"}],
+    esanlamlilar:["studieren","lektüre halten"],
+    zit_anlamlilar:["schreiben","verfassen"],
+    kelime_ailesi:["Leser","Lektüre","Buchlesung","vorlesen","auseinanderlesen"],
+    konjugation:[
+      {kisi:"ich",prasens:"lese",prateritum:"las"},
+      {kisi:"du",prasens:"liest",prateritum:"lasest"},
+      {kisi:"er/sie",prasens:"liest",prateritum:"las"},
+      {kisi:"wir",prasens:"lesen",prateritum:"lasen"},
+      {kisi:"ihr",prasens:"lest",prateritum:"last"},
+      {kisi:"sie/Sie",prasens:"lesen",prateritum:"lasen"},
+    ],
+    ornekler:[
+      {almanca:"Er liest jeden Abend ein Buch.",turkce:"Her akşam bir kitap okur."},
+      {almanca:"Ich lese gerade einen Roman auf Deutsch.",turkce:"Şu an Almanca bir roman okuyorum."}
+    ]
+  },
+];
+
+const WOTD = ENTRIES[Math.floor(Math.random() * ENTRIES.length)];
+
+/* ───────────────────── STATE ──────────────────────────── */
+let filtered = [...ENTRIES];
+let activePOS = '';
+let activeAlpha = '';
+let activeIdx = 0;
+let isDark = false;
+
+/* ───────────────────── HELPERS ────────────────────────── */
+function hl(text, word) {
+  if (!word || word.length < 2) return text;
+  const re = new RegExp('(' + word.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'gi');
+  return text.replace(re, '<mark>$1</mark>');
+}
+function artikelCls(a) {
+  return a === 'der' ? 'badge-artikel-der' : a === 'die' ? 'badge-artikel-die' : 'badge-artikel-das';
+}
+function liArtCls(a) {
+  return a === 'der' ? 'li-artikel-der' : a === 'die' ? 'li-artikel-die' : 'li-artikel-das';
+}
+
+/* ───────────────────── ALPHA BAR ──────────────────────── */
+function buildAlphaBar() {
+  const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').concat(['Ä','Ö','Ü']);
+  document.getElementById('alpha-bar').innerHTML = letters.map(l =>
+    `<button class="alpha-btn" onclick="setAlpha('${l}',this)" title="${l}">${l}</button>`
+  ).join('');
+}
+
+function setAlpha(letter, btn) {
+  if (activeAlpha === letter) {
+    activeAlpha = '';
+    document.querySelectorAll('.alpha-btn').forEach(b => b.classList.remove('active'));
+  } else {
+    activeAlpha = letter;
+    document.querySelectorAll('.alpha-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+  applyFilters();
+}
+
+/* ───────────────────── WOTD ────────────────────────────── */
+function buildWotd() {
+  const e = WOTD;
+  const ex = e.ornekler && e.ornekler[0];
+  document.getElementById('wotd-box').innerHTML = `
+    <div class="wotd-label">⭐ Günün Kelimesi</div>
+    <div class="wotd-word">${e.almanca}</div>
+    <div class="wotd-tr">${e.turkce}</div>
+    ${ex ? `<div class="wotd-ex">"${ex.almanca}"</div>` : ''}
+  `;
+}
+
+/* ───────────────────── LIST ────────────────────────────── */
+function renderList() {
+  const q = document.getElementById('q').value.trim();
+  document.getElementById('list-count').textContent = filtered.length;
+  document.getElementById('vis-count').textContent = filtered.length;
+  document.getElementById('list-items').innerHTML = filtered.map((e, i) => `
+    <div class="list-item${activeIdx === i ? ' active' : ''}" onclick="selectEntry(${i})">
+      <div class="li-word">${hl(e.almanca, q)}</div>
+      <div class="li-meta">
+        <span class="li-pos">${e.tur}</span>
+        ${e.artikel ? `<span class="li-artikel ${liArtCls(e.artikel)}">${e.artikel}</span>` : ''}
+      </div>
+      <div class="li-tr">${e.turkce.split(',')[0].trim()}</div>
+    </div>
+  `).join('');
+}
+
+/* ───────────────────── DETAIL ──────────────────────────── */
+function selectEntry(i) {
+  activeIdx = i;
+  renderList();
+  const e = filtered[i];
+  const q = document.getElementById('q').value.trim();
+
+  /* Badges */
+  const badges = [
+    `<span class="badge badge-pos">${e.tur}</span>`,
+    e.artikel ? `<span class="badge ${artikelCls(e.artikel)}">${e.artikel}</span>` : '',
+    ...(e.kategoriler||[]).map(k => `<span class="badge badge-cat">${k}</span>`),
+    e.kaynak ? `<span class="badge badge-src">${e.kaynak}</span>` : '',
+  ].filter(Boolean).join('');
+
+  /* Morph line */
+  const morphParts = [];
+  if (e.cogul) morphParts.push(`<span class="d-morph-item">çoğul: <strong>${e.cogul}</strong></span>`);
+  if (e.genitiv) morphParts.push(`<span class="d-morph-item">genitiv: <strong>-${e.genitiv.slice(-3)}</strong></span>`);
+  if (e.partizip2) morphParts.push(`<span class="d-morph-item">Partizip II: <strong>${e.partizip2}</strong></span>`);
+  if (e.hilfsverb) morphParts.push(`<span class="d-morph-item">yardımcı: <strong>${e.hilfsverb}</strong></span>`);
+  if (e.stammvokal) morphParts.push(`<span class="d-morph-item">kök: <strong>${e.stammvokal}</strong></span>`);
+  if (e.komparativ) morphParts.push(`<span class="d-morph-item">karş: <strong>${e.komparativ}</strong></span>`);
+  if (e.superlativ) morphParts.push(`<span class="d-morph-item">en: <strong>${e.superlativ}</strong></span>`);
+
+  /* Senses */
+  let sensesHtml = '';
+  if (e.anlamlar && e.anlamlar.length > 1) {
+    sensesHtml = `<div class="d-senses">
+      <div class="sec-title">Anlamlar</div>
+      ${e.anlamlar.map((a,i)=>`<div class="sense-item">
+        <span class="sense-num">${i+1}.</span>
+        <div class="sense-body">
+          ${a.label ? `<span class="sense-label">${a.label}</span>` : ''}
+          <strong>${a.tr}</strong>${a.tanim ? ` — <em style="color:var(--muted);font-size:0.85em">${a.tanim}</em>` : ''}
+        </div>
+      </div>`).join('')}
+    </div>`;
+  }
+
+  /* Examples */
+  const exHtml = e.ornekler && e.ornekler.length ? `
+    <div class="d-examples">
+      <div class="sec-title">Örnek Cümleler</div>
+      ${e.ornekler.map(ex=>`<div class="ex-item">
+        <div class="ex-de">${hl(ex.almanca, e.almanca)}</div>
+        <div class="ex-tr">${ex.turkce||'<em style="color:var(--muted)">çeviri bekleniyor…</em>'}</div>
+      </div>`).join('')}
+    </div>` : '';
+
+  /* Konjugation */
+  let konjHtml = '';
+  if (e.konjugation && e.konjugation.length) {
+    konjHtml = `<div class="sec-title">Çekim Tablosu</div>
+    <div class="d-table-wrap">
+      <table class="d-table">
+        <thead><tr><th>Kişi</th><th>Präsens</th><th>Präteritum</th></tr></thead>
+        <tbody>${e.konjugation.map(r=>`<tr>
+          <td>${r.kisi}</td>
+          <td>${r.prasens}</td>
+          <td>${r.prateritum}</td>
+        </tr>`).join('')}</tbody>
+      </table>
+    </div>`;
+  }
+
+  /* ── SIDEBAR CARDS ── */
+
+  /* Dilbilgisi */
+  const gramRows = [];
+  if (e.artikel) gramRows.push(['Artikel', e.artikel]);
+  if (e.cogul) gramRows.push(['Çoğul', e.cogul]);
+  if (e.genitiv) gramRows.push(['Genitiv', e.genitiv]);
+  if (e.partizip2) gramRows.push(['Partizip II', e.partizip2]);
+  if (e.hilfsverb) gramRows.push(['Yardımcı fiil', e.hilfsverb]);
+  if (e.komparativ) gramRows.push(['Karşılaştırma', e.komparativ]);
+  if (e.superlativ) gramRows.push(['Üstünlük', e.superlativ]);
+  const gramHtml = gramRows.length ? `
+    <div class="side-card">
+      <div class="side-card-head">Dilbilgisi</div>
+      <div class="side-card-body">
+        <div class="gram-rows">
+          ${gramRows.map(([l,v])=>`<div class="gram-row"><span class="gram-lbl">${l}</span><span class="gram-val">${v}</span></div>`).join('')}
+        </div>
+      </div>
+    </div>` : '';
+
+  /* Eş anlamlılar */
+  const synHtml = e.esanlamlilar && e.esanlamlilar.length ? `
+    <div class="side-card">
+      <div class="side-card-head">Eş Anlamlılar</div>
+      <div class="side-card-body">
+        <div class="chip-cloud">
+          ${e.esanlamlilar.map(s=>`<button class="word-chip" onclick="searchWord('${s}')">${s}</button>`).join('')}
+        </div>
+      </div>
+    </div>` : '';
+
+  /* Zıt anlamlılar */
+  const antHtml = e.zit_anlamlilar && e.zit_anlamlilar.length ? `
+    <div class="side-card">
+      <div class="side-card-head">Zıt Anlamlılar</div>
+      <div class="side-card-body">
+        <div class="chip-cloud">
+          ${e.zit_anlamlilar.map(s=>`<button class="word-chip ant" onclick="searchWord('${s}')">${s}</button>`).join('')}
+        </div>
+      </div>
+    </div>` : '';
+
+  /* Kelime ailesi */
+  const famHtml = e.kelime_ailesi && e.kelime_ailesi.length ? `
+    <div class="side-card">
+      <div class="side-card-head">Kelime Ailesi</div>
+      <div class="side-card-body">
+        ${e.kelime_ailesi.map(w=>`<div class="family-item">
+          <span class="family-word" onclick="searchWord('${w}')">${w}</span>
+        </div>`).join('')}
+      </div>
+    </div>` : '';
+
+  /* Assemble */
+  document.getElementById('detail-wrap').innerHTML = `
+    <div class="d-head">
+      <div class="d-badges">${badges}</div>
+      <div class="d-lemma">${e.almanca}</div>
+      ${morphParts.length ? `<div class="d-morph-line">${morphParts.join('')}</div>` : ''}
+    </div>
+
+    <div class="d-body">
+      <div class="d-main">
+        <div class="d-translation">
+          <div class="d-tr-word">${e.turkce}</div>
+          ${e.anlam ? `<div class="d-tr-desc">${e.anlam}</div>` : ''}
+        </div>
+        ${sensesHtml}
+        ${exHtml}
+        ${konjHtml}
+      </div>
+      <div class="d-sidebar">
+        ${gramHtml}
+        ${synHtml}
+        ${antHtml}
+        ${famHtml}
+      </div>
+    </div>
+  `;
+
+  document.querySelector('.right-panel').scrollTop = 0;
+}
+
+/* ───────────────────── SEARCH / FILTER ─────────────────── */
+function applyFilters() {
+  const q = document.getElementById('q').value.toLowerCase();
+  filtered = ENTRIES.filter(e => {
+    if (activePOS && e.tur !== activePOS) return false;
+    if (activeAlpha && !e.almanca.toUpperCase().startsWith(activeAlpha)) return false;
+    if (!q) return true;
+    return e.almanca.toLowerCase().includes(q)
+        || e.turkce.toLowerCase().includes(q)
+        || (e.anlam||'').toLowerCase().includes(q);
+  });
+  activeIdx = 0;
+  renderList();
+  if (filtered.length) selectEntry(0);
+  else document.getElementById('detail-wrap').innerHTML = `<div class="empty-state"><div class="empty-icon">🔍</div><div class="empty-text">Sonuç bulunamadı</div></div>`;
+}
+
+function onSearch(q) {
+  document.getElementById('clear-btn').className = 'search-clear' + (q ? ' visible' : '');
+  applyFilters();
+}
+
+function clearSearch() {
+  document.getElementById('q').value = '';
+  document.getElementById('clear-btn').className = 'search-clear';
+  applyFilters();
+}
+
+function setPOS(pos, btn) {
+  activePOS = pos;
+  document.querySelectorAll('.pos-pill').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  applyFilters();
+}
+
+function searchWord(w) {
+  document.getElementById('q').value = w;
+  document.getElementById('clear-btn').className = 'search-clear visible';
+  applyFilters();
+}
+
+/* ───────────────────── TEMA ────────────────────────────── */
+function toggleTheme() {
+  isDark = !isDark;
+  document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+  document.getElementById('theme-btn').textContent = isDark ? '☀️' : '🌙';
+  try { localStorage.setItem('at-theme', isDark ? 'dark' : 'light'); } catch(e){}
+}
+
+/* ───────────────────── INIT ────────────────────────────── */
+(function init() {
+  // Tema tercihi
+  try {
+    const saved = localStorage.getItem('at-theme');
+    if (saved === 'dark') {
+      isDark = true;
+      document.documentElement.setAttribute('data-theme','dark');
+      document.getElementById('theme-btn').textContent = '☀️';
+    } else {
+      document.getElementById('theme-btn').textContent = '🌙';
+    }
+  } catch(e) { document.getElementById('theme-btn').textContent = '🌙'; }
+
+  document.getElementById('tot-count').textContent = ENTRIES.length;
+  buildAlphaBar();
+  buildWotd();
+  renderList();
+  selectEntry(0);
+})();
+</script>
+</body>
+</html>

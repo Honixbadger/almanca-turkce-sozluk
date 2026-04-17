@@ -1,0 +1,129 @@
+name: Validate Dictionary
+
+on:
+  push:
+    paths:
+      - 'almanca-sozluk-projesi/output/dictionary.json'
+      - 'almanca-sozluk-projesi/output/dictionary.jsonl'
+      - '.github/workflows/validate.yml'
+  pull_request:
+    paths:
+      - 'almanca-sozluk-projesi/output/dictionary.json'
+      - 'almanca-sozluk-projesi/output/dictionary.jsonl'
+
+jobs:
+  validate-json:
+    name: Validate JSON Format
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate dictionary.json structure
+        run: |
+          python - <<'EOF'
+          import json, sys
+
+          REQUIRED_FIELDS = {"almanca", "turkce", "tur"}
+          VALID_TUR = {"isim", "fiil", "sıfat", "zarf", "ifade", "edat",
+                       "zamir", "bağlaç", "ünlem", "kısaltma"}
+          VALID_SEVIYE = {"A1", "A2", "B1", "B2", "C1", "C2", ""}
+
+          path = "almanca-sozluk-projesi/output/dictionary.json"
+          print(f"Loading {path}...")
+
+          with open(path, encoding="utf-8") as f:
+              data = json.load(f)
+
+          errors = []
+          for i, entry in enumerate(data):
+              # Check required fields
+              missing = REQUIRED_FIELDS - set(entry.keys())
+              if missing:
+                  errors.append(f"Entry {i} ({entry.get('almanca','?')}): missing fields {missing}")
+
+              # Check tur values
+              tur = entry.get("tur", "")
+              if tur and tur not in VALID_TUR:
+                  errors.append(f"Entry {i} ({entry.get('almanca','?')}): invalid 'tur' = '{tur}'")
+
+              # Check seviye values
+              seviye = entry.get("seviye", "")
+              if seviye and seviye not in VALID_SEVIYE:
+                  errors.append(f"Entry {i} ({entry.get('almanca','?')}): invalid 'seviye' = '{seviye}'")
+
+              if len(errors) > 20:
+                  errors.append("... (too many errors, stopping early)")
+                  break
+
+          total = len(data)
+          print(f"Total entries: {total:,}")
+
+          if errors:
+              print(f"\nValidation FAILED ({len(errors)} error(s)):")
+              for e in errors:
+                  print(f"  - {e}")
+              sys.exit(1)
+          else:
+              print(f"Validation PASSED — all {total:,} entries are valid.")
+          EOF
+
+      - name: Check for duplicate entries
+        run: |
+          python - <<'EOF'
+          import json, sys
+          from collections import Counter
+
+          path = "almanca-sozluk-projesi/output/dictionary.json"
+          with open(path, encoding="utf-8") as f:
+              data = json.load(f)
+
+          words = [e.get("almanca", "").lower().strip() for e in data]
+          counts = Counter(w for w in words if w)
+          dupes = {w: c for w, c in counts.items() if c > 1}
+
+          if dupes:
+              print(f"WARNING: {len(dupes)} duplicate word(s) found:")
+              for w, c in list(dupes.items())[:10]:
+                  print(f"  '{w}' appears {c} times")
+              # Warn only, don't fail — some duplicates (e.g. different POS) are intentional
+          else:
+              print(f"No duplicates found in {len(data):,} entries.")
+          EOF
+
+      - name: Report dictionary statistics
+        run: |
+          python - <<'EOF'
+          import json
+          from collections import Counter
+
+          path = "almanca-sozluk-projesi/output/dictionary.json"
+          with open(path, encoding="utf-8") as f:
+              data = json.load(f)
+
+          tur_counts = Counter(e.get("tur", "?") for e in data)
+          seviye_counts = Counter(e.get("seviye", "") for e in data)
+          with_examples = sum(1 for e in data if e.get("ornekler"))
+          with_definitions = sum(1 for e in data if e.get("tanim_almanca"))
+          with_synonyms = sum(1 for e in data if e.get("esanlamlilar"))
+
+          print(f"=== Dictionary Statistics ===")
+          print(f"Total entries      : {len(data):,}")
+          print(f"With examples      : {with_examples:,} ({100*with_examples//len(data)}%)")
+          print(f"With DE definitions: {with_definitions:,} ({100*with_definitions//len(data)}%)")
+          print(f"With synonyms      : {with_synonyms:,} ({100*with_synonyms//len(data)}%)")
+          print(f"\nBy part of speech:")
+          for tur, count in sorted(tur_counts.items(), key=lambda x: -x[1]):
+              print(f"  {tur:<12}: {count:>6,}")
+          print(f"\nBy CEFR level:")
+          for level in ["A1","A2","B1","B2","C1","C2",""]:
+              count = seviye_counts.get(level, 0)
+              label = level if level else "(none)"
+              print(f"  {label:<8}: {count:>6,}")
+          EOF

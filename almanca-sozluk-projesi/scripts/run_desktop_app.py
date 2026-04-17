@@ -3735,49 +3735,58 @@ def build_meta_line(record: dict) -> str:
 
 def prepare_record(record: dict) -> dict:
     prepared = dict(record)
-    prepared["_word"] = " ".join(part for part in [prepared.get("artikel", ""), prepared.get("almanca", "")] if part)
-    prepared["_source_names"] = split_multi_value(prepared.get("kaynak", ""))
+    artikel = prepared.get("artikel", "") or ""
+    almanca = prepared.get("almanca", "") or ""
+    turkce = prepared.get("turkce", "") or ""
+    aciklama_turkce = prepared.get("aciklama_turkce", "") or ""
+
+    prepared["_word"] = f"{artikel} {almanca}".strip() if artikel else almanca
+    source_names = split_multi_value(prepared.get("kaynak", ""))
+    prepared["_source_names"] = source_names
     prepared["_source_urls"] = split_multi_value(prepared.get("kaynak_url", ""))
     prepared["_translation_sources"] = [
         item for item in prepared.get("ceviri_kaynaklari", []) if isinstance(item, dict) and any(item.values())
     ]
-    prepared["_primary_source"] = prepared["_source_names"][0] if prepared["_source_names"] else "Kaynak belirtilmedi"
+    prepared["_primary_source"] = source_names[0] if source_names else "Kaynak belirtilmedi"
     prepared["_meta_line"] = build_meta_line(prepared)
-    prepared["_search_blob"] = normalize_text(
-        " ".join(
-            [
-                prepared.get("almanca", ""),
-                prepared.get("artikel", ""),
-                prepared.get("turkce", ""),
-                prepared.get("aciklama_turkce", ""),
-                prepared.get("tur", ""),
-                prepared.get("cogul", ""),
-                prepared.get("partizip2", ""),
-                prepared.get("acilim_almanca", ""),
-                prepared.get("seviye", ""),
-                "trennbar" if prepared.get("trennbar") is True else "",
-                prepared.get("trennbar_prefix", ""),
-                prepared.get("verb_typ", ""),
-                prepared.get("gecisli", ""),
-                " ".join(prepared.get("kategoriler", [])),
-                " ".join(prepared.get("ilgili_kayitlar", [])),
-                " ".join(prepared.get("sinonim", []) if isinstance(prepared.get("sinonim"), list) else []),
-                " ".join(prepared.get("antonim", []) if isinstance(prepared.get("antonim"), list) else []),
-                " ".join(prepared.get("kelime_ailesi", []) if isinstance(prepared.get("kelime_ailesi"), list) else []),
-                prepared.get("kaynak", ""),
-                prepared.get("ornek_almanca", ""),
-                prepared.get("not", ""),
-                " ".join(
-                    o.get("almanca", "") for o in prepared.get("ornekler", [])
-                    if isinstance(o, dict) and o.get("almanca")
-                ),
-            ]
-        )
-    )
-    # Also add ASCII-folded version so searching without diacritics still works
+
+    sinonim = prepared.get("sinonim")
+    antonim = prepared.get("antonim")
+    kelime_ailesi = prepared.get("kelime_ailesi")
+    ornekler = prepared.get("ornekler") or []
+
+    blob_raw = " ".join([
+        almanca,
+        artikel,
+        turkce,
+        aciklama_turkce,
+        prepared.get("tur", ""),
+        prepared.get("cogul", ""),
+        prepared.get("partizip2", ""),
+        prepared.get("acilim_almanca", ""),
+        prepared.get("seviye", ""),
+        "trennbar" if prepared.get("trennbar") is True else "",
+        prepared.get("trennbar_prefix", ""),
+        prepared.get("verb_typ", ""),
+        prepared.get("gecisli", ""),
+        " ".join(prepared.get("kategoriler") or []),
+        " ".join(prepared.get("ilgili_kayitlar") or []),
+        " ".join(sinonim if isinstance(sinonim, list) else []),
+        " ".join(antonim if isinstance(antonim, list) else []),
+        " ".join(kelime_ailesi if isinstance(kelime_ailesi, list) else []),
+        prepared.get("kaynak", ""),
+        prepared.get("ornek_almanca", ""),
+        prepared.get("not", ""),
+        " ".join(o.get("almanca", "") for o in ornekler if isinstance(o, dict) and o.get("almanca")),
+    ])
+    prepared["_search_blob"] = normalize_text(blob_raw)
+
+    # ASCII-folded version so searching without diacritics still works
     # e.g. "arac" finds "araç", "surucu" finds "sürücü", "fuhrerschein" finds "Führerschein"
-    ascii_blob = ascii_fold(prepared["_search_blob"])
-    if ascii_blob != prepared["_search_blob"]:
+    # Optimizasyon: ascii_fold sadece ana alanlara uygulanıyor (ornekler hariç)
+    _ascii_fold_core = normalize_text(f"{almanca} {artikel} {turkce} {aciklama_turkce} {prepared.get('cogul', '')} {prepared.get('partizip2', '')} {prepared.get('acilim_almanca', '')}")
+    ascii_blob = ascii_fold(_ascii_fold_core)
+    if ascii_blob != _ascii_fold_core:
         prepared["_search_blob"] = prepared["_search_blob"] + " " + ascii_blob
     return prepared
 
@@ -6724,13 +6733,15 @@ class DesktopDictionaryApp(tk.Tk):
         self.style.theme_use("clam")
         self.apply_window_icon()
 
+        self._splash_overlay: tk.Toplevel | None = None
         self._build_ui()
         self.build_menu()
         repair_widget_tree_texts(self)
         self.apply_theme()
         self.bind_shortcuts()
-        self.load_data()
-        self.refresh_records()
+        self.result_summary_var.set("Veri yükleniyor…")
+        self._show_loading_overlay()
+        threading.Thread(target=self._load_data_bg, daemon=True).start()
         self.queue_local_translation(self.search_var.get())
         self.after(180, self.process_gender_form_results)
         self.after(220, self.process_local_translation_results)
@@ -6957,6 +6968,63 @@ class DesktopDictionaryApp(tk.Tk):
         self.bind_all("<MouseWheel>", _on_mousewheel)
         self.bind_all("<Button-4>", _on_scroll_up)   # Linux yukarı
         self.bind_all("<Button-5>", _on_scroll_down)  # Linux aşağı
+
+    def create_scrollable_tab(self, notebook: ttk.Notebook) -> tuple[ttk.Frame, ttk.Frame]:
+        """Kaydırılabilir sekme oluştur (SettingsDialog ile paylaşılan yardımcı)."""
+        if not hasattr(self, "_app_scroll_canvases"):
+            self._app_scroll_canvases: list[tk.Canvas] = []
+
+        shell = ttk.Frame(notebook)
+        shell.columnconfigure(0, weight=1)
+        shell.rowconfigure(0, weight=1)
+
+        canvas = tk.Canvas(shell, highlightthickness=0, bd=0)
+        scrollbar = ttk.Scrollbar(shell, orient="vertical", command=canvas.yview)
+        content = ttk.Frame(canvas, padding=18)
+
+        canvas.configure(yscrollcommand=scrollbar.set)
+        canvas.grid(row=0, column=0, sticky="nsew")
+        scrollbar.grid(row=0, column=1, sticky="ns")
+
+        window_id = canvas.create_window((0, 0), window=content, anchor="nw")
+
+        def sync_scroll_region(_event=None) -> None:
+            canvas.configure(scrollregion=canvas.bbox("all"))
+
+        def sync_content_width(event) -> None:
+            canvas.itemconfigure(window_id, width=event.width)
+
+        content.bind("<Configure>", sync_scroll_region)
+        canvas.bind("<Configure>", sync_content_width)
+
+        def on_mousewheel(event) -> str:
+            delta = 0
+            if getattr(event, "delta", 0):
+                delta = int(-event.delta / 120)
+            elif getattr(event, "num", None) == 4:
+                delta = -1
+            elif getattr(event, "num", None) == 5:
+                delta = 1
+            if delta:
+                canvas.yview_scroll(delta, "units")
+            return "break"
+
+        def bind_mousewheel(_event=None) -> None:
+            canvas.bind_all("<MouseWheel>", on_mousewheel)
+            canvas.bind_all("<Button-4>", on_mousewheel)
+            canvas.bind_all("<Button-5>", on_mousewheel)
+
+        def unbind_mousewheel(_event=None) -> None:
+            canvas.unbind_all("<MouseWheel>")
+            canvas.unbind_all("<Button-4>")
+            canvas.unbind_all("<Button-5>")
+
+        for widget in (shell, canvas, content):
+            widget.bind("<Enter>", bind_mousewheel, add=True)
+            widget.bind("<Leave>", unbind_mousewheel, add=True)
+
+        self._app_scroll_canvases.append(canvas)
+        return shell, content
 
     def _build_ui(self) -> None:
         self.columnconfigure(0, weight=1)
@@ -8106,6 +8174,106 @@ class DesktopDictionaryApp(tk.Tk):
             {source for item in combined for source in item.get("_source_names", []) if source},
             key=str.casefold,
         )
+
+    def _show_loading_overlay(self) -> None:
+        """Durum çubuğunu 'yükleniyor' olarak ayarla — overlay gösterme, veri zaten hızlı geliyor."""
+        # Overlay kullanmıyoruz: ~1.6 sn yeterince kısa, ana pencere baştan görünür olsun
+        self._splash_overlay = None
+
+    def _load_data_bg(self) -> None:
+        """Veriyi arka plan thread'inde yükle, bitince main thread'e bildir."""
+        try:
+            base_records = safe_json_load(DICTIONARY_PATH, [])
+            user_records = list_user_entries()
+            combined = [prepare_record({**item, "_storage_source": "base"}) for item in base_records]
+            combined.extend(prepare_record({**item, "_storage_source": "user"}) for item in user_records)
+            combined = [item for item in combined if not should_hide_record(item)]
+
+            noun_record_index = {
+                (normalize_text(item.get("almanca", "")), normalize_text(item.get("artikel", ""))): item
+                for item in combined
+                if item.get("tur") == "isim" and item.get("almanca") and item.get("artikel")
+            }
+
+            summary = safe_json_load(SUMMARY_PATH, {})
+            source_counts = dict(summary.get("sources", {}))
+            if user_records:
+                source_counts["kullanici-ekleme"] = len(user_records)
+
+            pos_values = sorted({item.get("tur", "") for item in combined if item.get("tur")}, key=str.casefold)
+            category_values = sorted(
+                {category for item in combined for category in item.get("kategoriler", []) if category},
+                key=str.casefold,
+            )
+            source_values = sorted(
+                {source for item in combined for source in item.get("_source_names", []) if source},
+                key=str.casefold,
+            )
+
+            self.after(0, lambda: self._on_data_ready(
+                combined, noun_record_index, source_counts,
+                pos_values, category_values, source_values
+            ))
+        except Exception as exc:
+            import traceback as _tb
+            err_text = _tb.format_exc()
+            try:
+                (PROJECT_ROOT / "desktop_error.log").write_text(err_text, encoding="utf-8")
+            except Exception:
+                pass
+
+            def _on_load_error(e=exc):
+                # Overlay'i her halükarda kapat
+                if hasattr(self, "_splash_overlay") and self._splash_overlay is not None:
+                    try:
+                        self._splash_overlay.destroy()
+                    except Exception:
+                        pass
+                    self._splash_overlay = None
+                self.result_summary_var.set(f"Veri yükleme hatası: {e}")
+
+            self.after(0, _on_load_error)
+
+    def _on_data_ready(
+        self,
+        combined: list,
+        noun_record_index: dict,
+        source_counts: dict,
+        pos_values: list,
+        category_values: list,
+        source_values: list,
+    ) -> None:
+        """Arka plan thread'i bitince main thread'de çağrılır."""
+        import traceback as _tb
+        # Splash overlay'i her halükarda gizle
+        if hasattr(self, "_splash_overlay") and self._splash_overlay is not None:
+            try:
+                self._splash_overlay.destroy()
+            except Exception:
+                pass
+            self._splash_overlay = None
+        # Ana pencereyi öne getir
+        try:
+            self.deiconify()
+            self.lift()
+            self.focus_force()
+        except Exception:
+            pass
+        try:
+            self.records = combined
+            self.noun_record_index = noun_record_index
+            self.source_counts = source_counts
+            self.pos_values = pos_values
+            self.category_values = category_values
+            self.source_values = source_values
+            self.refresh_records()
+        except Exception as exc:
+            err = _tb.format_exc()
+            try:
+                (PROJECT_ROOT / "desktop_error.log").write_text(err, encoding="utf-8")
+            except Exception:
+                pass
+            self.result_summary_var.set(f"Veri yükleme hatası: {exc}")
 
     def export_to_csv(self) -> None:
         """Sözlüğü CSV formatında dışa aktar (Anki uyumlu)."""
@@ -11205,57 +11373,18 @@ class DesktopDictionaryApp(tk.Tk):
         self.destroy()
 
 
-def _show_splash() -> None:
-    """Ekran ortasında 2.2 sn logo göster, sonra kapat."""
-    splash = tk.Tk()
-    splash.overrideredirect(True)          # başlık çubuğu yok
-    splash.configure(bg="#1a1a2e")
-    splash.attributes("-topmost", True)
-
-    # Logo
-    logo_path = Path(__file__).parent.parent / "assets" / "branding" / "dictionary_logo.png"
-    img_label: tk.Label | None = None
-    if PIL_AVAILABLE and logo_path.exists():
-        try:
-            pil_img = Image.open(logo_path).convert("RGBA")
-            pil_img.thumbnail((220, 220), Image.LANCZOS)
-            tk_img = ImageTk.PhotoImage(pil_img)
-            img_label = tk.Label(splash, image=tk_img, bg="#1a1a2e", bd=0)
-            img_label.image = tk_img          # referans tut
-            img_label.pack(pady=(30, 10))
-        except Exception:
-            img_label = None
-
-    tk.Label(
-        splash,
-        text="Almanca–Türkçe Sözlük",
-        font=("Segoe UI", 18, "bold"),
-        fg="#e0e0ff",
-        bg="#1a1a2e",
-    ).pack()
-    tk.Label(
-        splash,
-        text="Yükleniyor…",
-        font=("Segoe UI", 10),
-        fg="#888aaa",
-        bg="#1a1a2e",
-    ).pack(pady=(4, 30))
-
-    # Ekran ortala
-    splash.update_idletasks()
-    w, h = splash.winfo_reqwidth(), splash.winfo_reqheight()
-    sw = splash.winfo_screenwidth()
-    sh = splash.winfo_screenheight()
-    splash.geometry(f"{w}x{h}+{(sw - w) // 2}+{(sh - h) // 2}")
-
-    splash.after(2200, splash.destroy)
-    splash.mainloop()
-
-
 def main() -> None:
-    _show_splash()
-    app = DesktopDictionaryApp()
-    app.mainloop()
+    import traceback
+    _log_path = PROJECT_ROOT / "desktop_error.log"
+    try:
+        app = DesktopDictionaryApp()
+        app.mainloop()
+    except Exception:
+        try:
+            _log_path.write_text(traceback.format_exc(), encoding="utf-8")
+        except Exception:
+            pass
+        raise
 
 
 if __name__ == "__main__":

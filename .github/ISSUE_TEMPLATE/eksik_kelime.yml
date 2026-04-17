@@ -1,0 +1,81 @@
+name: "Eksik Kelime / Missing Word"
+description: "Sözlükte olmayan bir kelime önerin / Suggest a word missing from the dictionary"
+title: "[EKSİK] "
+labels: ["missing-word", "enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Yeni kelime önerisi için teşekkürler!
+        Thank you for suggesting a new word!
+
+  - type: input
+    id: almanca_kelime
+    attributes:
+      label: "Almanca Kelime / German Word"
+      placeholder: "z.B. Bremsscheibe"
+    validations:
+      required: true
+
+  - type: input
+    id: turkce_ceviri
+    attributes:
+      label: "Türkçe Karşılık / Turkish Translation"
+      placeholder: "z.B. fren diski"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: kelime_turu
+    attributes:
+      label: "Kelime Türü / Part of Speech"
+      options:
+        - "isim (noun)"
+        - "fiil (verb)"
+        - "sıfat (adjective)"
+        - "zarf (adverb)"
+        - "ifade (phrase/expression)"
+        - "kısaltma (abbreviation)"
+        - "diğer (other)"
+    validations:
+      required: true
+
+  - type: input
+    id: artikel
+    attributes:
+      label: "Artikel (isimler için / for nouns)"
+      placeholder: "der / die / das"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: kategori
+    attributes:
+      label: "Kategori / Category"
+      options:
+        - "otomotiv (automotive)"
+        - "genel (general)"
+        - "teknik (technical)"
+        - "tıp (medical)"
+        - "hukuk (legal)"
+        - "ekonomi (economics)"
+        - "günlük (everyday)"
+        - "edebi (literary)"
+    validations:
+      required: false
+
+  - type: textarea
+    id: ornek_cumle
+    attributes:
+      label: "Örnek Cümle / Example Sentence"
+      placeholder: "Almanca ve Türkçe örnek cümle / Example sentence in German and Turkish"
+    validations:
+      required: false
+
+  - type: input
+    id: kaynak
+    attributes:
+      label: "Kaynak / Source"
+      placeholder: "Duden, DWDS, Wiktionary, vb."
+    validations:
+      required: false

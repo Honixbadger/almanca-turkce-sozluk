@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: "Genel Soru / General Question"
+    url: https://github.com/Honixbadger/almanca-turkce-sozluk/discussions
+    about: "Soru sormak için Discussions kullanın / Use Discussions for general questions"

@@ -1,0 +1,66 @@
+name: "Hata Raporu / Bug Report"
+description: "Uygulama hatası bildirin / Report an application bug"
+title: "[BUG] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Hata bildirdiğiniz için teşekkürler!
+        Thank you for reporting a bug!
+
+  - type: textarea
+    id: hata_aciklama
+    attributes:
+      label: "Hata Açıklaması / Bug Description"
+      placeholder: "Ne oldu? / What happened?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: adimlar
+    attributes:
+      label: "Yeniden Oluşturma Adımları / Steps to Reproduce"
+      placeholder: |
+        1. ...
+        2. ...
+        3. Hata oluştu / Error occurred
+    validations:
+      required: true
+
+  - type: textarea
+    id: beklenen
+    attributes:
+      label: "Beklenen Davranış / Expected Behavior"
+      placeholder: "Ne olmasını bekliyordunuz? / What did you expect?"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: platform
+    attributes:
+      label: "Platform / Operating System"
+      options:
+        - "Windows 10"
+        - "Windows 11"
+        - "macOS"
+        - "Linux"
+    validations:
+      required: true
+
+  - type: input
+    id: python_surumu
+    attributes:
+      label: "Python Sürümü / Python Version"
+      placeholder: "z.B. 3.11.4"
+    validations:
+      required: false
+
+  - type: textarea
+    id: hata_mesaji
+    attributes:
+      label: "Hata Mesajı / Error Message"
+      render: shell
+      placeholder: "Terminal çıktısını yapıştırın / Paste terminal output here"
+    validations:
+      required: false

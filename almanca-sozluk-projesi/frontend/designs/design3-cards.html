@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tasarım 3 — Modern Kartlar</title>
+<style>
+:root {
+  --bg: #f0f2f5;
+  --surface: #ffffff;
+  --border: #e2e7ed;
+  --ink: #1c2128;
+  --muted: #6e7d8c;
+  --brand: #1565c0;
+  --brand-light: #e8f0fe;
+  --brand-mid: #1976d2;
+  --green: #2e7d32;
+  --green-light: #e8f5e9;
+  --amber: #e65100;
+  --amber-light: #fff3e0;
+  --purple: #6a1b9a;
+  --purple-light: #f3e5f5;
+  --teal: #00695c;
+  --teal-light: #e0f2f1;
+  --card-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.05);
+  --card-hover: 0 4px 12px rgba(0,0,0,0.12), 0 8px 24px rgba(0,0,0,0.07);
+  --radius: 16px;
+  --radius-sm: 8px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--ink); min-height: 100vh; }
+
+/* TOP */
+.top { background: #fff; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 20; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.top-inner { max-width: 1280px; margin: 0 auto; padding: 14px 20px; display: flex; flex-direction: column; gap: 12px; }
+.top-row1 { display: flex; align-items: center; gap: 16px; }
+.logo { font-size: 1.05rem; font-weight: 800; color: var(--brand); white-space: nowrap; }
+.logo em { color: var(--muted); font-style: normal; font-weight: 400; }
+.search-bar { flex: 1; max-width: 620px; position: relative; }
+.search-bar input { width: 100%; padding: 10px 44px 10px 18px; border: 2px solid var(--border); border-radius: 999px; font-size: 0.97rem; color: var(--ink); outline: none; transition: border-color 0.15s; background: var(--bg); }
+.search-bar input:focus { border-color: var(--brand); background: #fff; }
+.search-bar button { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); width: 34px; height: 34px; border-radius: 999px; border: none; background: var(--brand); color: #fff; cursor: pointer; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; }
+.top-stats { font-size: 0.82rem; color: var(--muted); margin-left: auto; }
+.chips-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip-filter { padding: 6px 16px; border-radius: 999px; border: 1.5px solid var(--border); background: #fff; color: var(--ink); font-size: 0.82rem; font-weight: 500; cursor: pointer; transition: all 0.14s; }
+.chip-filter:hover { border-color: var(--brand); color: var(--brand); }
+.chip-filter.active { background: var(--brand); color: #fff; border-color: var(--brand); }
+
+/* CONTENT */
+.content { max-width: 1280px; margin: 0 auto; padding: 24px 20px 60px; }
+.content-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+.content-title { font-size: 0.85rem; color: var(--muted); font-weight: 500; }
+.view-toggle { display: flex; gap: 4px; }
+.view-btn { padding: 6px 10px; border: 1px solid var(--border); background: #fff; cursor: pointer; font-size: 0.8rem; border-radius: var(--radius-sm); color: var(--muted); }
+.view-btn.active { background: var(--brand); color: #fff; border-color: var(--brand); }
+
+/* GRID */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+
+/* CARD */
+.card { background: var(--surface); border-radius: var(--radius); box-shadow: var(--card-shadow); overflow: hidden; transition: box-shadow 0.2s, transform 0.2s; cursor: pointer; border: 1px solid transparent; }
+.card:hover { box-shadow: var(--card-hover); transform: translateY(-2px); border-color: rgba(21,101,192,0.15); }
+.card.expanded { border-color: rgba(21,101,192,0.2); }
+
+.card-head { padding: 16px 18px 12px; }
+.card-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+.badge { display: inline-flex; align-items: center; padding: 3px 9px; border-radius: 999px; font-size: 0.71rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+.badge-pos-isim { background: var(--brand-light); color: var(--brand-mid); }
+.badge-pos-fiil { background: var(--green-light); color: var(--green); }
+.badge-pos-sıfat { background: var(--amber-light); color: var(--amber); }
+.badge-pos-zarf { background: var(--purple-light); color: var(--purple); }
+.badge-pos-default { background: #f5f5f5; color: #555; }
+.badge-artikel { background: transparent; border: 1px solid currentColor; }
+.badge-artikel-der { color: #1565c0; }
+.badge-artikel-die { color: #c62828; }
+.badge-artikel-das { color: #2e7d32; }
+.badge-cat { background: var(--teal-light); color: var(--teal); font-size: 0.7rem; }
+
+.card-word { font-size: 1.5rem; font-weight: 800; color: var(--ink); letter-spacing: -0.02em; line-height: 1.1; }
+.card-morph { font-size: 0.78rem; color: var(--muted); margin-top: 3px; }
+.card-translation { font-size: 0.97rem; font-weight: 600; color: var(--brand-mid); margin-top: 8px; }
+
+.card-divider { height: 1px; background: var(--border); margin: 0; }
+
+.card-examples { padding: 12px 18px 0; display: none; }
+.card.expanded .card-examples { display: block; }
+.card-ex-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+.ex-row { margin-bottom: 12px; }
+.ex-de { font-size: 0.9rem; color: var(--ink); line-height: 1.5; }
+.ex-de mark { background: rgba(21,101,192,0.1); color: var(--brand); border-radius: 3px; padding: 0 2px; font-weight: 600; }
+.ex-tr { font-size: 0.82rem; color: var(--muted); margin-top: 4px; padding-left: 12px; border-left: 2px solid var(--border); }
+
+.card-footer { padding: 10px 18px 14px; display: flex; align-items: center; justify-content: space-between; }
+.card-syn { font-size: 0.78rem; color: var(--muted); }
+.card-syn strong { color: var(--ink); }
+.toggle-btn { font-size: 0.75rem; font-weight: 600; color: var(--brand); background: none; border: none; cursor: pointer; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--brand-light); transition: all 0.13s; }
+.toggle-btn:hover { background: var(--brand-light); }
+
+.empty { text-align: center; padding: 60px 20px; color: var(--muted); }
+.empty h3 { font-size: 1.1rem; margin-bottom: 8px; }
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="top-inner">
+    <div class="top-row1">
+      <div class="logo">Almanca<em>·</em>Türkçe</div>
+      <div class="search-bar">
+        <input type="search" id="q" placeholder="Kelime, çeviri veya açıklama…" oninput="onSearch(this.value)">
+        <button>🔍</button>
+      </div>
+      <div class="top-stats" id="stats">10 / 10</div>
+    </div>
+    <div class="chips-row">
+      <button class="chip-filter active" onclick="setPOS('',this)">Tümü</button>
+      <button class="chip-filter" onclick="setPOS('isim',this)">📦 İsim</button>
+      <button class="chip-filter" onclick="setPOS('fiil',this)">⚡ Fiil</button>
+      <button class="chip-filter" onclick="setPOS('sıfat',this)">🎨 Sıfat</button>
+      <button class="chip-filter" onclick="setPOS('zarf',this)">💨 Zarf</button>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+  <div class="content-header">
+    <div class="content-title" id="result-label"></div>
+  </div>
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="empty" style="display:none"><h3>Sonuç bulunamadı</h3><p>Farklı bir kelime deneyin.</p></div>
+</div>
+
+<script>
+const ENTRIES = [
+  { almanca:"Fahrrad", artikel:"das", turkce:"bisiklet", tur:"isim", cogul:"Fahrräder", kategoriler:["ulaşım"], anlam:"İki tekerlekli, pedallarla hareket ettirilen ulaşım aracı.", esanlamlilar:["Rad","Velo"], ornekler:[{almanca:"Ich fahre jeden Tag mit dem Fahrrad zur Schule.",turkce:"Her gün bisikletle okula gidiyorum."},{almanca:"Das Fahrrad ist umgefallen.",turkce:"Bisiklet devrildi."}]},
+  { almanca:"schön", turkce:"güzel", tur:"sıfat", komparativ:"schöner", superlativ:"am schönsten", kategoriler:["günlük hayat"], anlam:"Estetik açıdan hoş olan, göze hitap eden.", esanlamlilar:["hübsch","wunderschön"], ornekler:[{almanca:"Das Wetter ist heute sehr schön.",turkce:"Hava bugün çok güzel."},{almanca:"Sie hat ein schönes Kleid an.",turkce:"Üzerinde güzel bir elbise var."}]},
+  { almanca:"fahren", turkce:"sürmek, gitmek", tur:"fiil", partizip2:"gefahren", kategoriler:["ulaşım"], anlam:"Bir araç ile bir yerden bir yere gitmek.", esanlamlilar:["reisen","lenken"], ornekler:[{almanca:"Wir fahren morgen nach Berlin.",turkce:"Yarın Berlin'e gidiyoruz."},{almanca:"Er fährt gern Auto.",turkce:"Araba sürmekten hoşlanır."}]},
+  { almanca:"Freundschaft", artikel:"die", turkce:"dostluk, arkadaşlık", tur:"isim", cogul:"Freundschaften", kategoriler:["sosyal hayat"], anlam:"Karşılıklı güven ve saygıya dayalı kişiler arası bağ.", esanlamlilar:["Kameradschaft"], ornekler:[{almanca:"Unsere Freundschaft hält seit zwanzig Jahren.",turkce:"Dostluğumuz yirmi yıldır devam ediyor."},{almanca:"Wahre Freundschaft ist selten.",turkce:"Gerçek dostluk nadirdir."}]},
+  { almanca:"Fenster", artikel:"das", turkce:"pencere", tur:"isim", cogul:"Fenster", anlam:"Bir yapının duvarında ışık ve hava geçişine yarayan açıklık.", ornekler:[{almanca:"Bitte mach das Fenster zu!",turkce:"Lütfen pencereyi kapat!"},{almanca:"Durch das Fenster sehe ich den Garten.",turkce:"Pencereden bahçeyi görüyorum."}]},
+  { almanca:"arbeiten", turkce:"çalışmak", tur:"fiil", partizip2:"gearbeitet", kategoriler:["meslek","günlük hayat"], anlam:"Bir amaç doğrultusunda çaba harcamak.", esanlamlilar:["tätig sein","werken"], ornekler:[{almanca:"Sie arbeitet als Ärztin in einem Krankenhaus.",turkce:"Bir hastanede doktor olarak çalışıyor."},{almanca:"Hast du heute viel gearbeitet?",turkce:"Bugün çok çalıştın mı?"}]},
+  { almanca:"Bahnhof", artikel:"der", turkce:"istasyon, tren garı", tur:"isim", cogul:"Bahnhöfe", kategoriler:["ulaşım"], anlam:"Trenlerin yolcu indirip bindirdiği alan.", ornekler:[{almanca:"Wir treffen uns am Bahnhof um drei Uhr.",turkce:"Saat üçte istasyonda buluşuyoruz."},{almanca:"Der Bahnhof ist sehr groß.",turkce:"İstasyon çok büyük."}]},
+  { almanca:"schnell", turkce:"hızlı, çabuk", tur:"sıfat", komparativ:"schneller", superlativ:"am schnellsten", kategoriler:["günlük hayat"], anlam:"Yüksek hızda gerçekleşen.", esanlamlilar:["rasch","flott"], ornekler:[{almanca:"Das Auto fährt sehr schnell.",turkce:"Araba çok hızlı gidiyor."},{almanca:"Kannst du bitte schneller kommen?",turkce:"Lütfen daha hızlı gelebilir misin?"}]},
+  { almanca:"Wasser", artikel:"das", turkce:"su", tur:"isim", kategoriler:["doğa"], anlam:"Renksiz, kokusuz, tatsız temel sıvı element.", ornekler:[{almanca:"Kannst du mir ein Glas Wasser geben?",turkce:"Bana bir bardak su verir misin?"},{almanca:"Das Wasser im Fluss ist klar.",turkce:"Nehirdeki su berrak."}]},
+  { almanca:"lesen", turkce:"okumak", tur:"fiil", partizip2:"gelesen", kategoriler:["eğitim","kültür"], anlam:"Yazılı metni gözle izleyerek anlamak.", esanlamlilar:["studieren"], ornekler:[{almanca:"Er liest jeden Abend ein Buch.",turkce:"Her akşam bir kitap okur."},{almanca:"Ich lese gerade einen Roman auf Deutsch.",turkce:"Şu an Almanca bir roman okuyorum."}]},
+];
+
+let filtered = [...ENTRIES];
+let activePOS = '';
+let expanded = new Set();
+
+function posBadge(tur) {
+  const map = {isim:'badge-pos-isim',fiil:'badge-pos-fiil','sıfat':'badge-pos-sıfat',zarf:'badge-pos-zarf'};
+  return map[tur] || 'badge-pos-default';
+}
+function artikelBadge(a) { return a === 'der' ? 'badge-artikel-der' : a === 'die' ? 'badge-artikel-die' : 'badge-artikel-das'; }
+
+function hl(text, word) {
+  if (!word || word.length < 2) return text;
+  return text.replace(new RegExp('(' + word.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'gi'), '<mark>$1</mark>');
+}
+
+function render() {
+  const grid = document.getElementById('grid');
+  const empty = document.getElementById('empty');
+  document.getElementById('result-label').textContent = filtered.length + ' kelime gösteriliyor';
+  document.getElementById('stats').textContent = filtered.length + ' / ' + ENTRIES.length;
+  if (!filtered.length) { grid.innerHTML = ''; empty.style.display = ''; return; }
+  empty.style.display = 'none';
+  const q = document.getElementById('q').value.trim();
+
+  grid.innerHTML = filtered.map((e,i) => {
+    const isExp = expanded.has(i);
+    const morph = [e.cogul ? '· '+e.cogul : '', e.partizip2 ? 'PP: '+e.partizip2 : '', e.komparativ ? e.komparativ+' / '+e.superlativ : ''].filter(Boolean).join(' ');
+    const cats = (e.kategoriler||[]).slice(0,2);
+    return `<div class="card${isExp?' expanded':''}" id="card-${i}">
+      <div class="card-head" onclick="toggleCard(${i})">
+        <div class="card-meta">
+          <span class="badge ${posBadge(e.tur)}">${e.tur}</span>
+          ${e.artikel ? `<span class="badge badge-artikel ${artikelBadge(e.artikel)}">${e.artikel}</span>` : ''}
+          ${cats.map(c=>`<span class="badge badge-cat">${c}</span>`).join('')}
+        </div>
+        <div class="card-word">${hl(e.almanca, q)}</div>
+        ${morph ? `<div class="card-morph">${morph}</div>` : ''}
+        <div class="card-translation">${e.turkce}</div>
+      </div>
+      ${isExp ? `<div class="card-divider"></div>` : ''}
+      <div class="card-examples">
+        <div class="card-ex-label">📝 Örnek cümleler</div>
+        ${(e.ornekler||[]).map(ex=>`<div class="ex-row">
+          <div class="ex-de">${hl(ex.almanca, e.almanca)}</div>
+          <div class="ex-tr">${ex.turkce||'<em>çeviri bekleniyor</em>'}</div>
+        </div>`).join('')}
+        ${e.esanlamlilar&&e.esanlamlilar.length ? `<div style="margin-top:8px;font-size:0.78rem;color:var(--muted)">Eş anlamlı: <strong>${e.esanlamlilar.join(', ')}</strong></div>` : ''}
+      </div>
+      <div class="card-footer">
+        <div class="card-syn">${e.ornekler ? e.ornekler.length + ' örnek' : ''}</div>
+        <button class="toggle-btn" onclick="toggleCard(${i})">${isExp ? '▲ Kapat' : '▼ Örnekler'}</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function toggleCard(i) {
+  if (expanded.has(i)) expanded.delete(i); else expanded.add(i);
+  render();
+}
+
+function onSearch(q) {
+  const ql = q.toLowerCase();
+  filtered = ENTRIES.filter(e => {
+    if (activePOS && e.tur !== activePOS) return false;
+    if (!q) return true;
+    return e.almanca.toLowerCase().includes(ql) || e.turkce.toLowerCase().includes(ql) || (e.anlam||'').toLowerCase().includes(ql);
+  });
+  render();
+}
+
+function setPOS(pos, btn) {
+  activePOS = pos;
+  document.querySelectorAll('.chip-filter').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  onSearch(document.getElementById('q').value);
+}
+
+render();
+</script>
+</body>
+</html>

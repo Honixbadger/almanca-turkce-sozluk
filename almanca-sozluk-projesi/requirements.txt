@@ -1,0 +1,22 @@
+# Almanca-Türkçe Sözlük — Python Gereksinimleri
+# ================================================
+# Kurulum: pip install -r requirements.txt
+# Install: pip install -r requirements.txt
+
+# ── Zorunlu (masaüstü uygulaması için) / Required (desktop app) ──────────────
+Pillow>=10.0.0          # Görsel önizleme / Image preview
+
+# ── İsteğe bağlı (zenginleştirme scriptleri için) / Optional (enrichment) ────
+requests>=2.31.0        # HTTP istekleri / HTTP requests (image download, API calls)
+pdfplumber>=0.10.0      # PDF içe aktarma / PDF import
+
+# ── İsteğe bağlı (gelişmiş özellikler) / Optional (advanced features) ────────
+# groq                  # Groq LLM API (AI açıklama özelliği / AI explanations)
+#                         pip install groq
+#                         API key: https://console.groq.com/
+#
+# argostranslate        # Çevrimdışı makine çevirisi / Offline machine translation
+#                         pip install argostranslate
+#
+# pyinstaller           # Windows EXE oluşturma / Build Windows executable
+#                         pip install pyinstaller

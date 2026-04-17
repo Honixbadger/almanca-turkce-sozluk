@@ -1,0 +1,50 @@
+name: "Hatalı Çeviri / Wrong Translation"
+description: "Yanlış veya eksik bir çeviri bildirin / Report a wrong or missing translation"
+title: "[HATA] "
+labels: ["translation-error", "data-quality"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Hatalı çeviri bildirimi için teşekkürler!
+        Thank you for reporting a translation error!
+
+  - type: input
+    id: almanca_kelime
+    attributes:
+      label: "Almanca Kelime / German Word"
+      placeholder: "z.B. Kupplung"
+    validations:
+      required: true
+
+  - type: input
+    id: mevcut_ceviri
+    attributes:
+      label: "Mevcut (Hatalı) Çeviri / Current (Wrong) Translation"
+      placeholder: "Sözlükte şu an ne yazıyor / What currently shows in the dictionary"
+    validations:
+      required: true
+
+  - type: input
+    id: dogru_ceviri
+    attributes:
+      label: "Doğru Çeviri / Correct Translation"
+      placeholder: "Doğru Türkçe karşılık / Correct Turkish equivalent"
+    validations:
+      required: true
+
+  - type: textarea
+    id: aciklama
+    attributes:
+      label: "Açıklama / Explanation"
+      placeholder: "Neden hatalı olduğunu açıklayın / Explain why the current translation is wrong"
+    validations:
+      required: false
+
+  - type: input
+    id: kaynak
+    attributes:
+      label: "Referans Kaynak / Reference Source"
+      placeholder: "Duden, DWDS, Langenscheidt, vb. / Duden, DWDS, Langenscheidt, etc."
+    validations:
+      required: false

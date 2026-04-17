@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tasarım 4 — Yoğun Liste (Wiktionary)</title>
+<style>
+:root {
+  --bg: #f8f9fa;
+  --surface: #fff;
+  --border: #dde1e7;
+  --ink: #202124;
+  --muted: #5f6368;
+  --brand: #1a73e8;
+  --brand-bg: #e8f0fe;
+  --green: #188038;
+  --green-bg: #e6f4ea;
+  --orange: #b06000;
+  --orange-bg: #fef7e0;
+  --red: #c5221f;
+  --red-bg: #fce8e6;
+  --teal: #007b83;
+  --teal-bg: #e0f5f5;
+  --radius: 8px;
+  --shadow: 0 1px 6px rgba(60,64,67,.15), 0 2px 8px rgba(60,64,67,.07);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Google Sans', 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--ink); font-size: 14px; }
+
+/* TOPBAR */
+.topbar { background: var(--surface); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 20; box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
+.topbar-inner { max-width: 1100px; margin: 0 auto; padding: 10px 20px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.logo { font-size: 1.1rem; font-weight: 700; color: var(--ink); white-space: nowrap; display: flex; align-items: center; gap: 6px; }
+.logo-flag { font-size: 1.1rem; }
+.search-wrap { flex: 1; max-width: 520px; display: flex; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--bg); transition: box-shadow 0.2s; }
+.search-wrap:focus-within { box-shadow: 0 0 0 2px var(--brand); background: #fff; }
+.search-wrap input { flex: 1; padding: 9px 14px; border: none; background: transparent; font-size: 14px; color: var(--ink); outline: none; }
+.search-wrap button { padding: 8px 14px; background: var(--brand); color: #fff; border: none; cursor: pointer; font-size: 13px; font-weight: 600; }
+
+.filter-bar { width: 100%; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; padding: 6px 0 2px; border-top: 1px solid var(--border); margin-top: 6px; }
+.filter-label { font-size: 12px; color: var(--muted); font-weight: 500; margin-right: 4px; }
+.pill { padding: 4px 12px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); font-size: 12px; cursor: pointer; color: var(--muted); transition: all 0.13s; white-space: nowrap; }
+.pill:hover { border-color: var(--brand); color: var(--brand); }
+.pill.on { background: var(--brand); color: #fff; border-color: var(--brand); }
+.result-count { font-size: 12px; color: var(--muted); margin-left: auto; }
+
+/* LAYOUT */
+.layout { max-width: 1100px; margin: 0 auto; padding: 16px 20px 60px; display: grid; grid-template-columns: 200px 1fr; gap: 20px; }
+
+/* CATEGORY PANE */
+.cat-pane { }
+.cat-section { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; margin-bottom: 14px; box-shadow: var(--shadow); }
+.cat-heading { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 10px; }
+.cat-item { display: flex; justify-content: space-between; align-items: center; padding: 5px 8px; border-radius: 4px; cursor: pointer; font-size: 12.5px; color: var(--ink); transition: background 0.12s; }
+.cat-item:hover { background: var(--bg); }
+.cat-item.active { background: var(--brand-bg); color: var(--brand); font-weight: 600; }
+.cat-count { font-size: 11px; color: var(--muted); background: var(--bg); padding: 1px 6px; border-radius: 10px; }
+
+/* LIST PANE */
+.list-pane { }
+.list-section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.list-section-title { font-size: 13px; font-weight: 600; color: var(--muted); }
+.sort-btn { font-size: 12px; padding: 3px 10px; border: 1px solid var(--border); border-radius: 4px; background: var(--surface); cursor: pointer; color: var(--muted); }
+.sort-btn:hover { background: var(--bg); }
+
+/* ENTRY ROW */
+.entry { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 6px; overflow: hidden; transition: box-shadow 0.15s; box-shadow: var(--shadow); }
+.entry:hover { box-shadow: 0 2px 10px rgba(0,0,0,0.12); }
+.entry-row { display: grid; grid-template-columns: 180px 1fr auto; align-items: center; padding: 10px 14px; gap: 12px; cursor: pointer; }
+.entry-left { display: flex; align-items: baseline; gap: 8px; }
+.ew { font-size: 15px; font-weight: 700; color: var(--ink); font-family: Georgia, serif; }
+.ea { font-size: 12px; font-weight: 600; }
+.ea-der { color: var(--brand); }
+.ea-die { color: var(--red); }
+.ea-das { color: var(--green); }
+.epos { display: inline-block; padding: 2px 7px; border-radius: 3px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+.epos-isim { background: var(--brand-bg); color: var(--brand); }
+.epos-fiil { background: var(--green-bg); color: var(--green); }
+.epos-sıfat { background: var(--orange-bg); color: var(--orange); }
+.epos-zarf { background: var(--teal-bg); color: var(--teal); }
+.epos-default { background: var(--bg); color: var(--muted); }
+.emid { }
+.etr { font-size: 13px; font-weight: 600; color: var(--brand); }
+.edesc { font-size: 12px; color: var(--muted); margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 400px; }
+.eright { display: flex; align-items: center; gap: 8px; }
+.ecats { display: flex; gap: 4px; }
+.ecat { font-size: 11px; padding: 2px 7px; border-radius: 3px; background: var(--bg); color: var(--muted); white-space: nowrap; }
+.expand-icon { color: var(--muted); font-size: 12px; transition: transform 0.2s; }
+.entry.open .expand-icon { transform: rotate(180deg); }
+.entry-expand { display: none; border-top: 1px solid var(--border); padding: 14px 16px; background: #fafbfc; }
+.entry.open .entry-expand { display: block; }
+
+.expand-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.expand-section { }
+.expand-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 8px; border-bottom: 1px solid var(--border); padding-bottom: 4px; }
+.example-list { list-style: none; display: grid; gap: 8px; }
+.example-list li { }
+.ex-de { font-size: 13px; color: var(--ink); font-style: italic; }
+.ex-de mark { background: rgba(26,115,232,0.1); color: var(--brand); border-radius: 2px; padding: 0 2px; font-style: normal; font-weight: 600; }
+.ex-tr { font-size: 12px; color: var(--muted); margin-top: 3px; }
+.gram-table { font-size: 12.5px; border-collapse: collapse; }
+.gram-table td { padding: 4px 12px 4px 0; vertical-align: top; }
+.gram-table td:first-child { color: var(--muted); font-weight: 500; width: 110px; }
+.syn-wrap { display: flex; flex-wrap: wrap; gap: 5px; }
+.syn-t { font-size: 12px; padding: 3px 9px; border: 1px solid var(--border); border-radius: 4px; cursor: pointer; transition: all 0.13s; }
+.syn-t:hover { background: var(--brand); color: #fff; border-color: var(--brand); }
+
+@media (max-width: 800px) {
+  .layout { grid-template-columns: 1fr; }
+  .cat-pane { display: none; }
+  .entry-row { grid-template-columns: 1fr auto; }
+  .expand-cols { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="logo"><span class="logo-flag">🇩🇪</span> Almanca-Türkçe Sözlük</div>
+    <div class="search-wrap">
+      <input type="search" id="q" placeholder="Kelime, çeviri veya tanım ara…" oninput="onSearch(this.value)">
+      <button>Ara</button>
+    </div>
+    <div class="result-count" id="rc">10 sonuç</div>
+  </div>
+  <div class="topbar-inner" style="padding-top:0">
+    <div class="filter-bar">
+      <span class="filter-label">Tür:</span>
+      <button class="pill on" onclick="setPos('',this)">Tümü</button>
+      <button class="pill" onclick="setPos('isim',this)">İsim</button>
+      <button class="pill" onclick="setPos('fiil',this)">Fiil</button>
+      <button class="pill" onclick="setPos('sıfat',this)">Sıfat</button>
+      <button class="pill" onclick="setPos('zarf',this)">Zarf</button>
+    </div>
+  </div>
+</div>
+
+<div class="layout">
+  <aside class="cat-pane">
+    <div class="cat-section">
+      <div class="cat-heading">Kategoriler</div>
+      <div class="cat-item active" onclick="setCat('',this)">Tüm kategoriler <span class="cat-count" id="cc-all">10</span></div>
+      <div class="cat-item" onclick="setCat('ulaşım',this)">Ulaşım <span class="cat-count">3</span></div>
+      <div class="cat-item" onclick="setCat('günlük hayat',this)">Günlük hayat <span class="cat-count">4</span></div>
+      <div class="cat-item" onclick="setCat('sosyal hayat',this)">Sosyal hayat <span class="cat-count">1</span></div>
+      <div class="cat-item" onclick="setCat('meslek',this)">Meslek <span class="cat-count">1</span></div>
+      <div class="cat-item" onclick="setCat('eğitim',this)">Eğitim <span class="cat-count">1</span></div>
+    </div>
+    <div class="cat-section">
+      <div class="cat-heading">Hızlı filtre</div>
+      <div class="cat-item" onclick="filterExamples()">Örnek cümleli</div>
+      <div class="cat-item" onclick="filterSynonyms()">Eş anlamlılı</div>
+    </div>
+  </aside>
+
+  <div class="list-pane">
+    <div class="list-section-header">
+      <span class="list-section-title" id="list-label">10 sonuç</span>
+    </div>
+    <div id="entries"></div>
+  </div>
+</div>
+
+<script>
+const ENTRIES = [
+  { almanca:"Fahrrad", artikel:"das", turkce:"bisiklet", tur:"isim", cogul:"Fahrräder", genitiv:"Fahrrads", kategoriler:["ulaşım"], anlam:"İki tekerlekli, pedallarla hareket ettirilen kişisel ulaşım aracı.", esanlamlilar:["Rad","Velo"], ornekler:[{almanca:"Ich fahre jeden Tag mit dem Fahrrad zur Schule.",turkce:"Her gün bisikletle okula gidiyorum."},{almanca:"Das Fahrrad ist umgefallen.",turkce:"Bisiklet devrildi."}]},
+  { almanca:"schön", turkce:"güzel", tur:"sıfat", komparativ:"schöner", superlativ:"am schönsten", kategoriler:["günlük hayat"], anlam:"Estetik açıdan hoş olan, göze hitap eden.", esanlamlilar:["hübsch","wunderschön"], ornekler:[{almanca:"Das Wetter ist heute sehr schön.",turkce:"Hava bugün çok güzel."},{almanca:"Sie hat ein schönes Kleid an.",turkce:"Üzerinde güzel bir elbise var."},{almanca:"Der Blick vom Berg ist wunderschön.",turkce:"Dağdan manzara muhteşem."}]},
+  { almanca:"fahren", turkce:"sürmek, gitmek", tur:"fiil", partizip2:"gefahren", kategoriler:["ulaşım","günlük hayat"], anlam:"Bir araç kullanarak bir yerden bir yere gitmek.", esanlamlilar:["reisen","lenken"], ornekler:[{almanca:"Wir fahren morgen nach Berlin.",turkce:"Yarın Berlin'e gidiyoruz."},{almanca:"Er fährt gern Auto.",turkce:"Araba sürmekten hoşlanır."}]},
+  { almanca:"Freundschaft", artikel:"die", turkce:"dostluk, arkadaşlık", tur:"isim", cogul:"Freundschaften", kategoriler:["sosyal hayat"], anlam:"Karşılıklı sevgi, güven ve saygıya dayalı kişiler arası bağ.", esanlamlilar:["Kameradschaft","Verbundenheit"], ornekler:[{almanca:"Unsere Freundschaft hält seit zwanzig Jahren.",turkce:"Dostluğumuz yirmi yıldır devam ediyor."},{almanca:"Wahre Freundschaft ist selten.",turkce:"Gerçek dostluk nadirdir."}]},
+  { almanca:"Fenster", artikel:"das", turkce:"pencere", tur:"isim", cogul:"Fenster", genitiv:"Fensters", anlam:"Bir yapının duvarında ışık ve hava geçişine yarayan açıklık.", ornekler:[{almanca:"Bitte mach das Fenster zu!",turkce:"Lütfen pencereyi kapat!"},{almanca:"Durch das Fenster sehe ich den Garten.",turkce:"Pencereden bahçeyi görüyorum."}]},
+  { almanca:"arbeiten", turkce:"çalışmak", tur:"fiil", partizip2:"gearbeitet", kategoriler:["meslek","günlük hayat"], anlam:"Bir amaç doğrultusunda fiziksel ya da zihinsel çaba harcamak.", esanlamlilar:["tätig sein","werken"], ornekler:[{almanca:"Sie arbeitet als Ärztin in einem Krankenhaus.",turkce:"Bir hastanede doktor olarak çalışıyor."},{almanca:"Ich arbeite jeden Tag von neun bis fünf.",turkce:"Her gün dokuzdan beşe kadar çalışıyorum."},{almanca:"Hast du heute viel gearbeitet?",turkce:"Bugün çok çalıştın mı?"}]},
+  { almanca:"Bahnhof", artikel:"der", turkce:"istasyon, tren garı", tur:"isim", cogul:"Bahnhöfe", genitiv:"Bahnhofs", kategoriler:["ulaşım"], anlam:"Trenlerin yolcu indirip bindirdiği bina ve çevresindeki alan.", ornekler:[{almanca:"Wir treffen uns am Bahnhof um drei Uhr.",turkce:"Saat üçte istasyonda buluşuyoruz."},{almanca:"Der Bahnhof ist sehr groß.",turkce:"İstasyon çok büyük."}]},
+  { almanca:"schnell", turkce:"hızlı, çabuk", tur:"sıfat", komparativ:"schneller", superlativ:"am schnellsten", kategoriler:["günlük hayat"], anlam:"Az zaman alan, yüksek hızda gerçekleşen.", esanlamlilar:["rasch","flott"], ornekler:[{almanca:"Das Auto fährt sehr schnell.",turkce:"Araba çok hızlı gidiyor."},{almanca:"Kannst du bitte schneller kommen?",turkce:"Lütfen daha hızlı gelebilir misin?"}]},
+  { almanca:"Wasser", artikel:"das", turkce:"su", tur:"isim", kategoriler:["doğa","günlük hayat"], anlam:"Renksiz, kokusuz, tatsız olan temel sıvı element.", ornekler:[{almanca:"Kannst du mir ein Glas Wasser geben?",turkce:"Bana bir bardak su verir misin?"},{almanca:"Das Wasser im Fluss ist klar.",turkce:"Nehirdeki su berrak."}]},
+  { almanca:"lesen", turkce:"okumak", tur:"fiil", partizip2:"gelesen", kategoriler:["eğitim","kültür"], anlam:"Yazılı metni gözle izleyerek anlamak.", esanlamlilar:["studieren"], ornekler:[{almanca:"Er liest jeden Abend ein Buch.",turkce:"Her akşam bir kitap okur."},{almanca:"Ich lese gerade einen Roman auf Deutsch.",turkce:"Şu an Almanca bir roman okuyorum."}]},
+];
+
+let filtered = [...ENTRIES];
+let activePOS = '', activeCat = '';
+let openSet = new Set();
+
+function posCls(p) { return 'epos-'+(p||'default'); }
+function artikelCls(a) { return a ? 'ea-'+a : ''; }
+
+function hl(text, word) {
+  if (!word || word.length < 2) return text;
+  return text.replace(new RegExp('(' + word.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'gi'), '<mark>$1</mark>');
+}
+
+function render() {
+  const q = document.getElementById('q').value.trim();
+  const cnt = filtered.length;
+  document.getElementById('rc').textContent = cnt + ' sonuç';
+  document.getElementById('list-label').textContent = cnt + ' sonuç';
+
+  document.getElementById('entries').innerHTML = filtered.map((e,i) => {
+    const isOpen = openSet.has(i);
+    const artCls = e.artikel ? artikelCls(e.artikel) : '';
+    const cats = (e.kategoriler||[]).slice(0,2);
+    let gramRows = [];
+    if (e.cogul) gramRows.push(['Çoğul', e.cogul]);
+    if (e.genitiv) gramRows.push(['Genitiv', e.genitiv]);
+    if (e.partizip2) gramRows.push(['Partizip II', e.partizip2]);
+    if (e.komparativ) gramRows.push(['Komparativ', e.komparativ]);
+    if (e.superlativ) gramRows.push(['Superlativ', e.superlativ]);
+
+    return `<div class="entry${isOpen?' open':''}" id="en-${i}">
+      <div class="entry-row" onclick="toggle(${i})">
+        <div class="entry-left">
+          ${e.artikel ? `<span class="ea ${artCls}">${e.artikel}</span>` : ''}
+          <span class="ew">${hl(e.almanca, q)}</span>
+        </div>
+        <div class="emid">
+          <div class="etr">${e.turkce}</div>
+          ${e.anlam ? `<div class="edesc">${e.anlam}</div>` : ''}
+        </div>
+        <div class="eright">
+          <span class="epos ${posCls(e.tur)}">${e.tur}</span>
+          <div class="ecats">${cats.map(c=>`<span class="ecat">${c}</span>`).join('')}</div>
+          <span class="expand-icon">▼</span>
+        </div>
+      </div>
+      ${isOpen ? `<div class="entry-expand">
+        <div class="expand-cols">
+          <div class="expand-section">
+            <div class="expand-label">Örnek Cümleler</div>
+            <ul class="example-list">
+              ${(e.ornekler||[]).map(ex=>`<li>
+                <div class="ex-de">${hl(ex.almanca, e.almanca)}</div>
+                <div class="ex-tr">${ex.turkce||'<em>çeviri bekleniyor</em>'}</div>
+              </li>`).join('')}
+            </ul>
+          </div>
+          <div class="expand-section">
+            ${gramRows.length ? `<div class="expand-label">Dilbilgisi</div>
+            <table class="gram-table">
+              ${gramRows.map(([l,v])=>`<tr><td>${l}</td><td>${v}</td></tr>`).join('')}
+            </table>` : ''}
+            ${e.esanlamlilar&&e.esanlamlilar.length ? `<div class="expand-label" style="margin-top:14px">Eş Anlamlılar</div>
+            <div class="syn-wrap">${e.esanlamlilar.map(s=>`<span class="syn-t">${s}</span>`).join('')}</div>` : ''}
+          </div>
+        </div>
+      </div>` : ''}
+    </div>`;
+  }).join('');
+}
+
+function toggle(i) {
+  if (openSet.has(i)) openSet.delete(i); else openSet.add(i);
+  render();
+}
+
+function applyFilters() {
+  const q = document.getElementById('q').value.toLowerCase();
+  filtered = ENTRIES.filter(e => {
+    if (activePOS && e.tur !== activePOS) return false;
+    if (activeCat && !(e.kategoriler||[]).includes(activeCat)) return false;
+    if (!q) return true;
+    return e.almanca.toLowerCase().includes(q) || e.turkce.toLowerCase().includes(q) || (e.anlam||'').toLowerCase().includes(q);
+  });
+  openSet.clear();
+  render();
+}
+
+function onSearch(q) { applyFilters(); }
+function setPos(pos, btn) {
+  activePOS = pos;
+  document.querySelectorAll('.pill').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  applyFilters();
+}
+function setCat(cat, item) {
+  activeCat = cat;
+  document.querySelectorAll('.cat-item').forEach(b=>b.classList.remove('active'));
+  item.classList.add('active');
+  applyFilters();
+}
+function filterExamples() { filtered = filtered.filter(e=>e.ornekler&&e.ornekler.length); render(); }
+function filterSynonyms() { filtered = filtered.filter(e=>e.esanlamlilar&&e.esanlamlilar.length); render(); }
+
+render();
+</script>
+</body>
+</html>

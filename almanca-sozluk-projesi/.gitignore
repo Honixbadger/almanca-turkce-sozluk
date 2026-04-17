@@ -37,6 +37,66 @@ data/interim/
 output/definition_index_tr.json
 output/definition_index_de.json
 
+# ─── Geçici İşlem Dosyaları / Temporary Processing Files ─────────────────────
+# Zenginleştirme checkpoint dosyaları
+output/*_checkpoint*.json
+output/baglamlar_checkpoint.json
+output/groq_tr_checkpoint*.json
+output/dewikt_*_checkpoint.json
+output/dwds_syn_checkpoint.json
+# Yedek dosyalar / Backup files
+output/dictionary.backup-*.json
+output/dictionary.jsonl.bak_*
+output/dictionary.csv
+# DWDS önbellek / DWDS cache
+output/dwds_wp_cache/
+# Geçici raporlar / Temporary reports
+output/cleanup_*.json
+output/deep_research_*.json
+output/deep_research_*.csv
+output/deep_research_*.jsonl
+output/curated_deep_research_*.json
+output/curated_deep_research_*.md
+output/derivational_pairs_*.json
+output/definition_availability.json
+output/definition_enrichment_report.json
+output/definition_quality_report_*.json
+output/dictionary_quality_report*.json
+output/duplicates_report.json
+output/groq_quality_filter_report.json
+output/dwds_verb_validation_report*.json
+output/codex/
+# Manuel veri geçici dosyaları
+data/manual/auto_phrase_report.json
+data/manual/ipa_checkpoint.json
+data/manual/phrase_candidates_*.json
+data/fetch_manifest.json
+# Ham veri indirmeleri (tamamı — büyük dosyalar)
+data/raw/
+# Ek rapor dosyaları
+output/*_report*.json
+output/*_report*.md
+output/*_fixes_*.json
+output/*_review_*.json
+output/*_suggestions_*.json
+output/high_confidence_*.json
+output/manual_*.json
+output/manual_*.md
+output/phrase_candidates_*.json
+output/local_baglamlar*.json
+output/priority_enrichment_summary.json
+output/safe_until_noon_summary.json
+output/source_summary.json
+output/source_summary.md
+output/top_translation_reselection_preview.json
+output/ubertreffen_priority_update_*.json
+output/verb_forms_dryrun_*.json
+output/valid_groq_key.txt
+output/quality_reports/
+
+# ─── Claude Code Yapılandırması ───────────────────────────────────────────────
+.claude/
+
 # ─── Log Dosyaları ───────────────────────────────────────────────────────────
 logs/
 *.log

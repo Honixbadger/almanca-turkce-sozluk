@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Almanca-Türkçe Sözlük</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="search-dock">
+    <div class="search-dock-inner">
+      <div class="search-dock-head">
+        <div class="search-dock-copy">
+          <p class="eyebrow">Almanca-Türkçe Sözlük</p>
+          <p class="hero-text">Arama çubuğu üstte sabit kalır. Araçlar butonla yan panelden açılır.</p>
+        </div>
+
+        <label class="search-hero" for="search-input">
+          <span class="search-hero-label">Ara</span>
+          <input id="search-input" type="search" placeholder="Almanca, Türkçe, açıklama, kaynak veya not ara">
+        </label>
+      </div>
+
+      <div class="toolbar-strip" aria-label="Hızlı araçlar">
+        <button class="toolbar-button" type="button" data-open-panel="filters">Filtreler</button>
+        <button class="toolbar-button" type="button" data-open-panel="theme">Arka Plan</button>
+        <button class="toolbar-button" type="button" data-open-panel="sources">Kaynak Dağılımı</button>
+        <button class="toolbar-button" type="button" data-open-panel="usage">Kullanım</button>
+        <button class="toolbar-button" type="button" data-open-panel="entry">Yeni Kelime</button>
+        <button class="toolbar-button toolbar-button-ai" type="button" data-open-panel="ai-import">URL'den Aktar</button>
+        <a class="toolbar-button toolbar-link" href="./editor.html">Arayüz Editörü</a>
+      </div>
+
+      <div class="hero-stats" id="hero-stats">
+        <div class="stat-card">
+          <span class="stat-label">Kart</span>
+          <strong class="stat-value" id="total-count">-</strong>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Görünen</span>
+          <strong class="stat-value" id="visible-count">-</strong>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Kaynak</span>
+          <strong class="stat-value" id="source-count">-</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="app-shell">
+    <aside id="sidebar" class="sidebar" aria-label="Yan menü">
+      <div class="sidebar-sheet">
+        <div class="sidebar-sheet-head">
+          <div>
+            <p class="eyebrow">Almanca-Türkçe Sözlük</p>
+            <h1>Araçlar</h1>
+          </div>
+          <button id="menu-close" class="sheet-close" type="button" aria-label="Menüyü kapat">×</button>
+        </div>
+
+        <details id="panel-filters" class="side-section">
+          <summary>Filtreler</summary>
+          <section class="controls">
+            <label class="select-box">
+              <span>Tür</span>
+              <select id="pos-filter">
+                <option value="">Tüm türler</option>
+              </select>
+            </label>
+
+            <label class="select-box">
+              <span>Kaynak</span>
+              <select id="source-filter">
+                <option value="">Tüm kaynaklar</option>
+              </select>
+            </label>
+
+            <label class="select-box">
+              <span>Kategori</span>
+              <select id="category-filter">
+                <option value="">Tüm kategoriler</option>
+              </select>
+            </label>
+
+            <label class="toggle-box">
+              <input id="note-only" type="checkbox">
+              <span>Sadece notlu kayıtlar</span>
+            </label>
+
+            <label class="toggle-box">
+              <input id="examples-toggle" type="checkbox">
+              <span>Örnek cümleleri göster</span>
+            </label>
+
+            <label class="toggle-box">
+              <input id="admin-mode-toggle" type="checkbox">
+              <span>Kaynak notlarını göster</span>
+            </label>
+          </section>
+        </details>
+
+        <details id="panel-theme" class="side-section">
+          <summary>Arka Plan</summary>
+          <div class="summary-panel">
+            <p class="summary-copy">Tema seçimi tarayıcıda saklanır. Arama sırasında kart ve arka plan renkleri sabit kalır.</p>
+            <div id="theme-swatches" class="theme-swatches"></div>
+          </div>
+        </details>
+
+        <details id="panel-sources" class="side-section">
+          <summary>Kaynak Dağılımı</summary>
+          <div class="summary-panel">
+            <p class="summary-copy">Tek bir kayıt birden fazla kaynağa dayanabilir.</p>
+            <div id="source-chips" class="chip-grid"></div>
+          </div>
+        </details>
+
+        <details id="panel-usage" class="side-section">
+          <summary>Kullanım</summary>
+          <div class="summary-panel">
+            <p class="summary-copy">
+              Üstteki sabit arama kutusu yazdıkça filtreler. Kartların içindeki kaynak ve çeviri düğmeleri ilgili saklı sekmeleri açar.
+              İlgili kayıt etiketine tıklarsan arama otomatik o terime döner.
+            </p>
+          </div>
+        </details>
+
+        <details id="panel-entry" class="side-section">
+          <summary>Yeni Kelime</summary>
+          <div class="summary-panel entry-builder-panel">
+            <p class="summary-copy">Yeni kayıt ekle. Kategori tahmini arka planda otomatik üretilir.</p>
+            <form id="entry-form" class="entry-form">
+              <label class="select-box">
+                <span>Tür</span>
+                <select id="entry-pos" required>
+                  <option value="isim">isim</option>
+                  <option value="fiil">fiil</option>
+                  <option value="sıfat">sıfat</option>
+                  <option value="zarf">zarf</option>
+                  <option value="ifade">ifade</option>
+                  <option value="edat">edat</option>
+                  <option value="zamir">zamir</option>
+                  <option value="bağlaç">bağlaç</option>
+                  <option value="ünlem">ünlem</option>
+                  <option value="kısaltma">kısaltma</option>
+                </select>
+              </label>
+
+              <label class="select-box">
+                <span>Artikel</span>
+                <select id="entry-article">
+                  <option value="">yok</option>
+                  <option value="der">der</option>
+                  <option value="die">die</option>
+                  <option value="das">das</option>
+                </select>
+              </label>
+
+              <label class="search-box">
+                <span>Almanca</span>
+                <input id="entry-german" type="text" required placeholder="Ör. Scheinwerfer">
+              </label>
+
+              <label class="search-box">
+                <span>Türkçe</span>
+                <input id="entry-turkish" type="text" required placeholder="Ör. far">
+              </label>
+
+              <label class="search-box entry-form-wide">
+                <span>Kısa Açıklama</span>
+                <input id="entry-description" type="text" placeholder="İsteğe bağlı kısa açıklama">
+              </label>
+
+              <label class="search-box entry-form-wide">
+                <span>Not</span>
+                <input id="entry-note" type="text" placeholder="İsteğe bağlı not">
+              </label>
+
+              <div class="entry-form-footer entry-form-wide">
+                <div class="entry-form-status">
+                  <p id="entry-category-preview" class="entry-category-preview">Algılanan kategori: -</p>
+                  <p id="entry-form-message" class="entry-form-message"></p>
+                </div>
+                <button id="entry-submit" class="entry-submit" type="submit">Kelimeyi Ekle</button>
+              </div>
+            </form>
+          </div>
+        </details>
+
+        <details id="panel-ai-import" class="side-section">
+          <summary>URL'den Kelime Aktar (AI)</summary>
+          <div class="summary-panel ai-import-panel">
+            <p class="summary-copy">Bir Almanca sayfanın URL'sini girin. Gemini AI metni analiz edip kelimeleri çıkaracak.</p>
+
+            <label class="search-box">
+              <span>Gemini API Key</span>
+              <input id="ai-api-key" type="password" placeholder="API key'inizi yapıştırın">
+            </label>
+            <p class="ai-import-hint">Key <a href="https://aistudio.google.com/apikey" target="_blank" rel="noreferrer">aistudio.google.com</a> adresinden ücretsiz alınabilir.</p>
+
+            <label class="search-box">
+              <span>URL</span>
+              <input id="ai-import-url" type="url" placeholder="https://de.wikipedia.org/wiki/Automobil">
+            </label>
+
+            <div class="ai-import-actions">
+              <button id="ai-import-scan" class="entry-submit" type="button">Tara</button>
+              <span id="ai-import-status" class="ai-import-status"></span>
+            </div>
+
+            <div id="ai-import-results" class="ai-import-results" hidden>
+              <div class="ai-import-results-header">
+                <p id="ai-import-summary" class="ai-import-summary"></p>
+                <label class="toggle-box ai-import-select-all-box">
+                  <input id="ai-import-select-all" type="checkbox" checked>
+                  <span>Tümünü seç</span>
+                </label>
+              </div>
+              <div class="ai-import-table-wrap">
+                <table class="ai-import-table">
+                  <thead>
+                    <tr>
+                      <th class="ai-col-check"></th>
+                      <th class="ai-col-word">Almanca</th>
+                      <th class="ai-col-translation">Türkçe</th>
+                      <th class="ai-col-pos">Tür</th>
+                      <th class="ai-col-article">Artikel</th>
+                    </tr>
+                  </thead>
+                  <tbody id="ai-import-tbody"></tbody>
+                </table>
+              </div>
+              <div class="ai-import-save-row">
+                <button id="ai-import-save" class="entry-submit" type="button">Seçilenleri Sözlüğe Ekle</button>
+                <span id="ai-import-save-status" class="ai-import-status"></span>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+    </aside>
+
+    <div id="sidebar-backdrop" class="sidebar-backdrop" hidden></div>
+
+    <main class="content-shell">
+      <div id="result-meta" class="result-meta">Veri yükleniyor...</div>
+      <div id="results" class="results"></div>
+    </main>
+  </div>
+
+  <template id="card-template">
+    <article class="entry-card">
+      <div class="entry-topline">
+        <span class="entry-pos"></span>
+        <span class="entry-source"></span>
+      </div>
+
+      <div class="entry-word-row">
+        <h3 class="entry-word"></h3>
+        <span class="entry-ipa"></span>
+        <button class="definition-toggle definition-toggle-word" type="button" data-kind="de" title="Almanca tanımı">+</button>
+      </div>
+
+      <p class="entry-morph"></p>
+
+      <ol class="entry-variants"></ol>
+
+      <div class="entry-grammar-block">
+        <span class="entry-grammar-title">Dilbilgisi</span>
+        <div class="entry-grammar"></div>
+      </div>
+
+      <div class="entry-translation-row">
+        <p class="entry-translation"></p>
+        <button class="definition-toggle definition-toggle-translation" type="button" data-kind="tr" title="Türkçe tanımı">+</button>
+      </div>
+
+      <div class="entry-definition-stack">
+        <section class="definition-panel" data-definition-panel="de" hidden></section>
+        <section class="definition-panel" data-definition-panel="tr" hidden></section>
+      </div>
+
+      <div class="entry-categories"></div>
+      <p class="entry-translation-desc"></p>
+      <ol class="entry-anlamlar"></ol>
+      <div class="entry-sinonim"></div>
+      <div class="entry-related"></div>
+      <section class="entry-examples"></section>
+
+      <details class="entry-konjugation">
+        <summary class="entry-konjugation-toggle">Çekim Tablosu</summary>
+        <div class="entry-konjugation-body"></div>
+      </details>
+
+      <div class="entry-detail-nav">
+        <button class="detail-chip" type="button" data-detail-toggle="sources">Kaynak</button>
+        <button class="detail-chip" type="button" data-detail-toggle="translation">Çeviri</button>
+      </div>
+
+      <div class="entry-detail-stack">
+        <section class="detail-panel" data-detail-panel="sources" hidden></section>
+        <section class="detail-panel" data-detail-panel="translation" hidden></section>
+      </div>
+
+      <p class="entry-note"></p>
+    </article>
+  </template>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>

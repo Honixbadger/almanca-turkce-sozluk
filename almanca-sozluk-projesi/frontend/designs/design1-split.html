@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tasarım 1 — Split Pane (Langenscheidt)</title>
+<style>
+:root {
+  --bg: #f7f4ef;
+  --panel: #ffffff;
+  --border: #e0d8cc;
+  --ink: #1a1a1a;
+  --muted: #6b6460;
+  --brand: #1b5e3b;
+  --brand-light: #e8f5ee;
+  --warm: #9b4e1a;
+  --warm-light: #fdf0e7;
+  --accent: #d4af37;
+  --tag-bg: #eef7f2;
+  --list-hover: #f0ece5;
+  --list-active: #e8f5ee;
+  --shadow: 0 2px 12px rgba(0,0,0,0.07);
+  --radius: 10px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--ink); height: 100vh; overflow: hidden; display: flex; flex-direction: column; }
+
+/* TOP BAR */
+.topbar { display: flex; align-items: center; gap: 14px; padding: 10px 20px; background: var(--brand); border-bottom: 2px solid #154d30; z-index: 10; }
+.topbar-logo { color: #fff; font-size: 1rem; font-weight: 800; letter-spacing: 0.02em; white-space: nowrap; }
+.topbar-logo span { color: var(--accent); }
+.search-wrap { flex: 1; max-width: 640px; position: relative; }
+.search-wrap input { width: 100%; padding: 9px 16px 9px 40px; border: none; border-radius: 999px; background: rgba(255,255,255,0.15); color: #fff; font-size: 0.97rem; outline: none; }
+.search-wrap input::placeholder { color: rgba(255,255,255,0.55); }
+.search-wrap input:focus { background: rgba(255,255,255,0.22); }
+.search-icon { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); color: rgba(255,255,255,0.6); font-size: 1rem; }
+.topbar-stats { color: rgba(255,255,255,0.65); font-size: 0.8rem; white-space: nowrap; }
+.topbar-filters { display: flex; gap: 8px; }
+.filter-pill { border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 5px 12px; background: transparent; color: rgba(255,255,255,0.85); font-size: 0.8rem; cursor: pointer; }
+.filter-pill:hover { background: rgba(255,255,255,0.12); }
+
+/* SPLIT LAYOUT */
+.split { flex: 1; display: flex; overflow: hidden; }
+
+/* LEFT LIST */
+.list-pane { width: 320px; min-width: 280px; border-right: 1px solid var(--border); background: var(--panel); overflow-y: auto; flex-shrink: 0; }
+.list-pane::-webkit-scrollbar { width: 5px; }
+.list-pane::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+.list-header { padding: 12px 16px; border-bottom: 1px solid var(--border); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); background: #fbf9f6; }
+.list-item { display: flex; align-items: baseline; gap: 10px; padding: 12px 16px; border-bottom: 1px solid rgba(224,216,204,0.5); cursor: pointer; transition: background 0.12s; }
+.list-item:hover { background: var(--list-hover); }
+.list-item.active { background: var(--list-active); border-left: 3px solid var(--brand); padding-left: 13px; }
+.list-item-word { font-size: 1.05rem; font-weight: 700; color: var(--ink); font-family: Georgia, serif; }
+.list-item-pos { font-size: 0.72rem; background: var(--tag-bg); color: var(--brand); border-radius: 4px; padding: 2px 6px; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; flex-shrink: 0; }
+.list-item-tr { font-size: 0.85rem; color: var(--muted); margin-left: auto; text-align: right; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 110px; }
+.list-item-artikel { font-size: 0.75rem; color: var(--warm); font-weight: 600; flex-shrink: 0; }
+
+/* RIGHT DETAIL */
+.detail-pane { flex: 1; overflow-y: auto; padding: 0; }
+.detail-pane::-webkit-scrollbar { width: 6px; }
+.detail-pane::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+.detail-inner { max-width: 780px; margin: 0 auto; padding: 32px 36px 56px; }
+
+.detail-head { border-bottom: 2px solid var(--border); padding-bottom: 20px; margin-bottom: 24px; }
+.detail-pos-line { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
+.pos-badge { background: var(--brand); color: #fff; border-radius: 6px; padding: 3px 10px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; }
+.artikel-badge { background: var(--warm-light); color: var(--warm); border: 1px solid rgba(155,78,26,0.2); border-radius: 6px; padding: 3px 10px; font-size: 0.75rem; font-weight: 700; }
+.cat-badge { background: var(--brand-light); color: var(--brand); border-radius: 999px; padding: 3px 10px; font-size: 0.75rem; }
+.detail-word { font-family: Georgia, 'Times New Roman', serif; font-size: 2.8rem; font-weight: 700; line-height: 1; color: var(--ink); margin-bottom: 6px; }
+.detail-morph { font-size: 0.85rem; color: var(--muted); margin-bottom: 4px; }
+.detail-ipa { font-size: 0.9rem; color: var(--muted); font-style: italic; }
+
+.detail-translation { margin: 20px 0; padding: 14px 18px; background: var(--brand-light); border-left: 4px solid var(--brand); border-radius: 0 var(--radius) var(--radius) 0; }
+.detail-translation-word { font-size: 1.4rem; font-weight: 700; color: var(--brand); }
+.detail-translation-desc { font-size: 0.88rem; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+
+.section-title { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+
+.examples-block { margin: 24px 0; }
+.example-item { margin-bottom: 14px; padding: 14px 16px; background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
+.example-de { font-size: 0.97rem; color: var(--ink); line-height: 1.5; font-style: italic; }
+.example-de mark { background: rgba(27,94,59,0.12); padding: 1px 3px; border-radius: 3px; font-style: normal; font-weight: 600; color: var(--brand); }
+.example-tr { font-size: 0.87rem; color: var(--muted); margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--border); }
+.example-tr::before { content: "→ "; color: var(--brand); font-weight: 700; }
+
+.synonym-block { margin: 20px 0; }
+.syn-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.syn-chip { padding: 6px 14px; background: #f5f0e8; border: 1px solid var(--border); border-radius: 999px; font-size: 0.85rem; cursor: pointer; transition: all 0.14s; }
+.syn-chip:hover { background: var(--brand); color: #fff; border-color: var(--brand); }
+
+.grammar-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; margin-bottom: 24px; }
+.grammar-cell { padding: 10px 14px; background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); }
+.grammar-cell-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); font-weight: 700; }
+.grammar-cell-value { font-size: 0.95rem; font-weight: 600; color: var(--ink); margin-top: 4px; font-family: Georgia, serif; }
+
+.empty-detail { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: var(--muted); gap: 14px; }
+.empty-detail svg { opacity: 0.25; }
+.empty-detail p { font-size: 1rem; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-logo">Almanca<span>—</span>Türkçe</div>
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input type="search" id="search-input" placeholder="Kelime, çeviri veya açıklama ara…" oninput="filterEntries(this.value)">
+  </div>
+  <div class="topbar-stats" id="stats-label">28.912 kayıt</div>
+  <div class="topbar-filters">
+    <button class="filter-pill" onclick="filterPOS('')">Tümü</button>
+    <button class="filter-pill" onclick="filterPOS('isim')">İsim</button>
+    <button class="filter-pill" onclick="filterPOS('fiil')">Fiil</button>
+    <button class="filter-pill" onclick="filterPOS('sıfat')">Sıfat</button>
+  </div>
+</div>
+
+<div class="split">
+  <div class="list-pane">
+    <div class="list-header" id="list-header">Sonuçlar</div>
+    <div id="list-items"></div>
+  </div>
+  <div class="detail-pane">
+    <div class="detail-inner" id="detail-inner">
+      <div class="empty-detail">
+        <svg width="64" height="64" viewBox="0 0 64 64" fill="none"><rect x="8" y="12" width="48" height="40" rx="4" stroke="#999" stroke-width="2"/><line x1="16" y1="24" x2="32" y2="24" stroke="#999" stroke-width="2" stroke-linecap="round"/><line x1="16" y1="32" x2="40" y2="32" stroke="#999" stroke-width="2" stroke-linecap="round"/><line x1="16" y1="40" x2="36" y2="40" stroke="#999" stroke-width="2" stroke-linecap="round"/></svg>
+        <p>Listeden bir kelime seçin</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const ENTRIES = [
+  { almanca:"Fahrrad", artikel:"das", turkce:"bisiklet", tur:"isim", cogul:"Fahrräder", genitiv:"Fahrrads", kategoriler:["ulaşım"], anlam:"İki tekerlekli, pedallarla hareket ettirilen kişisel ulaşım aracı.", esanlamlilar:["Rad","Velo"], ornekler:[{almanca:"Ich fahre jeden Tag mit dem Fahrrad zur Schule.",turkce:"Her gün bisikletle okula gidiyorum."},{almanca:"Das Fahrrad ist umgefallen.",turkce:"Bisiklet devrildi."}]},
+  { almanca:"schön", turkce:"güzel", tur:"sıfat", komparativ:"schöner", superlativ:"am schönsten", kategoriler:["günlük hayat"], anlam:"Estetik açıdan hoş olan, göze hitap eden.", esanlamlilar:["hübsch","wunderschön"], ornekler:[{almanca:"Das Wetter ist heute sehr schön.",turkce:"Hava bugün çok güzel."},{almanca:"Sie hat ein schönes Kleid an.",turkce:"Üzerinde güzel bir elbise var."},{almanca:"Der Blick vom Berg ist wunderschön.",turkce:"Dağdan manzara muhteşem."}]},
+  { almanca:"fahren", turkce:"sürmek, gitmek", tur:"fiil", partizip2:"gefahren", kategoriler:["ulaşım","günlük hayat"], anlam:"Bir araç kullanarak bir yerden bir yere gitmek.", esanlamlilar:["reisen","lenken"], ornekler:[{almanca:"Wir fahren morgen nach Berlin.",turkce:"Yarın Berlin'e gidiyoruz."},{almanca:"Er fährt gern Auto.",turkce:"Araba sürmekten hoşlanır."}]},
+  { almanca:"Freundschaft", artikel:"die", turkce:"dostluk, arkadaşlık", tur:"isim", cogul:"Freundschaften", kategoriler:["sosyal hayat"], anlam:"Karşılıklı sevgi, güven ve saygıya dayalı kişiler arası bağ.", esanlamlilar:["Kameradschaft","Verbundenheit"], ornekler:[{almanca:"Unsere Freundschaft hält seit zwanzig Jahren.",turkce:"Dostluğumuz yirmi yıldır devam ediyor."},{almanca:"Wahre Freundschaft ist selten.",turkce:"Gerçek dostluk nadirdir."}]},
+  { almanca:"Fenster", artikel:"das", turkce:"pencere", tur:"isim", cogul:"Fenster", genitiv:"Fensters", anlam:"Bir yapının duvarında ışık ve hava geçişine yarayan açıklık.", ornekler:[{almanca:"Bitte mach das Fenster zu!",turkce:"Lütfen pencereyi kapat!"},{almanca:"Durch das Fenster sehe ich den Garten.",turkce:"Pencereden bahçeyi görüyorum."}]},
+  { almanca:"arbeiten", turkce:"çalışmak", tur:"fiil", partizip2:"gearbeitet", kategoriler:["meslek","günlük hayat"], anlam:"Bir amaç doğrultusunda fiziksel ya da zihinsel çaba harcamak.", esanlamlilar:["tätig sein","werken"], ornekler:[{almanca:"Sie arbeitet als Ärztin in einem Krankenhaus.",turkce:"Bir hastanede doktor olarak çalışıyor."},{almanca:"Ich arbeite jeden Tag von neun bis fünf.",turkce:"Her gün dokuzdan beşe kadar çalışıyorum."},{almanca:"Hast du heute viel gearbeitet?",turkce:"Bugün çok çalıştın mı?"}]},
+  { almanca:"Bahnhof", artikel:"der", turkce:"istasyon, tren garı", tur:"isim", cogul:"Bahnhöfe", genitiv:"Bahnhofs", kategoriler:["ulaşım"], anlam:"Trenlerin yolcu indirip bindirdiği bina ve çevresindeki alan.", ornekler:[{almanca:"Wir treffen uns am Bahnhof um drei Uhr.",turkce:"Saat üçte istasyonda buluşuyoruz."},{almanca:"Der Bahnhof ist sehr groß.",turkce:"İstasyon çok büyük."}]},
+  { almanca:"schnell", turkce:"hızlı, çabuk", tur:"sıfat", komparativ:"schneller", superlativ:"am schnellsten", kategoriler:["günlük hayat"], anlam:"Az zaman alan, yüksek hızda gerçekleşen.", esanlamlilar:["rasch","flott"], ornekler:[{almanca:"Das Auto fährt sehr schnell.",turkce:"Araba çok hızlı gidiyor."},{almanca:"Kannst du bitte schneller kommen?",turkce:"Lütfen daha hızlı gelebilir misin?"}]},
+  { almanca:"Wasser", artikel:"das", turkce:"su", tur:"isim", kategoriler:["doğa","günlük hayat"], anlam:"Renksiz, kokusuz, tatsız olan temel sıvı element.", ornekler:[{almanca:"Kannst du mir ein Glas Wasser geben?",turkce:"Bana bir bardak su verir misin?"},{almanca:"Das Wasser im Fluss ist klar.",turkce:"Nehirdeki su berrak."}]},
+  { almanca:"lesen", turkce:"okumak", tur:"fiil", partizip2:"gelesen", kategoriler:["eğitim","kültür"], anlam:"Yazılı metni gözle izleyerek anlamak.", esanlamlilar:["studieren"], ornekler:[{almanca:"Er liest jeden Abend ein Buch.",turkce:"Her akşam bir kitap okur."},{almanca:"Ich lese gerade einen Roman auf Deutsch.",turkce:"Şu an Almanca bir roman okuyorum."}]},
+];
+
+let filtered = [...ENTRIES];
+let activePOS = '';
+let activeIdx = -1;
+
+function highlight(text, word) {
+  if (!word || word.length < 2) return text;
+  const re = new RegExp('(' + word.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'gi');
+  return text.replace(re, '<mark>$1</mark>');
+}
+
+function renderList() {
+  const list = document.getElementById('list-items');
+  const hdr = document.getElementById('list-header');
+  hdr.textContent = filtered.length + ' sonuç';
+  list.innerHTML = filtered.map((e, i) => `
+    <div class="list-item${activeIdx === i ? ' active':''}" onclick="selectEntry(${i})">
+      <span class="list-item-word">${e.almanca}</span>
+      ${e.artikel ? `<span class="list-item-artikel">${e.artikel}</span>` : ''}
+      <span class="list-item-pos">${e.tur}</span>
+      <span class="list-item-tr">${e.turkce}</span>
+    </div>
+  `).join('');
+}
+
+function selectEntry(i) {
+  activeIdx = i;
+  renderList();
+  const e = filtered[i];
+  const q = document.getElementById('search-input').value.trim();
+  let html = `<div class="detail-head">
+    <div class="detail-pos-line">
+      <span class="pos-badge">${e.tur}</span>
+      ${e.artikel ? `<span class="artikel-badge">${e.artikel}</span>` : ''}
+      ${(e.kategoriler||[]).map(k=>`<span class="cat-badge">${k}</span>`).join('')}
+    </div>
+    <div class="detail-word">${highlight(e.almanca, q)}</div>
+    ${e.cogul ? `<div class="detail-morph">çoğul: ${e.cogul}${e.genitiv ? ' · genitiv: ' + e.genitiv : ''}</div>` : ''}
+    ${e.komparativ ? `<div class="detail-morph">karşılaştırma: ${e.komparativ} · en üst: ${e.superlativ||'—'}</div>` : ''}
+    ${e.partizip2 ? `<div class="detail-morph">Partizip II: ${e.partizip2}</div>` : ''}
+  </div>
+  <div class="detail-translation">
+    <div class="detail-translation-word">${e.turkce}</div>
+    ${e.anlam ? `<div class="detail-translation-desc">${e.anlam}</div>` : ''}
+  </div>`;
+
+  if (e.ornekler && e.ornekler.length) {
+    html += `<div class="examples-block"><div class="section-title">Örnek Cümleler</div>`;
+    e.ornekler.forEach(ex => {
+      html += `<div class="example-item">
+        <div class="example-de">${highlight(ex.almanca, e.almanca)}</div>
+        <div class="example-tr">${ex.turkce||'<em style="color:#aaa">çeviri bekleniyor…</em>'}</div>
+      </div>`;
+    });
+    html += `</div>`;
+  }
+
+  if (e.esanlamlilar && e.esanlamlilar.length) {
+    html += `<div class="synonym-block"><div class="section-title">Eş Anlamlılar</div>
+      <div class="syn-chips">${e.esanlamlilar.map(s=>`<span class="syn-chip">${s}</span>`).join('')}</div></div>`;
+  }
+
+  let grammar = [];
+  if (e.cogul) grammar.push({l:'Çoğul',v:e.cogul});
+  if (e.genitiv) grammar.push({l:'Genitiv',v:'-'+e.genitiv.slice(-2)});
+  if (e.partizip2) grammar.push({l:'Partizip II',v:e.partizip2});
+  if (e.komparativ) grammar.push({l:'Komparativ',v:e.komparativ});
+  if (e.superlativ) grammar.push({l:'Superlativ',v:e.superlativ});
+  if (grammar.length) {
+    html += `<div class="section-title">Dilbilgisi</div><div class="grammar-grid">`;
+    grammar.forEach(g => html += `<div class="grammar-cell"><div class="grammar-cell-label">${g.l}</div><div class="grammar-cell-value">${g.v}</div></div>`);
+    html += `</div>`;
+  }
+
+  document.getElementById('detail-inner').innerHTML = html;
+  document.querySelector('.detail-pane').scrollTop = 0;
+}
+
+function filterEntries(q) {
+  const ql = q.toLowerCase();
+  filtered = ENTRIES.filter(e => {
+    if (activePOS && e.tur !== activePOS) return false;
+    if (!q) return true;
+    return e.almanca.toLowerCase().includes(ql) || e.turkce.toLowerCase().includes(ql) || (e.anlam||'').toLowerCase().includes(ql);
+  });
+  activeIdx = -1;
+  renderList();
+  document.getElementById('detail-inner').innerHTML = '<div class="empty-detail"><p>Listeden bir kelime seçin</p></div>';
+}
+
+function filterPOS(pos) {
+  activePOS = pos;
+  filterEntries(document.getElementById('search-input').value);
+}
+
+renderList();
+if (ENTRIES.length) selectEntry(0);
+</script>
+</body>
+</html>

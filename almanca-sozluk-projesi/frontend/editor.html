@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Arayüz Editörü</title>
+  <link rel="stylesheet" href="./editor.css">
+</head>
+<body class="editor-shell" data-theme="light">
+  <div class="editor-app">
+    <header class="editor-topbar">
+      <div class="editor-brand">
+        <div class="editor-brand-mark">UI</div>
+        <div>
+          <p class="editor-kicker">Sözlük Arayüz Editörü</p>
+          <h1>Görsel Düzenleyici</h1>
+        </div>
+      </div>
+
+      <div class="editor-actions">
+        <button id="save-button" class="topbar-button topbar-button-primary" type="button">Kaydet</button>
+        <button id="undo-button" class="topbar-button" type="button">Geri Al</button>
+        <button id="redo-button" class="topbar-button" type="button">İleri Al</button>
+        <button id="preview-button" class="topbar-button" type="button">Önizleme</button>
+
+        <div class="segmented-control" role="tablist" aria-label="Düzen modu">
+          <button id="edit-mode-button" class="segmented-control-button is-active" type="button">Düzen</button>
+          <button id="use-mode-button" class="segmented-control-button" type="button">Kullanım</button>
+        </div>
+
+        <div class="segmented-control" role="tablist" aria-label="Görünüm">
+          <button class="segmented-control-button is-active" type="button" data-viewport="desktop">Desktop</button>
+          <button class="segmented-control-button" type="button" data-viewport="tablet">Tablet</button>
+          <button class="segmented-control-button" type="button" data-viewport="mobile">Mobile</button>
+        </div>
+
+        <div class="segmented-control" role="tablist" aria-label="Tema">
+          <button class="segmented-control-button is-active" type="button" data-theme-toggle="light">Light</button>
+          <button class="segmented-control-button" type="button" data-theme-toggle="dark">Dark</button>
+        </div>
+
+        <button id="export-button" class="topbar-button" type="button">JSON Dışa Aktar</button>
+        <button id="import-button" class="topbar-button" type="button">JSON İçe Aktar</button>
+        <input id="import-input" type="file" accept="application/json" hidden>
+      </div>
+    </header>
+
+    <main class="editor-main">
+      <aside class="editor-sidebar editor-sidebar-left">
+        <section class="sidebar-card">
+          <div class="sidebar-card-head">
+            <h2>Bileşenler</h2>
+            <p>Canvas üzerine sürükleyip bırak.</p>
+          </div>
+          <div id="component-palette" class="component-palette"></div>
+        </section>
+
+        <section class="sidebar-card">
+          <div class="sidebar-card-head">
+            <h2>Hazır Şablonlar</h2>
+            <p>Başlangıç düzenleri.</p>
+          </div>
+          <div id="template-list" class="template-list"></div>
+        </section>
+      </aside>
+
+      <section class="editor-center">
+        <div class="workspace-head">
+          <div>
+            <p class="workspace-kicker">Canlı Önizleme</p>
+            <h2 id="workspace-title">Ana Sayfa</h2>
+          </div>
+          <div class="workspace-meta">
+            <span id="workspace-mode-badge" class="workspace-badge">Düzen modu</span>
+            <span id="workspace-status" class="workspace-status">Hazır</span>
+          </div>
+        </div>
+
+        <div class="workspace-stage">
+          <div id="preview-frame" class="preview-frame preview-frame-desktop">
+            <div id="preview-root" class="preview-root"></div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="editor-sidebar editor-sidebar-right">
+        <section class="sidebar-card inspector-card">
+          <div class="sidebar-card-head">
+            <h2>Özellikler</h2>
+            <p>Seçili bileşenin içerik ve stil ayarları.</p>
+          </div>
+          <div id="inspector-root" class="inspector-root"></div>
+        </section>
+      </aside>
+    </main>
+  </div>
+
+  <script type="module" src="./editor-app.js"></script>
+</body>
+</html>

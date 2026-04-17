@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tasarım 5 — Odak Görünümü</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #0f1117;
+  --surface: #191c24;
+  --surface2: #1e2130;
+  --border: rgba(255,255,255,0.08);
+  --ink: #e8eaf2;
+  --muted: #8891a4;
+  --brand: #7eb8f7;
+  --brand-dim: rgba(126,184,247,0.15);
+  --green: #6dd98c;
+  --green-dim: rgba(109,217,140,0.12);
+  --amber: #f5c842;
+  --amber-dim: rgba(245,200,66,0.12);
+  --red: #ff6b6b;
+  --red-dim: rgba(255,107,107,0.12);
+  --purple: #c084fc;
+  --purple-dim: rgba(192,132,252,0.12);
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', system-ui, sans-serif; background: var(--bg); color: var(--ink); min-height: 100vh; }
+
+/* HEADER */
+.header { padding: 18px 28px; display: flex; align-items: center; gap: 20px; border-bottom: 1px solid var(--border); background: var(--surface); position: sticky; top: 0; z-index: 20; }
+.header-logo { font-size: 1rem; font-weight: 700; color: var(--brand); white-space: nowrap; letter-spacing: -0.01em; }
+.header-logo small { display: block; font-size: 0.65rem; color: var(--muted); font-weight: 400; text-transform: uppercase; letter-spacing: 0.1em; }
+.search-box { flex: 1; max-width: 600px; position: relative; }
+.search-box input { width: 100%; padding: 11px 18px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface2); color: var(--ink); font-size: 0.97rem; outline: none; font-family: 'DM Sans', sans-serif; transition: border-color 0.15s, background 0.15s; }
+.search-box input:focus { border-color: var(--brand); background: #1a2033; }
+.search-box input::placeholder { color: var(--muted); }
+.prev-next { display: flex; gap: 6px; margin-left: auto; }
+.nav-btn { width: 36px; height: 36px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface2); color: var(--muted); cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
+.nav-btn:hover { border-color: var(--brand); color: var(--brand); }
+.idx-label { font-size: 0.82rem; color: var(--muted); display: flex; align-items: center; }
+
+/* CHIPS ROW */
+.chips { display: flex; gap: 8px; padding: 12px 28px; background: var(--surface); border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+.chip { padding: 5px 14px; border-radius: 999px; border: 1px solid var(--border); background: transparent; color: var(--muted); font-size: 0.78rem; font-weight: 500; cursor: pointer; transition: all 0.14s; font-family: 'DM Sans', sans-serif; }
+.chip:hover { border-color: var(--brand); color: var(--brand); }
+.chip.on { background: var(--brand-dim); border-color: var(--brand); color: var(--brand); }
+
+/* MAIN */
+.main { display: grid; grid-template-columns: 240px 1fr; gap: 0; min-height: calc(100vh - 120px); }
+
+/* MINIMAP */
+.minimap { border-right: 1px solid var(--border); padding: 20px 16px; overflow-y: auto; background: var(--surface); position: sticky; top: 120px; height: calc(100vh - 120px); }
+.minimap::-webkit-scrollbar { width: 4px; }
+.minimap::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+.mm-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+.mm-item { padding: 8px 12px; border-radius: var(--radius-sm); cursor: pointer; transition: background 0.12s; margin-bottom: 2px; display: flex; align-items: center; gap: 10px; }
+.mm-item:hover { background: var(--surface2); }
+.mm-item.active { background: var(--brand-dim); }
+.mm-word { font-size: 0.9rem; font-family: 'Crimson Pro', Georgia, serif; font-weight: 600; color: var(--ink); }
+.mm-item.active .mm-word { color: var(--brand); }
+.mm-tr { font-size: 0.75rem; color: var(--muted); }
+.mm-dot { width: 8px; height: 8px; border-radius: 999px; flex-shrink: 0; }
+.dot-isim { background: var(--brand); }
+.dot-fiil { background: var(--green); }
+.dot-sıfat { background: var(--amber); }
+.dot-zarf { background: var(--purple); }
+.dot-default { background: var(--muted); }
+
+/* ENTRY VIEW */
+.entry-view { padding: 36px 48px 80px; max-width: 820px; overflow-y: auto; }
+.entry-hero { margin-bottom: 32px; }
+.hero-top { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px; flex-wrap: wrap; }
+.hero-badge { padding: 4px 12px; border-radius: 6px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; }
+.badge-isim { background: var(--brand-dim); color: var(--brand); }
+.badge-fiil { background: var(--green-dim); color: var(--green); }
+.badge-sıfat { background: var(--amber-dim); color: var(--amber); }
+.badge-zarf { background: var(--purple-dim); color: var(--purple); }
+.badge-default { background: rgba(255,255,255,0.07); color: var(--muted); }
+.badge-artikel { border: 1px solid; }
+.badge-artikel-der { border-color: rgba(126,184,247,0.3); color: var(--brand); background: var(--brand-dim); }
+.badge-artikel-die { border-color: rgba(255,107,107,0.3); color: var(--red); background: var(--red-dim); }
+.badge-artikel-das { border-color: rgba(109,217,140,0.3); color: var(--green); background: var(--green-dim); }
+.badge-cat { background: rgba(255,255,255,0.06); color: var(--muted); }
+.hero-lemma { font-family: 'Crimson Pro', Georgia, serif; font-size: 4rem; font-weight: 700; color: var(--ink); line-height: 0.95; letter-spacing: -0.02em; }
+.hero-morph { margin-top: 10px; font-size: 0.85rem; color: var(--muted); display: flex; gap: 16px; flex-wrap: wrap; }
+.hero-morph span { display: flex; align-items: center; gap: 5px; }
+.hero-morph strong { color: var(--ink); }
+
+.translation-card { margin: 24px 0 32px; padding: 20px 24px; border-radius: var(--radius); background: var(--surface2); border: 1px solid var(--border); position: relative; overflow: hidden; }
+.translation-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--brand); }
+.tr-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+.tr-main { font-family: 'Crimson Pro', Georgia, serif; font-size: 2rem; font-weight: 600; color: var(--brand); line-height: 1.1; }
+.tr-anlam { margin-top: 10px; font-size: 0.93rem; color: var(--muted); line-height: 1.65; font-style: italic; }
+
+/* EXAMPLES */
+.section { margin-bottom: 36px; }
+.section-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 18px; display: flex; align-items: center; gap: 12px; }
+.section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+.examples-grid { display: grid; gap: 10px; }
+.ex-card { padding: 16px 18px; background: var(--surface2); border-radius: var(--radius-sm); border: 1px solid var(--border); transition: border-color 0.15s; }
+.ex-card:hover { border-color: rgba(126,184,247,0.2); }
+.ex-num { font-size: 0.68rem; color: var(--muted); font-weight: 700; margin-bottom: 8px; letter-spacing: 0.06em; }
+.ex-de { font-family: 'Crimson Pro', Georgia, serif; font-size: 1.1rem; font-style: italic; color: var(--ink); line-height: 1.55; }
+.ex-de mark { background: rgba(126,184,247,0.15); color: var(--brand); border-radius: 3px; padding: 0 3px; font-style: normal; font-weight: 600; }
+.ex-sep { height: 1px; background: var(--border); margin: 10px 0; }
+.ex-tr { font-size: 0.88rem; color: var(--muted); line-height: 1.5; }
+.ex-tr::before { content: '→ '; color: var(--brand); font-weight: 600; }
+
+/* GRAMMAR */
+.gram-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+.gram-cell { padding: 12px 14px; background: var(--surface2); border-radius: var(--radius-sm); border: 1px solid var(--border); }
+.gram-cell-lbl { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.gram-cell-val { font-family: 'Crimson Pro', Georgia, serif; font-size: 1.05rem; font-weight: 600; color: var(--ink); }
+
+/* SYNONYMS */
+.syn-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.syn-tag { padding: 7px 14px; border-radius: 999px; background: var(--surface2); border: 1px solid var(--border); font-size: 0.85rem; color: var(--ink); cursor: pointer; transition: all 0.14s; font-family: 'DM Sans', sans-serif; }
+.syn-tag:hover { background: var(--brand-dim); border-color: var(--brand); color: var(--brand); }
+
+@media (max-width: 800px) {
+  .main { grid-template-columns: 1fr; }
+  .minimap { display: none; }
+  .entry-view { padding: 24px 20px 60px; }
+  .hero-lemma { font-size: 2.8rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-logo">A→T Sözlük <small>Odak Görünümü</small></div>
+  <div class="search-box">
+    <input type="search" id="q" placeholder="Kelime veya çeviri ara…" oninput="onSearch(this.value)">
+  </div>
+  <div class="prev-next">
+    <button class="nav-btn" onclick="navigate(-1)" title="Önceki">◀</button>
+    <span class="idx-label" id="idx-label">1 / 10</span>
+    <button class="nav-btn" onclick="navigate(1)" title="Sonraki">▶</button>
+  </div>
+</div>
+
+<div class="chips">
+  <button class="chip on" onclick="setPOS('',this)">Tümü</button>
+  <button class="chip" onclick="setPOS('isim',this)">İsim</button>
+  <button class="chip" onclick="setPOS('fiil',this)">Fiil</button>
+  <button class="chip" onclick="setPOS('sıfat',this)">Sıfat</button>
+  <button class="chip" onclick="setPOS('zarf',this)">Zarf</button>
+</div>
+
+<div class="main">
+  <div class="minimap">
+    <div class="mm-label">Liste</div>
+    <div id="mm-list"></div>
+  </div>
+  <div class="entry-view" id="entry-view"></div>
+</div>
+
+<script>
+const ENTRIES = [
+  { almanca:"Fahrrad", artikel:"das", turkce:"bisiklet", tur:"isim", cogul:"Fahrräder", genitiv:"Fahrrads", kategoriler:["ulaşım"], anlam:"İki tekerlekli, pedallarla hareket ettirilen kişisel ulaşım aracı.", esanlamlilar:["Rad","Velo"], ornekler:[{almanca:"Ich fahre jeden Tag mit dem Fahrrad zur Schule.",turkce:"Her gün bisikletle okula gidiyorum."},{almanca:"Das Fahrrad ist umgefallen.",turkce:"Bisiklet devrildi."}]},
+  { almanca:"schön", turkce:"güzel", tur:"sıfat", komparativ:"schöner", superlativ:"am schönsten", kategoriler:["günlük hayat"], anlam:"Estetik açıdan hoş olan, göze hitap eden.", esanlamlilar:["hübsch","wunderschön"], ornekler:[{almanca:"Das Wetter ist heute sehr schön.",turkce:"Hava bugün çok güzel."},{almanca:"Sie hat ein schönes Kleid an.",turkce:"Üzerinde güzel bir elbise var."},{almanca:"Der Blick vom Berg ist wunderschön.",turkce:"Dağdan manzara muhteşem."}]},
+  { almanca:"fahren", turkce:"sürmek, gitmek", tur:"fiil", partizip2:"gefahren", kategoriler:["ulaşım","günlük hayat"], anlam:"Bir araç kullanarak bir yerden bir yere gitmek.", esanlamlilar:["reisen","lenken"], ornekler:[{almanca:"Wir fahren morgen nach Berlin.",turkce:"Yarın Berlin'e gidiyoruz."},{almanca:"Er fährt gern Auto.",turkce:"Araba sürmekten hoşlanır."}]},
+  { almanca:"Freundschaft", artikel:"die", turkce:"dostluk, arkadaşlık", tur:"isim", cogul:"Freundschaften", kategoriler:["sosyal hayat"], anlam:"Karşılıklı sevgi, güven ve saygıya dayalı kişiler arası bağ.", esanlamlilar:["Kameradschaft","Verbundenheit"], ornekler:[{almanca:"Unsere Freundschaft hält seit zwanzig Jahren.",turkce:"Dostluğumuz yirmi yıldır devam ediyor."},{almanca:"Wahre Freundschaft ist selten.",turkce:"Gerçek dostluk nadirdir."}]},
+  { almanca:"Fenster", artikel:"das", turkce:"pencere", tur:"isim", cogul:"Fenster", genitiv:"Fensters", anlam:"Bir yapının duvarında ışık ve hava geçişine yarayan açıklık.", ornekler:[{almanca:"Bitte mach das Fenster zu!",turkce:"Lütfen pencereyi kapat!"},{almanca:"Durch das Fenster sehe ich den Garten.",turkce:"Pencereden bahçeyi görüyorum."}]},
+  { almanca:"arbeiten", turkce:"çalışmak", tur:"fiil", partizip2:"gearbeitet", kategoriler:["meslek","günlük hayat"], anlam:"Bir amaç doğrultusunda fiziksel ya da zihinsel çaba harcamak.", esanlamlilar:["tätig sein","werken"], ornekler:[{almanca:"Sie arbeitet als Ärztin in einem Krankenhaus.",turkce:"Bir hastanede doktor olarak çalışıyor."},{almanca:"Ich arbeite jeden Tag von neun bis fünf.",turkce:"Her gün dokuzdan beşe kadar çalışıyorum."},{almanca:"Hast du heute viel gearbeitet?",turkce:"Bugün çok çalıştın mı?"}]},
+  { almanca:"Bahnhof", artikel:"der", turkce:"istasyon, tren garı", tur:"isim", cogul:"Bahnhöfe", genitiv:"Bahnhofs", kategoriler:["ulaşım"], anlam:"Trenlerin yolcu indirip bindirdiği bina ve çevresindeki alan.", ornekler:[{almanca:"Wir treffen uns am Bahnhof um drei Uhr.",turkce:"Saat üçte istasyonda buluşuyoruz."},{almanca:"Der Bahnhof ist sehr groß.",turkce:"İstasyon çok büyük."}]},
+  { almanca:"schnell", turkce:"hızlı, çabuk", tur:"sıfat", komparativ:"schneller", superlativ:"am schnellsten", kategoriler:["günlük hayat"], anlam:"Az zaman alan, yüksek hızda gerçekleşen.", esanlamlilar:["rasch","flott"], ornekler:[{almanca:"Das Auto fährt sehr schnell.",turkce:"Araba çok hızlı gidiyor."},{almanca:"Kannst du bitte schneller kommen?",turkce:"Lütfen daha hızlı gelebilir misin?"}]},
+  { almanca:"Wasser", artikel:"das", turkce:"su", tur:"isim", kategoriler:["doğa","günlük hayat"], anlam:"Renksiz, kokusuz, tatsız olan temel sıvı element.", ornekler:[{almanca:"Kannst du mir ein Glas Wasser geben?",turkce:"Bana bir bardak su verir misin?"},{almanca:"Das Wasser im Fluss ist klar.",turkce:"Nehirdeki su berrak."}]},
+  { almanca:"lesen", turkce:"okumak", tur:"fiil", partizip2:"gelesen", kategoriler:["eğitim","kültür"], anlam:"Yazılı metni gözle izleyerek anlamak.", esanlamlilar:["studieren"], ornekler:[{almanca:"Er liest jeden Abend ein Buch.",turkce:"Her akşam bir kitap okur."},{almanca:"Ich lese gerade einen Roman auf Deutsch.",turkce:"Şu an Almanca bir roman okuyorum."}]},
+];
+
+let filtered = [...ENTRIES];
+let currentIdx = 0;
+let activePOS = '';
+
+function dotCls(tur) { const m={isim:'dot-isim',fiil:'dot-fiil','sıfat':'dot-sıfat',zarf:'dot-zarf'}; return m[tur]||'dot-default'; }
+function badgeCls(tur) { const m={isim:'badge-isim',fiil:'badge-fiil','sıfat':'badge-sıfat',zarf:'badge-zarf'}; return m[tur]||'badge-default'; }
+function artikelBadgeCls(a) { return a ? 'badge-artikel badge-artikel-'+a : ''; }
+
+function hl(text, word) {
+  if (!word || word.length < 2) return text;
+  return text.replace(new RegExp('(' + word.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'gi'), '<mark>$1</mark>');
+}
+
+function renderMinimap() {
+  document.getElementById('mm-list').innerHTML = filtered.map((e,i) =>
+    `<div class="mm-item${i===currentIdx?' active':''}" onclick="goTo(${i})">
+      <div class="mm-dot ${dotCls(e.tur)}"></div>
+      <div><div class="mm-word">${e.almanca}</div><div class="mm-tr">${e.turkce.split(',')[0].trim()}</div></div>
+    </div>`
+  ).join('');
+}
+
+function renderEntry() {
+  if (!filtered.length) { document.getElementById('entry-view').innerHTML = '<div style="color:var(--muted);padding:40px">Sonuç bulunamadı.</div>'; return; }
+  const e = filtered[currentIdx];
+  document.getElementById('idx-label').textContent = (currentIdx+1) + ' / ' + filtered.length;
+
+  const morphParts = [];
+  if (e.cogul) morphParts.push(`<span>Çoğul: <strong>${e.cogul}</strong></span>`);
+  if (e.genitiv) morphParts.push(`<span>Genitiv: <strong>${e.genitiv}</strong></span>`);
+  if (e.partizip2) morphParts.push(`<span>Partizip II: <strong>${e.partizip2}</strong></span>`);
+  if (e.komparativ) morphParts.push(`<span>Komp.: <strong>${e.komparativ}</strong></span>`);
+  if (e.superlativ) morphParts.push(`<span>Sup.: <strong>${e.superlativ}</strong></span>`);
+
+  const gramCells = [];
+  if (e.cogul) gramCells.push(['Çoğul', e.cogul]);
+  if (e.genitiv) gramCells.push(['Genitiv', e.genitiv]);
+  if (e.partizip2) gramCells.push(['Partizip II', e.partizip2]);
+  if (e.komparativ) gramCells.push(['Komparativ', e.komparativ]);
+  if (e.superlativ) gramCells.push(['Superlativ', e.superlativ]);
+
+  document.getElementById('entry-view').innerHTML = `
+    <div class="entry-hero">
+      <div class="hero-top">
+        <span class="hero-badge ${badgeCls(e.tur)}">${e.tur}</span>
+        ${e.artikel ? `<span class="hero-badge ${artikelBadgeCls(e.artikel)}">${e.artikel}</span>` : ''}
+        ${(e.kategoriler||[]).map(k=>`<span class="hero-badge badge-cat">${k}</span>`).join('')}
+      </div>
+      <div class="hero-lemma">${e.almanca}</div>
+      ${morphParts.length ? `<div class="hero-morph">${morphParts.join('')}</div>` : ''}
+    </div>
+
+    <div class="translation-card">
+      <div class="tr-label">Türkçe Karşılık</div>
+      <div class="tr-main">${e.turkce}</div>
+      ${e.anlam ? `<div class="tr-anlam">${e.anlam}</div>` : ''}
+    </div>
+
+    ${e.ornekler && e.ornekler.length ? `
+    <div class="section">
+      <div class="section-title">Örnek Cümleler</div>
+      <div class="examples-grid">
+        ${e.ornekler.map((ex,i) => `<div class="ex-card">
+          <div class="ex-num">ÖRNEK ${i+1}</div>
+          <div class="ex-de">${hl(ex.almanca, e.almanca)}</div>
+          <div class="ex-sep"></div>
+          <div class="ex-tr">${ex.turkce||'<em>çeviri bekleniyor…</em>'}</div>
+        </div>`).join('')}
+      </div>
+    </div>` : ''}
+
+    ${gramCells.length ? `
+    <div class="section">
+      <div class="section-title">Dilbilgisi</div>
+      <div class="gram-grid">
+        ${gramCells.map(([l,v]) => `<div class="gram-cell"><div class="gram-cell-lbl">${l}</div><div class="gram-cell-val">${v}</div></div>`).join('')}
+      </div>
+    </div>` : ''}
+
+    ${e.esanlamlilar && e.esanlamlilar.length ? `
+    <div class="section">
+      <div class="section-title">Eş Anlamlılar</div>
+      <div class="syn-row">
+        ${e.esanlamlilar.map(s=>`<span class="syn-tag">${s}</span>`).join('')}
+      </div>
+    </div>` : ''}
+  `;
+
+  renderMinimap();
+  document.getElementById('entry-view').scrollTop = 0;
+}
+
+function goTo(i) { currentIdx = i; renderEntry(); }
+function navigate(dir) { currentIdx = (currentIdx + dir + filtered.length) % filtered.length; renderEntry(); }
+
+function onSearch(q) {
+  const ql = q.toLowerCase();
+  filtered = ENTRIES.filter(e => {
+    if (activePOS && e.tur !== activePOS) return false;
+    if (!q) return true;
+    return e.almanca.toLowerCase().includes(ql) || e.turkce.toLowerCase().includes(ql) || (e.anlam||'').toLowerCase().includes(ql);
+  });
+  currentIdx = 0;
+  renderEntry();
+}
+
+function setPOS(pos, btn) {
+  activePOS = pos;
+  document.querySelectorAll('.chip').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  onSearch(document.getElementById('q').value);
+}
+
+renderEntry();
+
+document.addEventListener('keydown', e => {
+  if (e.target.tagName === 'INPUT') return;
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') navigate(1);
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') navigate(-1);
+});
+</script>
+</body>
+</html>
